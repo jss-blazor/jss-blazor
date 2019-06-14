@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Layers.config" />
+    <Content Include="App_Config\Environment\BlazorSample\BlazorSample.Project.Common.Dev.config" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
