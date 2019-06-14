@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{479E
 		..\..\.gitattributes = ..\..\.gitattributes
 		..\..\.gitignore = ..\..\.gitignore
 		..\..\NuGet.config = ..\..\NuGet.config
+		PublishSettings.Sitecore.targets = PublishSettings.Sitecore.targets
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{C97C37A3-BF82-435D-9845-7CB5E29A38D5}"
