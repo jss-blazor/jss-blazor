@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <Target Name="CleanWebRoot" BeforeTargets="Build">
+    <ItemGroup>
+      <Binaries Include="$(publishUrl)\bin\BlazorSample*" />
+    </ItemGroup>
+    <RemoveDir Directories="$(publishUrl)\App_Config\Environment\BlazorSample" />
+    <RemoveDir Directories="$(publishUrl)\App_Config\BlazorSample" />
+    <Delete Files="@(Binaries)" />
+  </Target>
+</Project>
