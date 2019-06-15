@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BlazorSample.Project.Common")]
+[assembly: AssemblyTitle("JssBlazor.Foundation.Serialization")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BlazorSample.Project.Common")]
+[assembly: AssemblyProduct("JssBlazor.Foundation.Serialization")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8648edd2-6c57-4079-abc7-9c279d8d9958")]
+[assembly: Guid("06ded927-f5f9-41dd-8aa7-8f0e7a15ff2c")]
 
 // Version information for an assembly consists of the following four values:
 //

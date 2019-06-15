@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{479E
 		..\..\.editorconfig = ..\..\.editorconfig
 		..\..\.gitattributes = ..\..\.gitattributes
 		..\..\.gitignore = ..\..\.gitignore
-		src\Project\Common\sitecore\App_Config\Environment\BlazorSample\BlazorSample.Project.Common.Dev.config = src\Project\Common\sitecore\App_Config\Environment\BlazorSample\BlazorSample.Project.Common.Dev.config
+		src\Project\Common\sitecore\App_Config\Environment\JssBlazor\JssBlazor.Project.Common.Dev.config = src\Project\Common\sitecore\App_Config\Environment\JssBlazor\JssBlazor.Project.Common.Dev.config
 		..\..\NuGet.config = ..\..\NuGet.config
 		PublishSettings.Sitecore.targets = PublishSettings.Sitecore.targets
 	EndProjectSection
@@ -17,13 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{C97C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{11141AB5-6EE3-472D-9653-2DF28231CF2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSample.Project.Common", "src\Project\Common\sitecore\BlazorSample.Project.Common.csproj", "{8648EDD2-6C57-4079-ABC7-9C279D8D9958}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JssBlazor.Project.Common", "src\Project\Common\sitecore\JssBlazor.Project.Common.csproj", "{8648EDD2-6C57-4079-ABC7-9C279D8D9958}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{9E9E9191-9197-4ACB-8C25-57483D4D3B28}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serialization", "Serialization", "{8B5B6F5F-4475-45F6-AFB3-AF7256A3915E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSample.Foundation.Serialization", "src\Foundation\Serialization\sitecore\BlazorSample.Foundation.Serialization.csproj", "{06DED927-F5F9-41DD-8AA7-8F0E7A15FF2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JssBlazor.Foundation.Serialization", "src\Foundation\Serialization\sitecore\JssBlazor.Foundation.Serialization.csproj", "{06DED927-F5F9-41DD-8AA7-8F0E7A15FF2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
