@@ -19,16 +19,22 @@ namespace JssBlazor.Server.Controllers
         }
 
         [HttpGet("[action]")]
-        public async Task<string> Render(string path)
+        public async Task<string> Render(string item)
         {
-            var routeYml = await GetRouteYmlAsync();
+            var routePath = ResolveRoute(item);
+            var routeYml = await GetRouteYmlAsync(routePath);
             var routeJson = ConvertYmlToJson(routeYml);
             return routeJson;
         }
 
-        private async Task<string> GetRouteYmlAsync()
+        private static string ResolveRoute(string item)
         {
-            var routeYml = _webHostEnvironment.WebRootFileProvider.GetFileInfo("/routes/en.yml");
+            return "/routes/en.yml";
+        }
+
+        private async Task<string> GetRouteYmlAsync(string routePath)
+        {
+            var routeYml = _webHostEnvironment.WebRootFileProvider.GetFileInfo(routePath);
             using (var stream = routeYml.CreateReadStream())
             using (var reader = new StreamReader(stream))
             {
