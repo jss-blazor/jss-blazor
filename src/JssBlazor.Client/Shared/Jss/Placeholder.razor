@@ -1,0 +1,24 @@
+@RenderPlaceholder()
+
+@code {
+    [Parameter]
+    private string Name { get; set; }
+
+    [Parameter]
+    private LayoutServiceResponse Rendering { get; set; }
+
+    private RenderFragment RenderPlaceholder() => builder =>
+    {
+        var components = Rendering.Placeholders[Name];
+        foreach (var component in Rendering.Placeholders[Name])
+        {
+            builder.OpenComponent(0, Type.GetType(component.ComponentName));
+            builder.AddAttribute(1, "Fields", new ContentBlockModel
+            {
+                Heading = component.Fields["heading"],
+                Content = component.Fields["content"]
+            });
+            builder.CloseComponent();
+        }
+    };
+}

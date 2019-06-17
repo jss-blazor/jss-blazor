@@ -1,0 +1,9 @@
+@using Microsoft.AspNetCore.Components
+
+<h2 class="display-4">@Fields.Heading</h2>
+<div class="contentDescription">@((MarkupString)Fields.Content)</div>
+
+@code {
+    [Parameter]
+    private ContentBlockModel Fields { get; set; }
+}

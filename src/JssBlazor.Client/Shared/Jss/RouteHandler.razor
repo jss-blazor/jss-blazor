@@ -1,0 +1,20 @@
+@inherits LayoutComponentBase
+@inject HttpClient Http
+
+@if (Route == null)
+{
+    <p><em>Waiting on Layout Service...</em></p>
+    return;
+}
+
+<Layout Route="Route" />
+
+@code {
+    [Parameter]
+    private LayoutServiceResponse Route { get; set; }
+
+    protected override async Task OnInitAsync()
+    {
+        Route = await Http.GetJsonAsync<LayoutServiceResponse>("sitecore/api/layout/render");
+    }
+}

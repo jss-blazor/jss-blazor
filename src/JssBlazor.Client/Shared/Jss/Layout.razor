@@ -1,0 +1,16 @@
+<Helmet>
+    <title>@(Route.Fields["Title"] ?? "Page")</title>
+</Helmet>
+
+<VisitorIdentification />
+
+<Navigation />
+
+<div class="container">
+    <Placeholder name="jss-main" Rendering="@Route" />
+</div>
+
+@code {
+    [Parameter]
+    private LayoutServiceResponse Route { get; set; }
+}
