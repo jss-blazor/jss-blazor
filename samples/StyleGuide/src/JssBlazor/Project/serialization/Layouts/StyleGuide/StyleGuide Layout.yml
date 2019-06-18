@@ -1,0 +1,19 @@
+﻿---
+ID: "8eaf0915-8aae-4249-9b3f-573db6717af8"
+Parent: "0b5c7b54-2158-4c01-8b9a-243a54973410"
+Template: "35c61e90-47dd-43dd-83a8-d1c4d5119720"
+Path: /sitecore/layout/Layouts/Project/StyleGuide/StyleGuide Layout
+DB: master
+SharedFields:
+- ID: "80334869-86dc-4472-aa89-44cf1b2f6c9b"
+  Hint: Placeholders
+  Type: Treelist
+  Value: "{5427E006-6A2C-4875-B79E-2A52F88A5F6C}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190618T060736Z

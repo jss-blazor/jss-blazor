@@ -61,6 +61,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Config\JssBlazor\Project\JssBlazor.Project.StyleGuide.JssConfig.config" />
+    <Content Include="App_Config\JssBlazor\Project\JssBlazor.Project.StyleGuide.Serialization.config" />
+    <Content Include="App_Config\Environment\JssBlazor\JssBlazor.Project.StyleGuide.Dev.config" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Web.config" />
   </ItemGroup>

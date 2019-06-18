@@ -77,6 +77,7 @@
     <Content Include="App_Config\Include\Unicorn\Unicorn.zSharedSecret.config.example" />
     <Content Include="App_Config\JssBlazor\Foundation\JssBlazor.Foundation.Serialization.Settings.config" />
     <Content Include="App_Config\JssBlazor\Unicorn.Helix.config" />
+    <Content Include="App_Config\JssBlazor\Foundation\JssBlazor.Foundation.Serialization.config" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Web.config" />
   </ItemGroup>

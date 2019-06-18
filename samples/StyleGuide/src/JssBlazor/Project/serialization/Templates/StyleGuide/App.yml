@@ -1,0 +1,22 @@
+﻿---
+ID: "d10902bb-a8eb-45ab-8de1-373f42212c06"
+Parent: "31b9931d-2098-471c-9873-ff82cd208ed7"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: /sitecore/templates/Project/StyleGuide/App
+DB: master
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: Office/16x16/window_star.png
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: __Base template
+  Type: tree list
+  Value: "{061CBA15-5474-4B91-8A06-17903B102B82}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190618T060506Z
