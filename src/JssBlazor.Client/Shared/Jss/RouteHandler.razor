@@ -1,5 +1,6 @@
+@using JssBlazor.Shared.Services
 @inherits LayoutComponentBase
-@inject HttpClient Http
+@inject ILayoutService LayoutService
 
 @if (Route == null)
 {
@@ -15,6 +16,6 @@
 
     protected override async Task OnInitAsync()
     {
-        Route = await Http.GetJsonAsync<LayoutServiceResponse>("sitecore/api/layout/render");
+        Route = await LayoutService.GetRouteAsync("sitecore/api/layout/render");
     }
 }

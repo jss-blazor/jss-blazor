@@ -1,8 +1,11 @@
+using System;
 using System.Linq;
+using JssBlazor.Shared.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 
 namespace JssBlazor.Server
@@ -19,6 +22,13 @@ namespace JssBlazor.Server
                 opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
                     new[] { "application/octet-stream" });
             });
+
+            services.AddSingleton<Func<string, IFileInfo>>(serviceProvider => (subpath) =>
+            {
+                var webHostEnvironment = serviceProvider.GetService<IWebHostEnvironment>();
+                return webHostEnvironment.WebRootFileProvider.GetFileInfo(subpath);
+            });
+            services.AddSingleton<IRouteResolver, YamlRouteResolver>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

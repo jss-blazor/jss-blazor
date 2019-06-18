@@ -1,7 +1,12 @@
+using System;
+using JssBlazor.RenderingHost.Services;
+using JssBlazor.Shared.Services;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 
 namespace JssBlazor.RenderingHost
@@ -18,7 +23,21 @@ namespace JssBlazor.RenderingHost
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddMvc();
+            services.AddHttpContextAccessor();
+
+            services.AddSingleton<Func<string, IFileInfo>>(serviceProvider => subpath =>
+            {
+                var webHostEnvironment = serviceProvider.GetRequiredService<IWebHostEnvironment>();
+                return webHostEnvironment.WebRootFileProvider.GetFileInfo(subpath);
+            });
+            services.AddSingleton<IRouteResolver, YamlRouteResolver>();
+            services.AddSingleton<ILayoutService, LocalLayoutService>();
+
+            // Required to render JssBlazor.Client on the server.
+            services.AddServerSideBlazor();
+            // Replace Blazor's out-of-the-box IUriHelper with one that correctly resolves URLs server side.
+            services.AddScoped<IUriHelper, HardcodedRemoteUriHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
