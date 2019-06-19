@@ -1,0 +1,19 @@
+<div style="background: darkorange; outline: 5px solid orange; padding: 10px; color: white; maxwidth: 500px">
+    <h2>@ComponentName</h2>
+    <p>JSS component is missing Blazor implementation. See the developer console for more information.</p>
+</div>
+
+@functions {
+    private string _componentName;
+    [Parameter] string ComponentName 
+    { 
+        get
+        {
+            return _componentName ?? 'Unnamed Component';
+        } 
+        set
+        {
+            _componentName = value;
+        } 
+    }
+}

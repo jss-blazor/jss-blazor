@@ -12,12 +12,28 @@
         var components = Rendering.Placeholders[Name];
         foreach (var component in Rendering.Placeholders[Name])
         {
-            builder.OpenComponent(0, Type.GetType(component.ComponentName));
-            builder.AddAttribute(1, "Fields", new ContentBlockModel
+            // need to make this string somehow a global thing or use reflection
+            var selectedType = Type.GetType(component.ComponentName);
+            if(selectedType == null)
             {
-                Heading = component.Fields["heading"],
-                Content = component.Fields["content"]
-            });
+                // create a missing component
+                var missingTypeString = $"JssBlazor.Client.Shared.Jss.Components.MissingComponent, JssBlazor.Client";
+                Type.GetType(missingTypeString);
+                builder.OpenComponent(0, selectedType);
+                builder.AddAttribute(1, "ComponentName", component.ComponentName);
+            }
+            else
+            {
+                // needs to handled dynamically
+                builder.OpenComponent(0, selectedType);
+
+                builder.AddAttribute(1, "Fields", new ContentBlockModel
+                {
+                    Heading = component.Fields["heading"],
+                    Content = component.Fields["content"]
+                });
+            }
+            
             builder.CloseComponent();
         }
     };
