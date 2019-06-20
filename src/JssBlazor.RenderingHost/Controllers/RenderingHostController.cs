@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 using JssBlazor.Client;
 using JssBlazor.RenderingHost.Models;
 using JssBlazor.RenderingHost.Services;
-using JssBlazor.Shared.Models;
-using JssBlazor.Shared.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Newtonsoft.Json;
 
 namespace JssBlazor.RenderingHost.Controllers
 {
@@ -19,33 +16,23 @@ namespace JssBlazor.RenderingHost.Controllers
     [Route("api/[controller]")]
     public class RenderingHostController : Controller
     {
-        private readonly IRouteResolver _routeResolver;
-        private readonly ILayoutService _layoutService;
+        private readonly ILayoutServiceResultProvider _layoutServiceResultProvider;
         private readonly IHtmlHelper _htmlHelper;
 
         public RenderingHostController(
-            IRouteResolver routeResolver,
-            ILayoutService layoutService,
+            ILayoutServiceResultProvider layoutServiceResultProvider,
             IHtmlHelper htmlHelper)
         {
-            _routeResolver = routeResolver ?? throw new ArgumentNullException(nameof(routeResolver));
-            _layoutService = layoutService ?? throw new ArgumentNullException(nameof(layoutService));
+            _layoutServiceResultProvider = layoutServiceResultProvider ?? throw new ArgumentNullException(nameof(layoutServiceResultProvider));
             _htmlHelper = htmlHelper ?? throw new ArgumentNullException(nameof(htmlHelper));
         }
 
         [HttpPost]
-        public async Task<ResultModel> Post([FromBody]RenderRequest renderRequest)
+        public async Task<RenderResult> Post([FromBody]RenderRequest renderRequest)
         {
-            // Layout Service data will eventually come from Sitecore by reading renderRequest.Args.
-            // For now, read it from the YAML routes hosted in the Rendering Host.
-            var routeJson = await _routeResolver.GetRouteJsonAsync(null);
-            if (_layoutService is LocalLayoutService localLayoutService)
-            {
-                localLayoutService.Route = JsonConvert.DeserializeObject<LayoutServiceResponse>(routeJson);
-            }
-
+            _layoutServiceResultProvider.Result = renderRequest.FunctionArgs.LayoutServiceResult;
             var appHtml = await ServerSideRenderApp();
-            var resultModel = new ResultModel
+            var resultModel = new RenderResult
             {
                 Html = appHtml,
                 Status = (int)HttpStatusCode.OK

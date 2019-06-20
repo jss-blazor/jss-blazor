@@ -5,7 +5,7 @@
     private string Name { get; set; }
 
     [Parameter]
-    private LayoutServiceResponse Rendering { get; set; }
+    private RenderedItem Rendering { get; set; }
 
     private RenderFragment RenderPlaceholder() => builder =>
     {
@@ -29,8 +29,8 @@
 
                 builder.AddAttribute(1, "Fields", new ContentBlockModel
                 {
-                    Heading = component.Fields["heading"],
-                    Content = component.Fields["content"]
+                    Heading = component.Fields["heading"]?.Value,
+                    Content = component.Fields["content"]?.Value
                 });
             }
 

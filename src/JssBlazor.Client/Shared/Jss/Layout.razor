@@ -1,7 +1,7 @@
 @inherits LayoutComponentBase
 
 <Helmet>
-    <title>@(Route.Fields["Title"] ?? "Page")</title>
+    <title>@(Route.Sitecore.Route.Fields["Title"]?.Value ?? "Page")</title>
 </Helmet>
 
 <VisitorIdentification />
@@ -9,10 +9,10 @@
 <Navigation />
 
 <div class="container">
-    <Placeholder name="jss-main" Rendering="@Route" />
+    <Placeholder name="jss-main" Rendering="@Route.Sitecore.Route" />
 </div>
 
 @code {
     [Parameter]
-    private LayoutServiceResponse Route { get; set; }
+    private LayoutServiceResult Route { get; set; }
 }

@@ -29,6 +29,7 @@ namespace JssBlazor.Server
                 return webHostEnvironment.WebRootFileProvider.GetFileInfo(subpath);
             });
             services.AddSingleton<IRouteResolver, YamlRouteResolver>();
+            services.AddSingleton<ILayoutService, DisconnectedLayoutService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -8,11 +8,11 @@
     return;
 }
 
-<Layout Route="Route" />
+<Layout Route="@Route" />
 
 @code {
     [Parameter]
-    private LayoutServiceResponse Route { get; set; }
+    private LayoutServiceResult Route { get; set; }
 
     protected override async Task OnInitAsync()
     {

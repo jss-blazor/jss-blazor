@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using JssBlazor.Shared.Models.Disconnected;
 using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json;
 using YamlDotNet.Serialization;
@@ -22,6 +23,13 @@ namespace JssBlazor.Shared.Services
             var routeYml = await GetRouteYmlAsync(routePath);
             var routeJson = ConvertYmlToJson(routeYml);
             return routeJson;
+        }
+
+        public async Task<DisconnectedRoute> GetRouteAsync(string item)
+        {
+            var routeJson = await GetRouteJsonAsync(item);
+            var route = JsonConvert.DeserializeObject<DisconnectedRoute>(routeJson);
+            return route;
         }
 
         private static string ResolveRoute(string item)

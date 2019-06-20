@@ -32,7 +32,8 @@ namespace JssBlazor.RenderingHost
                 return webHostEnvironment.WebRootFileProvider.GetFileInfo(subpath);
             });
             services.AddSingleton<IRouteResolver, YamlRouteResolver>();
-            services.AddSingleton<ILayoutService, LocalLayoutService>();
+            services.AddSingleton<ILayoutServiceResultProvider, StaticLayoutServiceResultProvider>();
+            services.AddSingleton<ILayoutService, StaticLayoutService>();
 
             // Required to render JssBlazor.Client on the server.
             services.AddServerSideBlazor();

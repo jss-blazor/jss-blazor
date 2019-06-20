@@ -1,6 +1,6 @@
 namespace JssBlazor.RenderingHost.Models
 {
-    public class ResultModel
+    public class RenderResult
     {
         public string Html { get; set; }
         public int? Status { get; set; }

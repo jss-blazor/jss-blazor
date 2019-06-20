@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
-using JssBlazor.Shared.Models;
+using JssBlazor.Shared.Models.LayoutService;
 
 namespace JssBlazor.Shared.Services
 {
     public interface ILayoutService
     {
-        Task<LayoutServiceResponse> GetRouteAsync(string path);
+        Task<LayoutServiceResult> GetRouteAsync(string path);
     }
 }
