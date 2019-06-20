@@ -1,6 +1,6 @@
 ﻿---
-ID: "8892a492-afef-568b-91c4-99386e889a58"
-Parent: "1387c601-e8bc-52ab-91bc-ca88d387603e"
+ID: "e8fd3de0-2637-5a23-9c56-9d2f7ad293bd"
+Parent: "57edbf35-ce89-5d0e-b041-5ebc8a6a1ed6"
 Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
 Path: /sitecore/content/StyleGuide/Content/Styleguide/ItemLinkField
 DB: master
@@ -15,7 +15,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20190620T024543Z
+      Value: 20190620T030906Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

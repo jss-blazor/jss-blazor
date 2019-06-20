@@ -1,0 +1,28 @@
+﻿---
+ID: "94774bdd-6f10-525d-93b2-79b5083e6404"
+Parent: "1ab4d859-bac9-5289-b4d5-813eda59631e"
+Template: "19f34220-51d1-5be0-9c2c-f9cbf115156f"
+Path: "/sitecore/content/StyleGuide/home/styleguide/Page Components/styleguide-jss-reuse-example-3A5D9C50-D8C1-5A12-8DA8-5D56C2A5A69A-0-ContentBlock-4"
+DB: master
+SharedFields:
+- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
+  Hint: __Workflow
+  Value: "{6C59AE29-D0A1-4B77-9305-0ABAB21D5FE5}"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: "ContentBlock-4"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190620T030907Z
+    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
+      Hint: __Workflow state
+      Value: "{FCFDBB96-946A-4D2F-BCCD-5573073FC176}"
+    - ID: "d676b655-87d2-57af-abb9-79ea897df86d"
+      Hint: content
+      Value: <p>Mix and match reused and local content. Check out <code>/data/routes/styleguide/en.yml</code> to see how.</p>

@@ -1,6 +1,6 @@
 ﻿---
-ID: "5e61cc83-f5ed-58c8-87e4-946cef0675f7"
-Parent: "b50eff2d-6a8f-5347-a102-fe63fde8d930"
+ID: "a1519c5b-da21-523a-a3fb-918d9267ebcf"
+Parent: "3dcba8c2-3c8f-52fd-adaa-68a37cf5578b"
 Template: "19f34220-51d1-5be0-9c2c-f9cbf115156f"
 Path: /sitecore/content/StyleGuide/Components/Styleguide/ContentReuse/LoremIpsumContentBlock
 DB: master
@@ -19,7 +19,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20190620T024543Z
+      Value: 20190620T030905Z
     - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
       Hint: __Workflow state
       Value: "{FCFDBB96-946A-4D2F-BCCD-5573073FC176}"

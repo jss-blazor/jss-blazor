@@ -1,6 +1,6 @@
 ﻿---
-ID: "5530a253-12c1-52b1-8516-a865defb32b9"
-Parent: "e2bb8668-dfb8-5170-b0cf-9577fe5180e0"
+ID: "797aa84b-efd4-5103-91fe-ca0441408a2e"
+Parent: "50ab7fdc-6cdd-5cec-a069-5347049abdcd"
 Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
 Path: "/sitecore/content/StyleGuide/Components/Styleguide-FieldUsage-Number"
 DB: master
@@ -21,7 +21,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20190620T024542Z
+      Value: 20190620T030905Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

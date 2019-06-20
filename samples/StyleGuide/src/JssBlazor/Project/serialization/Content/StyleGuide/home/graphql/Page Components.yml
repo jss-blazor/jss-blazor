@@ -1,6 +1,6 @@
 ﻿---
-ID: "b250e99b-05ee-504d-82a5-413690b74323"
-Parent: "8f66c1c4-449e-58e8-9574-d3ec0acbf7a7"
+ID: "36116853-38c3-59a4-809c-a0dd13b9b984"
+Parent: "62be02f4-9931-5fdd-a438-df318936f121"
 Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
 Path: /sitecore/content/StyleGuide/home/graphql/Page Components
 DB: master
@@ -21,7 +21,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20190620T024544Z
+      Value: 20190620T030906Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

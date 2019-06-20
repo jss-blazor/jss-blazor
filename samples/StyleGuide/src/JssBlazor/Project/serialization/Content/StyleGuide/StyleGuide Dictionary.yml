@@ -1,8 +1,8 @@
 ﻿---
-ID: "8d53c037-39e8-5243-97d7-ed9c29b0731f"
-Parent: "bff358ee-edbd-5257-9928-c0abd82a8738"
+ID: "3a7b3548-4241-553f-aaf4-dc54674b6d81"
+Parent: "b7a8b814-f595-5267-b3b2-16c2785d6061"
 Template: "0a2847e6-9885-450b-b61e-f9e6528480ef"
-Path: /sitecore/content/StyleGuide/StyleGuide Dictionary
+Path: /sitecore/content/StyleGuide/styleguide Dictionary
 DB: master
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
@@ -19,7 +19,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20190620T024547Z
+      Value: 20190620T030908Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

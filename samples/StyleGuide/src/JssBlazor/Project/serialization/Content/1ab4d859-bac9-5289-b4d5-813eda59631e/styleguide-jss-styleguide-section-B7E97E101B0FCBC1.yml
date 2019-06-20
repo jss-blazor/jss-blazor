@@ -1,0 +1,37 @@
+﻿---
+ID: "490692ca-923e-5645-b902-7da6ca5aa5a5"
+Parent: "1ab4d859-bac9-5289-b4d5-813eda59631e"
+Template: "d4604840-e967-56a7-bed8-8320a03af848"
+Path: "/sitecore/content/StyleGuide/home/styleguide/Page Components/styleguide-jss-styleguide-section-B7E97E101B0FCBC1F40C1527ACC4E2F2BE46DD0859A3192F5EE04B0311CCD7A597"
+DB: master
+SharedFields:
+- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
+  Hint: __Workflow
+  Value: "{6C59AE29-D0A1-4B77-9305-0ABAB21D5FE5}"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: "Styleguide-FieldUsage-RichText-3"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "14696249-d47d-537f-95d1-a5de4eb4c426"
+      Hint: heading
+      Value: Rich Text
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190620T030907Z
+    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
+      Hint: __Workflow state
+      Value: "{FCFDBB96-946A-4D2F-BCCD-5573073FC176}"
+    - ID: "81dae64c-4953-531f-90e4-10f6acc23798"
+      Hint: sample
+      Value: <p>This is a sample rich text field. <mark>HTML is always supported.</mark> In Sitecore, editors will see a WYSIWYG editor for these fields.</p>
+    - ID: "f53e87e0-ead2-5fb9-8bac-495c14732a16"
+      Hint: sample2
+      Value: |
+        <p>Another sample rich text field, using options. Keep markup entered in rich text fields as simple as possible - ideally bare tags only (no classes). Adding a wrapping class can help with styling within rich text blocks.</p>
+        <marquee>But you can use any valid HTML in a rich text field!</marquee>
+        

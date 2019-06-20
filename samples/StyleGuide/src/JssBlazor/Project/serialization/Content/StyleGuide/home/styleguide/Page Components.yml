@@ -1,6 +1,6 @@
 ﻿---
-ID: "4e7b0d89-9fb3-5a79-b030-14eb7bb6d1f1"
-Parent: "841acdb6-714b-59d4-ab29-79b68d8d541e"
+ID: "1ab4d859-bac9-5289-b4d5-813eda59631e"
+Parent: "c6558c91-b51a-50cc-9425-4355d95fc074"
 Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
 Path: /sitecore/content/StyleGuide/home/styleguide/Page Components
 DB: master
@@ -21,7 +21,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20190620T024544Z
+      Value: 20190620T030906Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

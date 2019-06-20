@@ -1,6 +1,6 @@
 ﻿---
-ID: "8f66c1c4-449e-58e8-9574-d3ec0acbf7a7"
-Parent: "8ba4e7bc-dd63-5c25-9400-f07cd26a4257"
+ID: "62be02f4-9931-5fdd-a438-df318936f121"
+Parent: "0ac123b0-5ecc-5549-91e6-08e9d47b60a7"
 Template: "59099202-09af-554e-93b9-10a2ee4021d3"
 Path: /sitecore/content/StyleGuide/home/graphql
 DB: master
@@ -23,9 +23,9 @@ Languages:
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
               uid="{FB82986A-A6CD-53FD-AA1D-BC5036B6979B}"
-              p:after="p[@uid='{1CAD8BE9-AC21-56EA-80F7-88E14F4A593E}']"
+              p:after="p[@uid='{57D792A9-B3BE-5C4F-B30F-E8428E23518B}']"
               s:rname="ContentBlock"
-              s:ds="{C615140E-C09A-5C5B-9562-78DD2E8886D9}"
+              s:ds="{EA34BCCF-2739-51D3-BCD4-BD7000DA8A3A}"
               s:id="{B3C801F7-28D5-5DB5-93F1-43EA2715B1D1}"
               s:par=""
               s:ph="/jss-main" />
@@ -40,7 +40,7 @@ Languages:
               uid="{B6BBD1E2-C0B2-5C34-ADD3-858333393BFD}"
               p:after="r[@uid='{A9FBC7CC-F00B-58A2-873B-4C70C726476C}']"
               s:rname="GraphQL-IntegratedDemo"
-              s:ds="{59C4F331-79EC-563E-A25D-88687404E4B4}"
+              s:ds="{B2966482-2E64-5640-81E4-33C0E4F00C16}"
               s:id="{82EEEFEF-5B9A-5CC7-899A-B36C48ACE1B8}"
               s:par=""
               s:ph="/jss-main/jss-graphql-layout-{A9FBC7CC-F00B-58A2-873B-4C70C726476C}-0" />
@@ -48,7 +48,7 @@ Languages:
               uid="{4E86EC75-DCF5-57A7-B43C-150ADD6BD099}"
               p:after="*[1=2]"
               s:rname="GraphQL-ConnectedDemo"
-              s:ds="{00EDA414-BF28-5CBD-A102-7588EF7D0F58}"
+              s:ds="{E274E5CA-3633-5D84-B393-F45937E24C2E}"
               s:id="{DF10BFA5-3CA8-514B-9E5A-C5F241D474F2}"
               s:par=""
               s:ph="/jss-main/jss-graphql-layout-{A9FBC7CC-F00B-58A2-873B-4C70C726476C}-0" />
@@ -56,7 +56,7 @@ Languages:
         </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20190620T024544Z
+      Value: 20190620T030906Z
     - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
       Hint: __Workflow state
       Value: "{FCFDBB96-946A-4D2F-BCCD-5573073FC176}"

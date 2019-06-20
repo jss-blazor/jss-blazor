@@ -1,0 +1,42 @@
+﻿---
+ID: "165ce500-4937-5f26-b36d-ab3d17f07dd1"
+Parent: "1ab4d859-bac9-5289-b4d5-813eda59631e"
+Template: "891c07d5-6f7c-5626-9f00-91bc3cc16bde"
+Path: "/sitecore/content/StyleGuide/home/styleguide/Page Components/styleguide-jss-styleguide-section-B7A3CAADB68660DA655163219B33BD34F74C9F066347D49C7B8772ADA8CADA0C60"
+DB: master
+SharedFields:
+- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
+  Hint: __Workflow
+  Value: "{6C59AE29-D0A1-4B77-9305-0ABAB21D5FE5}"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: "Styleguide-FieldUsage-Custom-12"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "14696249-d47d-537f-95d1-a5de4eb4c426"
+      Hint: heading
+      Value: Custom Fields
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190620T030907Z
+    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
+      Hint: __Workflow state
+      Value: "{FCFDBB96-946A-4D2F-BCCD-5573073FC176}"
+    - ID: "560ed2a6-7556-54b6-9144-7af93da5b2e3"
+      Hint: description
+      Value: |
+        <p>
+          <small>
+            Any Sitecore field type can be consumed by JSS.
+            In this sample we consume the <em>Integer</em> field type.<br />
+            <strong>Note:</strong> For field types with complex data, custom <code>FieldSerializer</code>s may need to be implemented on the Sitecore side.
+          </small>
+        </p>
+        
+    - ID: "b1d5a3c4-8d33-5259-9a8a-527d7b51c8ad"
+      Hint: customIntField
+      Value: 31337

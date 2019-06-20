@@ -1,6 +1,6 @@
 ﻿---
-ID: "efd1e22e-0183-509a-99c9-acb170bae525"
-Parent: "841acdb6-714b-59d4-ab29-79b68d8d541e"
+ID: "3f6f1739-f895-54ef-936c-c1e5dd8d2b65"
+Parent: "c6558c91-b51a-50cc-9425-4355d95fc074"
 Template: "0579f743-2ad6-52ea-b5be-4fca95d0833a"
 Path: "/sitecore/content/StyleGuide/home/styleguide/custom-route-type"
 DB: master
@@ -38,7 +38,7 @@ Languages:
       Value: Myrtle
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20190620T024546Z
+      Value: 20190620T030908Z
     - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
       Hint: __Workflow state
       Value: "{FCFDBB96-946A-4D2F-BCCD-5573073FC176}"

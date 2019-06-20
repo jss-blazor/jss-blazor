@@ -1,6 +1,6 @@
 ﻿---
-ID: "88b3a6b1-4bf4-5b21-ba3f-146c496df78c"
-Parent: "8f66c1c4-449e-58e8-9574-d3ec0acbf7a7"
+ID: "0f57d798-0c18-51d5-b5cf-223a0bf84c6c"
+Parent: "62be02f4-9931-5fdd-a438-df318936f121"
 Template: "59099202-09af-554e-93b9-10a2ee4021d3"
 Path: "/sitecore/content/StyleGuide/home/graphql/sample-2"
 DB: master
@@ -25,7 +25,7 @@ Languages:
               uid="{5C424448-2B30-5910-ABE7-5021B762D542}"
               p:after="*[1=2]"
               s:rname="ContentBlock"
-              s:ds="{92702E03-7EF4-5B9A-B08F-5BF9DED36877}"
+              s:ds="{86E2B1BE-925F-5018-8E91-19FC88BC596E}"
               s:id="{B3C801F7-28D5-5DB5-93F1-43EA2715B1D1}"
               s:par=""
               s:ph="/jss-main" />
@@ -33,7 +33,7 @@ Languages:
         </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20190620T024544Z
+      Value: 20190620T030906Z
     - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
       Hint: __Workflow state
       Value: "{FCFDBB96-946A-4D2F-BCCD-5573073FC176}"

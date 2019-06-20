@@ -1,6 +1,6 @@
 ﻿---
-ID: "c615140e-c09a-5c5b-9562-78dd2e8886d9"
-Parent: "b250e99b-05ee-504d-82a5-413690b74323"
+ID: "ea34bccf-2739-51d3-bcd4-bd7000da8a3a"
+Parent: "36116853-38c3-59a4-809c-a0dd13b9b984"
 Template: "19f34220-51d1-5be0-9c2c-f9cbf115156f"
 Path: "/sitecore/content/StyleGuide/home/graphql/Page Components/graphql-jss-main-ContentBlock-1"
 DB: master
@@ -19,7 +19,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20190620T024544Z
+      Value: 20190620T030906Z
     - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
       Hint: __Workflow state
       Value: "{FCFDBB96-946A-4D2F-BCCD-5573073FC176}"

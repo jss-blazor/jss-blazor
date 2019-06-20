@@ -1,6 +1,6 @@
 ﻿---
-ID: "91b3cb7f-d08b-5881-be6b-d0a17b32b868"
-Parent: "4e7b0d89-9fb3-5a79-b030-14eb7bb6d1f1"
+ID: "d5789782-0a08-5bd5-885b-14ba9d09eba4"
+Parent: "1ab4d859-bac9-5289-b4d5-813eda59631e"
 Template: "19f34220-51d1-5be0-9c2c-f9cbf115156f"
 Path: "/sitecore/content/StyleGuide/home/styleguide/Page Components/styleguide-jss-main-ContentBlock-1"
 DB: master
@@ -19,7 +19,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20190620T024544Z
+      Value: 20190620T030906Z
     - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
       Hint: __Workflow state
       Value: "{FCFDBB96-946A-4D2F-BCCD-5573073FC176}"
