@@ -1,6 +1,6 @@
 namespace JssBlazor.RenderingHost.Models
 {
-    public class RequestModel
+    public class RenderRequest
     {
         public string Id { get; set; }
         public object Args { get; set; }

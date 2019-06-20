@@ -34,10 +34,10 @@ namespace JssBlazor.RenderingHost.Controllers
         }
 
         [HttpPost]
-        public async Task<ResultModel> Post([FromBody]RequestModel model)
+        public async Task<ResultModel> Post([FromBody]RenderRequest renderRequest)
         {
-            // Layout Service data will eventually come from Sitecore by reading model.Args but for now read it
-            // from the YAML routes hosted in the Rendering Host
+            // Layout Service data will eventually come from Sitecore by reading renderRequest.Args.
+            // For now, read it from the YAML routes hosted in the Rendering Host.
             var routeJson = await _routeResolver.GetRouteJsonAsync(null);
             if (_layoutService is LocalLayoutService localLayoutService)
             {
