@@ -1,0 +1,64 @@
+﻿---
+ID: "00f5692c-751b-5f48-ad6e-f6feb5cac537"
+Parent: "f7ce333e-dc13-5f76-9666-1bf29addc485"
+Template: "19f34220-51d1-5be0-9c2c-f9cbf115156f"
+Path: "/sitecore/content/StyleGuide/home/Page Components/home-jss-main-ContentBlock-1"
+DB: master
+SharedFields:
+- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
+  Hint: __Workflow
+  Value: "{6C59AE29-D0A1-4B77-9305-0ABAB21D5FE5}"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: "ContentBlock-1"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190620T024544Z
+    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
+      Hint: __Workflow state
+      Value: "{FCFDBB96-946A-4D2F-BCCD-5573073FC176}"
+    - ID: "546a6283-dff5-56cf-ae01-6c487f68e9c9"
+      Hint: heading
+      Value: Welcome to Sitecore JSS
+    - ID: "d676b655-87d2-57af-abb9-79ea897df86d"
+      Hint: content
+      Value: |
+        <p>Thanks for using JSS. Here are some resources to get you started:</p>
+        
+        <h3><a href="https://jss.sitecore.net" rel="noopener noreferrer">Documentation</a></h3>
+        <p>The official JSS documentation can help you with any JSS task from getting started to advanced techniques.</p>
+        
+        <h3><a href="/styleguide">Styleguide</a></h3>
+        <p>The JSS styleguide is a living example of how to use JSS, hosted right in this app.
+        It demonstrates most of the common patterns that JSS implementations may need to use,
+        as well as useful architectural patterns.</p>
+        
+        <h3><a href="/graphql">GraphQL</a></h3>
+        <p>JSS features integration with the Sitecore GraphQL API to enable fetching non-route data from Sitecore - or from other internal backends as an API aggregator or proxy.
+        This route is a living example of how to use an integrate with GraphQL data in a JSS app.</p>
+        
+        <div class="alert alert-dark">
+          <h4>This app is a boilerplate</h4>
+          <p>The JSS samples are a boilerplate, not a library. That means that any code in this app is meant for you to own and customize to your own requirements.</p>
+          <p>Want to get change the lint settings? Do it. Want to read manifest data from a MongoDB database? Go for it. This app is yours.</p>
+        </div>
+        
+        <div class="alert alert-dark">
+          <h4>How to start with an empty app</h4>
+          <p>To remove all of the default sample content (the Styleguide and GraphQL routes) and start out with an empty JSS app:</p>
+          <ol>
+            <li>Delete <code>/src/components/Styleguide*</code> and <code>/src/components/GraphQL*</code></li>
+            <li>Delete <code>/sitecore/definitions/components/Styleguide*</code>, <code>/sitecore/definitions/templates/Styleguide*</code>, and <code>/sitecore/definitions/components/GraphQL*</code></li>
+            <li>Delete <code>/data/component-content/Styleguide</code></li>
+            <li>Delete <code>/data/content/Styleguide</code></li>
+            <li>Delete <code>/data/routes/styleguide</code> and <code>/data/routes/graphql</code></li>
+            <li>Delete <code>/data/dictionary/*.yml</code></li>
+          </ol>
+        </div>
+        

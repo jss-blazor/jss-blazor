@@ -9,6 +9,10 @@ SharedFields:
   Hint: Placeholders
   Type: Treelist
   Value: "{5427E006-6A2C-4875-B79E-2A52F88A5F6C}"
+- ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
+  Hint: __Read Only
+  Type: Checkbox
+  Value: 1
 Languages:
 - Language: en
   Versions:

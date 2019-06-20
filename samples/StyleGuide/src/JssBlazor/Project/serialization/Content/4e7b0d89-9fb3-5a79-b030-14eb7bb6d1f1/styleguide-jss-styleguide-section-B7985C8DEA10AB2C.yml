@@ -1,0 +1,52 @@
+﻿---
+ID: "9ee2f873-dd18-5902-ac79-61d5acb5e7db"
+Parent: "4e7b0d89-9fb3-5a79-b030-14eb7bb6d1f1"
+Template: "0cf01a65-8845-5e92-a68b-80aeaff00a5e"
+Path: "/sitecore/content/StyleGuide/home/styleguide/Page Components/styleguide-jss-styleguide-section-B7985C8DEA10AB2C5CC77ABC90CF4126F21840592E09B2C6DB07D84D314CDCE0D4"
+DB: master
+SharedFields:
+- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
+  Hint: __Workflow
+  Value: "{6C59AE29-D0A1-4B77-9305-0ABAB21D5FE5}"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: "Styleguide-FieldUsage-ContentList-11"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "14696249-d47d-537f-95d1-a5de4eb4c426"
+      Hint: heading
+      Value: Content List
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190620T024545Z
+    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
+      Hint: __Workflow state
+      Value: "{FCFDBB96-946A-4D2F-BCCD-5573073FC176}"
+    - ID: "560ed2a6-7556-54b6-9144-7af93da5b2e3"
+      Hint: description
+      Value: |
+        <p>
+          <small>
+            Content Lists are a way to reference zero or more other content items.
+            Referenced items may be shared.
+            To reference a single content item, use an <em>Item Link</em> field.<br />
+            <strong>Note:</strong> Sitecore does not support inline editing of Content List fields. The value must be edited in Experience Editor by using the edit rendering fields button (looks like a pencil) with the whole component selected.
+          </small>
+        </p>
+        
+    - ID: "5aa5d795-f5de-5b96-83be-b8790e8af44b"
+      Hint: localContentList
+      Type: Treelist
+      Value: |
+        {389855A4-5560-523E-8FE8-AB9A7DCCE5D2}
+        {7DEA3C3D-DB5D-5BA2-AA3F-10A106213096}
+    - ID: "fef409f9-c73e-528d-845b-0de521626953"
+      Hint: sharedContentList
+      Type: Treelist
+      Value: |
+        {0DB5EAEA-2F0E-56A1-AD1A-363D42F3C6CF}
+        {924EBF43-8F0E-5CA7-82C0-35333BED373F}

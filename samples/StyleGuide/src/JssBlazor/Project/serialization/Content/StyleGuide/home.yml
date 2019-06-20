@@ -1,32 +1,42 @@
 ﻿---
-ID: "0850cd20-92af-47d9-93c8-eb04c2f45979"
-Parent: "356e2727-05e7-45e7-aacb-e39d74b47015"
-Template: "b36ba9fd-0dc0-49c8-bea2-e55d70e6af28"
+ID: "8ba4e7bc-dd63-5c25-9400-f07cd26a4257"
+Parent: "bff358ee-edbd-5257-9928-c0abd82a8738"
+Template: "59099202-09af-554e-93b9-10a2ee4021d3"
 Path: /sitecore/content/StyleGuide/home
 DB: master
 SharedFields:
-- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
-  Hint: __Renderings
-  Type: layout
-  Value: |
-    <r xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-      <d
-        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
-        l="{8EAF0915-8AAE-4249-9B3F-573DB6717AF8}" />
-    </r>
+- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
+  Hint: __Workflow
+  Value: "{6C59AE29-D0A1-4B77-9305-0ABAB21D5FE5}"
 Languages:
 - Language: en
-  Fields:
-  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
-    Hint: __Display name
-    Value: Home
   Versions:
   - Version: 1
     Fields:
+    - ID: "04bf00db-f5fb-41f7-8ab7-22408372a981"
+      Hint: __Final Renderings
+      Type: Layout
+      Value: |
+        <r xmlns:p="p" xmlns:s="s"
+          p:p="1">
+          <d
+            id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+            <r
+              uid="{2C4A53CC-9DA8-5F51-9D79-6EE2FC671B2D}"
+              p:after="*[1=2]"
+              s:rname="ContentBlock"
+              s:ds="{00F5692C-751B-5F48-AD6E-F6FEB5CAC537}"
+              s:id="{B3C801F7-28D5-5DB5-93F1-43EA2715B1D1}"
+              s:par=""
+              s:ph="/jss-main" />
+          </d>
+        </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20190618T060316Z
-    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
-      Hint: __Created by
-      Value: |
-        sitecore\Admin
+      Value: 20190620T024544Z
+    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
+      Hint: __Workflow state
+      Value: "{FCFDBB96-946A-4D2F-BCCD-5573073FC176}"
+    - ID: "d9ac88b8-0229-59ea-bb1c-dfd54a178ae7"
+      Hint: pageTitle
+      Value: Welcome to Sitecore JSS

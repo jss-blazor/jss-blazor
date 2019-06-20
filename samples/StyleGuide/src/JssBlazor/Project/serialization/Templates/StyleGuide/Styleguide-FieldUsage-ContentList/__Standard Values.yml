@@ -1,0 +1,22 @@
+﻿---
+ID: "838201d1-d49c-5bde-8e88-e5e303021883"
+Parent: "0cf01a65-8845-5e92-a68b-80aeaff00a5e"
+Template: "0cf01a65-8845-5e92-a68b-80aeaff00a5e"
+Path: "/sitecore/templates/Project/StyleGuide/Styleguide-FieldUsage-ContentList/__Standard Values"
+DB: master
+SharedFields:
+- ID: "ca9b9f52-4fb0-4f87-a79f-24dea62cda65"
+  Hint: __Default workflow
+  Value: "{6C59AE29-D0A1-4B77-9305-0ABAB21D5FE5}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190620T024501Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
