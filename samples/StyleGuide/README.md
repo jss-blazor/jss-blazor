@@ -15,6 +15,7 @@ This is a sample application to show off JSS Blazor in a Helix solution.
    - [`JssBlazor.Project.StyleGuide.Dev.config`][3]
      - Change the `serverSideRenderingEngineEndpointUrl` to the IIS Express URL
        of the JSS Blazor Rendering Host app found in [`launchSettings.json`][4].
+   - If you have a different installation path you must add a `PublishSettings.Sitecore.targets.user` and add the location of the root folder to the `publishUrl` property.
 4. Open and build the solution.
    - This automatically deploys the solution to
      `C:/inetpub/wwwroot/styleguide.sitecore` through [Helix Publishing
