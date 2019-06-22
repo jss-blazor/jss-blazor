@@ -13,12 +13,12 @@
         foreach (var component in Rendering.Placeholders[Name])
         {
             // need to make this string somehow a global thing or use reflection
-            var selectedType = Type.GetType(component.ComponentName);
-            if(selectedType == null)
+            var selectedType = GetComponentType(component.ComponentName);
+            if (selectedType == null)
             {
                 // create a missing component
                 var missingTypeString = $"JssBlazor.Client.Shared.Jss.Components.MissingComponent, JssBlazor.Client";
-                Type.GetType(missingTypeString);
+                selectedType = Type.GetType(missingTypeString);
                 builder.OpenComponent(0, selectedType);
                 builder.AddAttribute(1, "ComponentName", component.ComponentName);
             }
@@ -33,8 +33,20 @@
                     Content = component.Fields["content"]
                 });
             }
-            
+
             builder.CloseComponent();
         }
     };
+
+    private Type GetComponentType(string componentName)
+    {
+        try
+        {
+            return Type.GetType(componentName);
+        }
+        catch
+        {
+            return null;
+        }
+    }
 }
