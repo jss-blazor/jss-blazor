@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JssBlazor.Client", "JssBlaz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JssBlazor.Shared", "JssBlazor.Shared\JssBlazor.Shared.csproj", "{2927D27C-5E76-48B0-A19D-0A74CEC1C556}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JssBlazor.RenderingHost", "JssBlazor.RenderingHost\JssBlazor.RenderingHost.csproj", "{50414029-28A3-46C3-B4DE-A70636363410}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JssBlazor.RenderingHost", "JssBlazor.RenderingHost\JssBlazor.RenderingHost.csproj", "{50414029-28A3-46C3-B4DE-A70636363410}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
