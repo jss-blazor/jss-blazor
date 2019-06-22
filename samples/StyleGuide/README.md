@@ -15,21 +15,27 @@ This is a sample application to show off JSS Blazor in a Helix solution.
    - [`JssBlazor.Project.StyleGuide.Dev.config`][3]
      - Change the `serverSideRenderingEngineEndpointUrl` to the IIS Express URL
        of the JSS Blazor Rendering Host app found in [`launchSettings.json`][4].
-   - If you have a different installation path you must add a `PublishSettings.Sitecore.targets.user` and add the location of the root folder to the `publishUrl` property.
-4. Open and build the solution.
+4. If you use an install path different than the one in step 1, create
+   `PublishSettings.Sitecore.targets.user` next to
+   [`PublishSettings.Sitecore.targets`][5] and set the `publishUrl` property
+   to your website's install path.
+   - Note that `*.user` files are intentionally ignored by Git so your custom
+     path will not be added to the repository.
+5. Open and build the solution.
    - This automatically deploys the solution to
      `C:/inetpub/wwwroot/styleguide.sitecore` through [Helix Publishing
-     Pipeline][5].
-5. Sync Unicorn at <http://styleguide.sitecore/unicorn.aspx>.
-6. Launch the JSS Blazor Rendering Host from the [`JssBlazor.sln`][6] solution.
-7. Navigate to the Style Guide at <http://styleguide.sitecore> and the
-   application from the [`JssBlazor.Client`][7] project should be server-side
+     Pipeline][6].
+6. Sync Unicorn at <http://styleguide.sitecore/unicorn.aspx>.
+7. Launch the JSS Blazor Rendering Host from the [`JssBlazor.sln`][7] solution.
+8. Navigate to the Style Guide at <http://styleguide.sitecore> and the
+   application from the [`JssBlazor.Client`][8] project should be server-side
    rendered.
 
 [1]: StyleGuide.sln
 [2]: src/Project/Common/sitecore/App_Config/Environment/JssBlazor/JssBlazor.Project.Common.Dev.config
 [3]: src/Project/StyleGuide/sitecore/App_Config/Environment/JssBlazor/JssBlazor.Project.StyleGuide.Dev.config
 [4]: ../../src/JssBlazor.RenderingHost/Properties/launchSettings.json
-[5]: https://github.com/richardszalay/helix-publishing-pipeline
-[6]: ../../src/JssBlazor.sln
-[7]: ../../src/JssBlazor.Client/JssBlazor.Client.csproj
+[5]: PublishSettings.Sitecore.targets
+[6]: https://github.com/richardszalay/helix-publishing-pipeline
+[7]: ../../src/JssBlazor.sln
+[8]: ../../src/JssBlazor.Client/JssBlazor.Client.csproj
