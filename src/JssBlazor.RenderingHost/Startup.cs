@@ -42,6 +42,13 @@ namespace JssBlazor.RenderingHost
             // Replace Blazor's out-of-the-box IUriHelper with one that correctly resolves URLs server side.
             services.AddScoped<IUriHelper, HardcodedRemoteUriHelper>();
 
+            services.AddSingleton<Func<string, IFileInfo>>(serviceProvider => (subpath) =>
+            {
+                var webHostEnvironment = serviceProvider.GetService<IWebHostEnvironment>();
+                return webHostEnvironment.WebRootFileProvider.GetFileInfo(subpath);
+            });
+            services.AddScoped<IPreRenderer, DefaultPreRenderer>();
+
             services.AddSingleton(_ => Configuration.GetSection("ComponentFactory").Get<ComponentFactoryOptions>());
             services.AddSingleton<IComponentFactory, DefaultComponentFactory>();
         }
