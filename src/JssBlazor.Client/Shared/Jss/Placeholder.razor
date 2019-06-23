@@ -1,6 +1,10 @@
+@using JssBlazor.Shared.Services
+@inject IComponentFactory ComponentFactory
+
 @RenderPlaceholder()
 
 @code {
+
     [Parameter]
     private string Name { get; set; }
 
@@ -10,38 +14,12 @@
     private RenderFragment RenderPlaceholder() => builder =>
     {
         var components = Rendering.Placeholders[Name];
-        foreach (var component in Rendering.Placeholders[Name])
+        foreach (var component in components)
         {
-            // need to make this string somehow a global thing or use reflection
-            var selectedType = GetComponentType(component.ComponentName);
-            if (selectedType == null)
-            {
-                // create a missing component
-                var missingTypeString = $"JssBlazor.Client.Shared.Jss.Components.MissingComponent, JssBlazor.Client";
-                selectedType = Type.GetType(missingTypeString);
-                builder.OpenComponent(0, selectedType);
-                builder.AddAttribute(1, "ComponentName", component.ComponentName);
-            }
-            else
-            {
-                // needs to handled dynamically
-                builder.OpenComponent(0, selectedType);
-                builder.AddAttribute(1, "Component", component);
-            }
-
+            var componentType = ComponentFactory.GetComponentType(component);
+            builder.OpenComponent(0, componentType);
+            builder.AddAttribute(1, "Component", component);
             builder.CloseComponent();
         }
     };
-
-    private Type GetComponentType(string componentName)
-    {
-        try
-        {
-            return Type.GetType(componentName);
-        }
-        catch
-        {
-            return null;
-        }
-    }
 }

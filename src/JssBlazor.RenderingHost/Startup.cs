@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using JssBlazor.RenderingHost.Services;
+using JssBlazor.Shared.Models;
 using JssBlazor.Shared.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
@@ -39,6 +41,9 @@ namespace JssBlazor.RenderingHost
             services.AddServerSideBlazor();
             // Replace Blazor's out-of-the-box IUriHelper with one that correctly resolves URLs server side.
             services.AddScoped<IUriHelper, HardcodedRemoteUriHelper>();
+
+            services.AddSingleton(_ => Configuration.GetSection("ComponentFactory").Get<ComponentFactoryOptions>());
+            services.AddSingleton<IComponentFactory, DefaultComponentFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
