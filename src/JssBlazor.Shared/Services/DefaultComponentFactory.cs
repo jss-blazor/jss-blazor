@@ -20,7 +20,10 @@ namespace JssBlazor.Shared.Services
 
             try
             {
-                return Type.GetType(componentType) ?? _missingComponentType;
+                if(!string.IsNullOrEmpty(componentType))
+                    return Type.GetType(componentType) ?? _missingComponentType;
+                else
+                    return null;
             }
             catch
             {

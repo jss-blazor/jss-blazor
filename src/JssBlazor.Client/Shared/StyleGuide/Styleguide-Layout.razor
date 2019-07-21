@@ -1,0 +1,9 @@
+@inherits JssComponentBase
+
+
+<div class="contentDescription">@Content</div>
+
+@code {
+
+    private MarkupString Content => GetMarkupFieldValue("content");
+}

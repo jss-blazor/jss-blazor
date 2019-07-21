@@ -1,8 +1,8 @@
 namespace JssBlazor.Shared.Models.LayoutService
 {
-    public class Field
+    public class Field<T>
     {
-        public string Value { get; set; }
+        public T Value { get; set; }
         public string Editable { get; set; }
     }
 }
