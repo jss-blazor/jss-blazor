@@ -1,7 +1,7 @@
 @inherits LayoutComponentBase
 
 <Helmet>
-    <title>@(Route.Sitecore.Route.Fields["Title"]?.Value ?? "Page")</title>
+    <title>@(Route.Sitecore.Route.Fields["Title"]?.Value.ToString() ?? "Page")</title>
 </Helmet>
 
 <VisitorIdentification />

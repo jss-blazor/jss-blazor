@@ -1,5 +1,7 @@
+using System;
 using JssBlazor.Shared.Models.LayoutService;
 using Microsoft.AspNetCore.Components;
+using Newtonsoft.Json.Linq;
 
 namespace JssBlazor.Client.Models
 {
@@ -13,7 +15,7 @@ namespace JssBlazor.Client.Models
             var field = Component?.Fields?[fieldName];
             var value = field?.Value;
             var editable = field?.Editable;
-            return string.IsNullOrWhiteSpace(editable) ? value : editable;
+            return string.IsNullOrWhiteSpace(editable) ? value.Rendered : editable;
         }
 
         protected MarkupString GetMarkupFieldValue(string fieldName)

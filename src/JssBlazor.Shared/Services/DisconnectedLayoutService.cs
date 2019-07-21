@@ -58,7 +58,7 @@ namespace JssBlazor.Shared.Services
 
         protected virtual IDictionary<string, Field> MapFields(IDictionary<string, string> disconnectedFields)
         {
-            return disconnectedFields.ToDictionary(kvp => kvp.Key, kvp => new Field {Value = kvp.Value});
+            return disconnectedFields.ToDictionary(kvp => kvp.Key, kvp => new Field {});
         }
 
         protected virtual IDictionary<string, IEnumerable<ComponentDefinition>> MapPlaceholders(
