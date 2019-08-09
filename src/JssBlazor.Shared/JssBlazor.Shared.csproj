@@ -8,7 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="3.0.0-preview7.19362.4" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="YamlDotNet" Version="6.1.1" />
+    <PackageReference Include="YamlDotNet" Version="6.1.2" />
   </ItemGroup>
 
 </Project>
