@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 	Unicorn.Remote.config.disabled
 
 	This file enables the Unicorn control panel remote API. This is used by the Unicorn Control Panel extension for Visual Studio by Andrii Snigyr (@BerserkerDotNet):
