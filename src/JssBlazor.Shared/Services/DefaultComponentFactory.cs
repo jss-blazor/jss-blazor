@@ -21,7 +21,10 @@ namespace JssBlazor.Shared.Services
         public Type GetComponentType(ComponentDefinition componentDefinition)
         {
             var componentType = GetComponentTypeName(componentDefinition);
-            if (componentType == null) return _rawComponentType;
+            if (componentType == null)
+            {
+                return !string.IsNullOrWhiteSpace(componentDefinition.Name) ? _rawComponentType : _missingComponentType;
+            }
 
             try
             {
