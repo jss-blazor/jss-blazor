@@ -1,5 +1,5 @@
 using JssBlazor.Client.Services;
-using JssBlazor.Client.Shared.Jss.Components;
+using JssBlazor.Components;
 using JssBlazor.Shared.Models;
 using JssBlazor.Shared.Services;
 using Microsoft.AspNetCore.Components.Builder;
@@ -11,9 +11,11 @@ namespace JssBlazor.Client
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<ComponentFactoryOptions>(_ => new ComponentFactoryOptions
+            services.AddSingleton(_ => new ComponentFactoryOptions
             {
-                MissingComponentType = typeof(MissingComponent).AssemblyQualifiedName
+                ComponentAssemblyFormat = "JssBlazor.Client.Shared.StyleGuide.{0}, JssBlazor.Client",
+                MissingComponentType = typeof(MissingComponent).AssemblyQualifiedName,
+                RawComponentType = typeof(RawComponent).AssemblyQualifiedName
             });
             services.AddSingleton<IComponentFactory, DefaultComponentFactory>();
             services.AddSingleton<ILayoutService, RemoteLayoutService>();

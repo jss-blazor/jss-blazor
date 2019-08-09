@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{AF8D
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JssBlazor.Components", "JssBlazor.Components\JssBlazor.Components.csproj", "{DBC8A6F1-1F7F-497B-9E86-8D08D73EC6C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{50414029-28A3-46C3-B4DE-A70636363410}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50414029-28A3-46C3-B4DE-A70636363410}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50414029-28A3-46C3-B4DE-A70636363410}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBC8A6F1-1F7F-497B-9E86-8D08D73EC6C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBC8A6F1-1F7F-497B-9E86-8D08D73EC6C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBC8A6F1-1F7F-497B-9E86-8D08D73EC6C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBC8A6F1-1F7F-497B-9E86-8D08D73EC6C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

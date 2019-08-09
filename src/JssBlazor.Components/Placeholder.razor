@@ -1,11 +1,10 @@
+@using JssBlazor.Shared.Models.LayoutService
 @using JssBlazor.Shared.Services
 @inject IComponentFactory ComponentFactory
 
 @RenderPlaceholder()
 
 @code {
-
-    private static string rawComponentName = "JssBlazor.Client.Shared.Jss.Components.RawComponent, JssBlazor.Client";
     [Parameter]
     private string Name { get; set; }
 
@@ -18,13 +17,7 @@
 
         foreach (var component in components)
         {
-            if (string.IsNullOrEmpty(component.ComponentName))
-                component.ComponentName = rawComponentName;
-            if(!component.ComponentName.Contains(","))
-                component.ComponentName = $"JssBlazor.Client.Shared.StyleGuide.{component.ComponentName}, JssBlazor.Client"; // TODO: the layout service won't return the full namespace
-
             var componentType = ComponentFactory.GetComponentType(component);
-
             builder.OpenComponent(0, componentType);
             builder.AddAttribute(1, "Component", component);
             builder.CloseComponent();
