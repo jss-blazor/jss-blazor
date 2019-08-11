@@ -41,10 +41,21 @@ namespace JssBlazor.Shared.Services
             var componentName = componentDefinition.ComponentName;
             if (string.IsNullOrWhiteSpace(componentName)) return null;
 
+            componentName = SanitizeComponentName(componentName);
             if (componentName.Contains(",")) return componentName;
 
-            var fullyQualifiedComponentName = string.Format(_componentAssemblyFormat, componentName);
-            return fullyQualifiedComponentName;
+            componentName = AddAssemblyToComponentName(componentName);
+            return componentName;
+        }
+
+        private string SanitizeComponentName(string componentName)
+        {
+            return componentName.Replace('-', '_');
+        }
+
+        private string AddAssemblyToComponentName(string componentName)
+        {
+            return string.Format(_componentAssemblyFormat, componentName);
         }
     }
 }
