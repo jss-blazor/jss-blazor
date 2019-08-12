@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using JssBlazor.Shared.Models.Disconnected;
 using JssBlazor.Shared.Models.LayoutService;
+using JssBlazor.Shared.Models.LayoutService.Fields;
 
 namespace JssBlazor.Shared.Services
 {

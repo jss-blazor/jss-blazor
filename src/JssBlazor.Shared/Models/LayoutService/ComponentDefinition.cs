@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using JssBlazor.Shared.Models.LayoutService.Fields;
 
 namespace JssBlazor.Shared.Models.LayoutService
 {

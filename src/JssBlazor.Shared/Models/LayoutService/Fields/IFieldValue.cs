@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Newtonsoft.Json.Linq;
 
-namespace JssBlazor.Shared.Models.Interfaces
+namespace JssBlazor.Shared.Models.LayoutService.Fields
 {
     public interface IFieldValue
     {
