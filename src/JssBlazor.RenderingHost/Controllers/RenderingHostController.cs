@@ -26,14 +26,25 @@ namespace JssBlazor.RenderingHost.Controllers
         [HttpPost]
         public async Task<RenderResult> Post([FromBody]RenderRequest renderRequest)
         {
-            _layoutServiceResultProvider.Result = renderRequest.FunctionArgs.LayoutServiceResult;
-            var appHtml = await _preRenderer.RenderAppAsync<App>("app", ControllerContext, ViewData, TempData);
-            var resultModel = new RenderResult
+            try
             {
-                Html = appHtml,
-                Status = (int)HttpStatusCode.OK
-            };
-            return resultModel;
+                _layoutServiceResultProvider.Result = renderRequest.FunctionArgs.LayoutServiceResult;
+                var appHtml = await _preRenderer.RenderAppAsync<App>("app", ControllerContext, ViewData, TempData);
+                var resultModel = new RenderResult
+                {
+                    Html = appHtml,
+                    Status = (int)HttpStatusCode.OK
+                };
+                return resultModel;
+            }
+            catch (Exception ex)
+            {
+                return new RenderResult
+                {
+                    Html = $"<html><body><h1>An error occurred during server-side rendering.</h1><div>{ex.Message}</div></body></html>",
+                    Status = (int)HttpStatusCode.InternalServerError
+                };
+            }
         }
     }
 }
