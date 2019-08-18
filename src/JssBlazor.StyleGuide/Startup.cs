@@ -1,11 +1,11 @@
-using JssBlazor.Client.Services;
 using JssBlazor.Components;
 using JssBlazor.Shared.Models;
 using JssBlazor.Shared.Services;
+using JssBlazor.StyleGuide.Services;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace JssBlazor.Client
+namespace JssBlazor.StyleGuide
 {
     public class Startup
     {
@@ -13,7 +13,7 @@ namespace JssBlazor.Client
         {
             services.AddSingleton(_ => new ComponentFactoryOptions
             {
-                ComponentAssemblyFormat = "JssBlazor.Client.Shared.StyleGuide.{0}, JssBlazor.Client",
+                ComponentAssemblyFormat = "JssBlazor.StyleGuide.Components.{0}, JssBlazor.StyleGuide",
                 MissingComponentType = typeof(MissingComponent).AssemblyQualifiedName,
                 RawComponentType = typeof(RawComponent).AssemblyQualifiedName
             });

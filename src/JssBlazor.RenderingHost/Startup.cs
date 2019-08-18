@@ -37,7 +37,7 @@ namespace JssBlazor.RenderingHost
             services.AddSingleton<ILayoutServiceResultProvider, StaticLayoutServiceResultProvider>();
             services.AddSingleton<ILayoutService, StaticLayoutService>();
 
-            // Required to render JssBlazor.Client on the server.
+            // Required to render JssBlazor.StyleGuide on the server.
             services.AddServerSideBlazor();
             // Replace Blazor's out-of-the-box IUriHelper with one that correctly resolves URLs server side.
             services.AddScoped<IUriHelper, HardcodedRemoteUriHelper>();

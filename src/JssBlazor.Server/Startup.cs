@@ -43,14 +43,14 @@ namespace JssBlazor.Server
                 app.UseBlazorDebugging();
             }
 
-            app.UseClientSideBlazorFiles<Client.Startup>();
+            app.UseClientSideBlazorFiles<StyleGuide.Startup>();
 
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
-                endpoints.MapFallbackToClientSideBlazor<Client.Startup>("index.html");
+                endpoints.MapFallbackToClientSideBlazor<StyleGuide.Startup>("index.html");
             });
         }
     }

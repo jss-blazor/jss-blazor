@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Blazor.Hosting;
 
-namespace JssBlazor.Client
+namespace JssBlazor.StyleGuide
 {
     public class Program
     {

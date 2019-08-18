@@ -5,7 +5,7 @@ using JssBlazor.Shared.Models.LayoutService;
 using JssBlazor.Shared.Services;
 using Newtonsoft.Json;
 
-namespace JssBlazor.Client.Services
+namespace JssBlazor.StyleGuide.Services
 {
     public class RemoteLayoutService : ILayoutService
     {

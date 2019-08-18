@@ -31,8 +31,8 @@ This is a sample application to show off JSS Blazor in a Helix solution.
 7. Sync Unicorn at <http://styleguide.sitecore/unicorn.aspx>.
 8. Launch the JSS Blazor Rendering Host from the [`JssBlazor.sln`][8] solution.
 9. Navigate to the Style Guide at <http://styleguide.sitecore> and the
-   application from the [`JssBlazor.Client`][10] project should be server-side
-   rendered.
+   application from the [`JssBlazor.StyleGuide`][10] project should be
+   server-side rendered.
 
 [1]: StyleGuide.sln
 [2]: src/Project/Common/sitecore/App_Config/Environment/JssBlazor/JssBlazor.Project.Common.Dev.config
@@ -43,4 +43,4 @@ This is a sample application to show off JSS Blazor in a Helix solution.
 [7]: ../../src/JssBlazor.LayoutService/JssBlazor.LayoutService.csproj
 [8]: ../../src/JssBlazor.sln
 [9]: https://github.com/richardszalay/helix-publishing-pipeline
-[10]: ../../src/JssBlazor.Client/JssBlazor.Client.csproj
+[10]: ../../src/JssBlazor.StyleGuide/JssBlazor.StyleGuide.csproj
