@@ -2,7 +2,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
-namespace JssBlazor.Server
+namespace JssBlazor.StyleGuide.DisconnectedServer
 {
     public class Program
     {

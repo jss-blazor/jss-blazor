@@ -4,7 +4,7 @@ using JssBlazor.Shared.Models.LayoutService;
 using JssBlazor.Shared.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace JssBlazor.Server.Controllers
+namespace JssBlazor.StyleGuide.DisconnectedServer
 {
     [Route("sitecore/api/layout")]
     public class DisconnectedLayoutServiceController : Controller

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29006.145
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JssBlazor.Server", "JssBlazor.Server\JssBlazor.Server.csproj", "{A4520365-60BB-4240-BFF5-3ECC4BB8EF0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JssBlazor.StyleGuide.DisconnectedServer", "JssBlazor.StyleGuide.DisconnectedServer\JssBlazor.StyleGuide.DisconnectedServer.csproj", "{A4520365-60BB-4240-BFF5-3ECC4BB8EF0C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JssBlazor.StyleGuide", "JssBlazor.StyleGuide\JssBlazor.StyleGuide.csproj", "{7CEB4F6D-26B6-4754-86CE-2A413133A7FA}"
 EndProject

@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 
-namespace JssBlazor.Server
+namespace JssBlazor.StyleGuide.DisconnectedServer
 {
     public class Startup
     {
