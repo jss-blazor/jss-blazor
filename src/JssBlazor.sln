@@ -22,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{AF8D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JssBlazor.Components", "JssBlazor.Components\JssBlazor.Components.csproj", "{DBC8A6F1-1F7F-497B-9E86-8D08D73EC6C1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{F42D2F00-6624-4C21-83EE-0B31E365AE3B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{F42D2F00-6624-4C21-83EE-0B31E365AE3B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sitecore", "Sitecore", "{84760A93-6E83-419B-B006-27716D248DB0}"
 EndProject
