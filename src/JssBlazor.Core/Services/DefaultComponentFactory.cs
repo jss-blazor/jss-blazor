@@ -1,8 +1,8 @@
 using System;
-using JssBlazor.Shared.Models;
-using JssBlazor.Shared.Models.LayoutService;
+using JssBlazor.Core.Models;
+using JssBlazor.Core.Models.LayoutService;
 
-namespace JssBlazor.Shared.Services
+namespace JssBlazor.Core.Services
 {
     public class DefaultComponentFactory : IComponentFactory
     {

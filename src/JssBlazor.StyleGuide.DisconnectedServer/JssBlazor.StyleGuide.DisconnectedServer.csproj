@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JssBlazor.Shared\JssBlazor.Shared.csproj" />
+    <ProjectReference Include="..\JssBlazor.Core\JssBlazor.Core.csproj" />
     <ProjectReference Include="..\JssBlazor.StyleGuide\JssBlazor.StyleGuide.csproj" />
   </ItemGroup>
 

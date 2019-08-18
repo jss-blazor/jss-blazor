@@ -1,8 +1,8 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using JssBlazor.Shared.Models.LayoutService;
-using JssBlazor.Shared.Services;
+using JssBlazor.Core.Models.LayoutService;
+using JssBlazor.Core.Services;
 using Newtonsoft.Json;
 
 namespace JssBlazor.StyleGuide.Services

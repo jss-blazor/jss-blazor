@@ -1,6 +1,6 @@
 using System;
 
-namespace JssBlazor.Shared.Models.LayoutService.Fields
+namespace JssBlazor.Core.Models.LayoutService.Fields
 {
     public class DateFieldValue : FieldValue
     {

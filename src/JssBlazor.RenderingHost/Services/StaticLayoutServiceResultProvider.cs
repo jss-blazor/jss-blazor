@@ -1,5 +1,5 @@
 using System;
-using JssBlazor.Shared.Models.LayoutService;
+using JssBlazor.Core.Models.LayoutService;
 using Microsoft.AspNetCore.Http;
 
 namespace JssBlazor.RenderingHost.Services

@@ -1,6 +1,6 @@
 using Newtonsoft.Json.Linq;
 
-namespace JssBlazor.Shared.Models.LayoutService.Fields
+namespace JssBlazor.Core.Models.LayoutService.Fields
 {
     public class FieldValue : IFieldValue
     {

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using JssBlazor.Shared.Models.LayoutService.Fields;
+using JssBlazor.Core.Models.LayoutService.Fields;
 
-namespace JssBlazor.Shared.Models.LayoutService
+namespace JssBlazor.Core.Models.LayoutService
 {
     public class ComponentDefinition
     {

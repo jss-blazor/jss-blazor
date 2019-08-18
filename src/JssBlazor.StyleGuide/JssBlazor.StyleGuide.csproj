@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JssBlazor.Components\JssBlazor.Components.csproj" />
-    <ProjectReference Include="..\JssBlazor.Shared\JssBlazor.Shared.csproj" />
+    <ProjectReference Include="..\JssBlazor.Core\JssBlazor.Core.csproj" />
   </ItemGroup>
 
 </Project>

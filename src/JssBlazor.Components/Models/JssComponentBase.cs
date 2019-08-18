@@ -1,4 +1,4 @@
-using JssBlazor.Shared.Models.LayoutService;
+using JssBlazor.Core.Models.LayoutService;
 using Microsoft.AspNetCore.Components;
 
 namespace JssBlazor.Components.Models

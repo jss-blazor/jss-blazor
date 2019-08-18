@@ -1,4 +1,4 @@
-namespace JssBlazor.Shared.Models
+namespace JssBlazor.Core.Models
 {
     public class ComponentFactoryOptions
     {

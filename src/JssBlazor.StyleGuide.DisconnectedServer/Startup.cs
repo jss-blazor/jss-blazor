@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using JssBlazor.Shared.Services;
+using JssBlazor.Core.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.ResponseCompression;

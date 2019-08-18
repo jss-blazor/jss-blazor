@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace JssBlazor.Shared.Models.Disconnected
+namespace JssBlazor.Core.Models.Disconnected
 {
     public class DisconnectedComponentDefinition
     {

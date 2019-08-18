@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using JssBlazor.Shared.Models.LayoutService;
-using JssBlazor.Shared.Services;
+using JssBlazor.Core.Models.LayoutService;
+using JssBlazor.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JssBlazor.StyleGuide.DisconnectedServer

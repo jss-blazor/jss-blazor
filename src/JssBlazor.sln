@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JssBlazor.StyleGuide.Discon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JssBlazor.StyleGuide", "JssBlazor.StyleGuide\JssBlazor.StyleGuide.csproj", "{7CEB4F6D-26B6-4754-86CE-2A413133A7FA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JssBlazor.Shared", "JssBlazor.Shared\JssBlazor.Shared.csproj", "{2927D27C-5E76-48B0-A19D-0A74CEC1C556}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JssBlazor.Core", "JssBlazor.Core\JssBlazor.Core.csproj", "{2927D27C-5E76-48B0-A19D-0A74CEC1C556}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JssBlazor.RenderingHost", "JssBlazor.RenderingHost\JssBlazor.RenderingHost.csproj", "{50414029-28A3-46C3-B4DE-A70636363410}"
 EndProject

@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
 using JssBlazor.RenderingHost.Services;
-using JssBlazor.Shared.Models;
-using JssBlazor.Shared.Services;
+using JssBlazor.Core.Models;
+using JssBlazor.Core.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;

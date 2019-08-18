@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using JssBlazor.Shared.Models.LayoutService;
+using JssBlazor.Core.Models.LayoutService;
 
-namespace JssBlazor.Shared.Services
+namespace JssBlazor.Core.Services
 {
     public interface ILayoutService
     {

@@ -1,4 +1,4 @@
-using JssBlazor.Shared.Models.LayoutService;
+using JssBlazor.Core.Models.LayoutService;
 
 namespace JssBlazor.RenderingHost.Models
 {

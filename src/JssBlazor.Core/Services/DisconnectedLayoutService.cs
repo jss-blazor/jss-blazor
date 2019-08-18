@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using JssBlazor.Shared.Models.Disconnected;
-using JssBlazor.Shared.Models.LayoutService;
-using JssBlazor.Shared.Models.LayoutService.Fields;
+using JssBlazor.Core.Models.Disconnected;
+using JssBlazor.Core.Models.LayoutService;
+using JssBlazor.Core.Models.LayoutService.Fields;
 
-namespace JssBlazor.Shared.Services
+namespace JssBlazor.Core.Services
 {
     public class DisconnectedLayoutService : ILayoutService
     {

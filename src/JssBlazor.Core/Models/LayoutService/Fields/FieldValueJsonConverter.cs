@@ -4,7 +4,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace JssBlazor.Shared.Models.LayoutService.Fields
+namespace JssBlazor.Core.Models.LayoutService.Fields
 {
     public class FieldValueJsonConverter : JsonConverter
     {

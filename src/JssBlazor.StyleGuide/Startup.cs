@@ -1,6 +1,6 @@
 using JssBlazor.Components;
-using JssBlazor.Shared.Models;
-using JssBlazor.Shared.Services;
+using JssBlazor.Core.Models;
+using JssBlazor.Core.Services;
 using JssBlazor.StyleGuide.Services;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,12 +1,12 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using JssBlazor.Shared.Models.Disconnected;
+using JssBlazor.Core.Models.Disconnected;
 using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json;
 using YamlDotNet.Serialization;
 
-namespace JssBlazor.Shared.Services
+namespace JssBlazor.Core.Services
 {
     public class YamlRouteResolver : IRouteResolver
     {

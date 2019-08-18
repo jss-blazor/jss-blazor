@@ -1,4 +1,4 @@
-namespace JssBlazor.Shared.Models.LayoutService
+namespace JssBlazor.Core.Models.LayoutService
 {
     public class Site
     {

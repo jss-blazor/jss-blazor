@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using JssBlazor.Shared.Models.Disconnected;
+using JssBlazor.Core.Models.Disconnected;
 
-namespace JssBlazor.Shared.Services
+namespace JssBlazor.Core.Services
 {
     public interface IRouteResolver
     {
