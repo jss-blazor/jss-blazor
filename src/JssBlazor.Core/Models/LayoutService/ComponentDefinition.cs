@@ -4,7 +4,7 @@ using JssBlazor.Core.Models.LayoutService.Fields;
 
 namespace JssBlazor.Core.Models.LayoutService
 {
-    public class ComponentDefinition
+    public class ComponentDefinition : IRendering
     {
         public Guid Uid { get; set; }
         public string ComponentName { get; set; }

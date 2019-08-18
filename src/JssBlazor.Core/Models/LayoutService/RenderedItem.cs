@@ -4,8 +4,9 @@ using JssBlazor.Core.Models.LayoutService.Fields;
 
 namespace JssBlazor.Core.Models.LayoutService
 {
-    public class RenderedItem
+    public class RenderedItem : IRendering
     {
+        public Guid Uid { get; set; }
         public string Name { get; set; }
         public string DisplayName { get; set; }
         public IDictionary<string, Field> Fields { get; set; }

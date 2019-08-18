@@ -5,6 +5,6 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
 {
     public class ArrayFieldValue : FieldValue
     {
-        public IReadOnlyCollection<JToken> FieldValue { get; set; }
+        public IEnumerable<JToken> FieldValue { get; set; }
     }
 }

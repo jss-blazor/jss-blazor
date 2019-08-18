@@ -1,8 +1,74 @@
 @inherits JssComponentBase
 
-<div class="contentDescription">@Content</div>
+<div class="row">
+    <div class="col-sm-8 col-lg-10">
+        <Placeholder Name="jss-styleguide-layout" Rendering="@Component" />
+    </div>
+    <div class="col-sm-4 col-lg-2 order-sm-first pt-2">
+        @Sections()
+    </div>
+</div>
 
 @code {
+    private RenderFragment Sections() => builder =>
+    {
+        var sections = GetSectionsFromPlaceholder(Component, "jss-styleguide-layout")
+            .Select(section => MapSection(section, "jss-styleguide-section"));
 
-    private MarkupString Content => GetMarkupFieldValue("content");
+        @foreach (var section in sections)
+        {
+            <nav @key="@section.Heading" class="nav flex-column pt-2">
+                <a href="@GetSectionLink(section)" class="nav-item font-weight-bold">
+                    @section.Heading
+                </a>
+                @if (section.ShowChildren)
+                {
+                    <nav class="nav flex-column">
+                        @foreach (var child in section.Children)
+                        {
+                            <a @key="child.Id" href="@GetSectionLink(child)">
+                                @child.Heading
+                            </a>
+                        }
+                    </nav>
+                }
+            </nav>
+        }
+    };
+
+    private IEnumerable<IRendering> GetSectionsFromPlaceholder(IRendering rendering, string placeholderName)
+    {
+        return LayoutDataUtilities.GetChildPlaceholder(rendering, placeholderName)
+            .Where(section => LayoutDataUtilities.GetFieldValue(section, "heading") != null);
+    }
+
+    private Section MapSection(IRendering rendering, string childPlaceholderName = null)
+    {
+        var section = new Section
+        {
+            Id = $"i{rendering.Uid.ToString("D")}",
+            Heading = LayoutDataUtilities.GetFieldValue(rendering, "heading")
+        };
+
+        if (!string.IsNullOrWhiteSpace(childPlaceholderName))
+        {
+            section.Children = GetSectionsFromPlaceholder(rendering, childPlaceholderName)
+                .Select(child => MapSection(child));
+        }
+
+        return section;
+    }
+
+    private string GetSectionLink(Section section)
+    {
+        return $"#{section.Id}";
+    }
+
+    private class Section
+    {
+        public string Id { get; set; }
+        public string Heading { get; set; }
+        public IEnumerable<Section> Children { get; set; } = Enumerable.Empty<Section>();
+        public bool ShowChildren => Children.Any();
+    }
 }
