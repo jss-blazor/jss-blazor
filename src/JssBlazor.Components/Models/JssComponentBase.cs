@@ -6,7 +6,7 @@ namespace JssBlazor.Components.Models
     public class JssComponentBase : ComponentBase
     {
         [Parameter]
-        protected ComponentDefinition Component { get; set; }
+        public ComponentDefinition Component { get; set; }
 
         protected string GetFieldValue(string fieldName)
         {

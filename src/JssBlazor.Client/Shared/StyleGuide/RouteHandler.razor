@@ -11,9 +11,9 @@
 
 @code {
     [Parameter]
-    private LayoutServiceResult Route { get; set; }
+    public LayoutServiceResult Route { get; set; }
 
-    protected override async Task OnInitAsync()
+    protected override async Task OnInitializedAsync()
     {
         Route = await LayoutService.GetRouteAsync("sitecore/api/layout/render");
     }
