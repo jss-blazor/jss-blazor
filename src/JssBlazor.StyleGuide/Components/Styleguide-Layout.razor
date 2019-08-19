@@ -46,7 +46,7 @@
     {
         var section = new Section
         {
-            Id = $"i{rendering.Uid.ToString("D")}",
+            Id = StyleguideUtilities.GetMarkupId(rendering),
             Heading = LayoutDataUtilities.GetFieldValue(rendering, "heading")
         };
 

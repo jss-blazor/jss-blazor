@@ -26,6 +26,8 @@ namespace JssBlazor.Components.Utilities
             if (rendering == null) return defaultValue;
 
             var fields = rendering.Fields;
+            if (fields == null) return defaultValue;
+
             var renderedValue = fields[fieldName]?.Value?.Rendered;
             return string.IsNullOrWhiteSpace(renderedValue) ? defaultValue : renderedValue;
         }
