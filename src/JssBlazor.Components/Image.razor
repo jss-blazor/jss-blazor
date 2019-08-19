@@ -1,0 +1,22 @@
+@inherits ComponentBase
+
+@Render()
+
+@code {
+
+    [Parameter]
+    public Field Field { get; set; }
+
+    private RenderFragment Render() => builder =>
+    {
+        var output = Field.Value.Rendered;
+        var imageAttributes = Newtonsoft.Json.Linq.JObject.Parse(output);
+
+        builder.OpenElement(0, "img");
+        foreach (var attribute in imageAttributes)
+        {
+            builder.AddAttribute(0, attribute.Key, attribute.Value);
+        }
+        builder.CloseElement();
+    };
+}

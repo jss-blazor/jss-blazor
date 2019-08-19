@@ -1,0 +1,11 @@
+@inherits JssComponentBase
+
+<Styleguide_Specimen Component="@Component"
+                     E2eId="styleguide-fieldusage-image">
+
+    <div>
+        <Image Field="@Component.Fields["sample1"]" />
+    </div>
+
+    <div>Raw value (not editable): @LayoutDataUtilities.GetFieldValue(Component, "sample1")</div>
+</Styleguide_Specimen>
