@@ -8,7 +8,8 @@
           Tag="section"
           Editable="@false"
           Encode="@false"
-          Class="font-weight-bold" />
+          Class="font-weight-bold"
+          HtmlAttributes="@(new Dictionary<string, string> { { "data-sample", "other-attributes-pass-through" } })" />
 
     <div>Raw value (not editable): @LayoutDataUtilities.GetFieldValue(Component, "sample")</div>
 </Styleguide_Specimen>

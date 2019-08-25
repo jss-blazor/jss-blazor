@@ -7,5 +7,6 @@
     <RichText Field="@Component.Fields["sample2"]"
               Tag="section"
               Editable="@false"
-              Class="text-center" />
+              Class="text-center"
+              HtmlAttributes="@(new Dictionary<string, string> { { "data-sample", "other-attributes-pass-through" } })"/>
 </Styleguide_Specimen>
