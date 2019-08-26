@@ -1,0 +1,19 @@
+@inherits JssComponentBase
+
+<Styleguide_Specimen Component="@Component"
+                     E2eId="styleguide-fieldusage-image">
+    <p>Plain image</p>
+    <Image Field="@Component.Fields["sample1"]" />
+
+    <p>Advanced image (not editable)</p>
+    <Image Field="@Component.Fields["sample2"]"
+           Editable="@false"
+           ImageParams="@(new ImageSizeParameters { Mw = 100, Mh = 50 })"
+           HtmlAttributes="@(new Dictionary<string, string> { { "height", "50" }, { "width", "94" }, { "data-sample", "other-attributes-pass-through" } })" />
+
+    <p>Srcset responsive image</p>
+    <Image Field="@Component.Fields["sample2"]"
+           SrcSet="@(new[] { new ImageSizeParameters { Mw = 300 }, new ImageSizeParameters { Mw = 100 } })"
+           HtmlAttributes="@(new Dictionary<string, string> { { "sizes", "(min-width: 960px) 300px, 100px" } })"
+           Class="img-fluid" />
+</Styleguide_Specimen>

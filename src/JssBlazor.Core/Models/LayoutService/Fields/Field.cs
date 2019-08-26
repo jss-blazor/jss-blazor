@@ -8,5 +8,7 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
         public IFieldValue Value { get; set; }
 
         public string Editable { get; set; }
+
+        public string Src { get; set; }
     }
 }
