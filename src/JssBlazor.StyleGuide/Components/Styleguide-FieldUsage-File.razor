@@ -1,0 +1,14 @@
+@inherits JssComponentBase
+
+<Styleguide_Specimen Component="@Component"
+                     E2eId="styleguide-fieldusage-file">
+    @* Renders a file link *@
+    <File Field="@Component.Fields["file"]" />
+    <br />
+
+    @* Renders a file link with a custom body and opening in a new tab *@
+    <File Field="@Component.Fields["file"]"
+          target="_blank">
+        Custom link body
+    </File>
+</Styleguide_Specimen>

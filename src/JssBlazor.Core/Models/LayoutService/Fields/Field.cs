@@ -10,5 +10,9 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
         public string Editable { get; set; }
 
         public string Src { get; set; }
+
+        public string Title { get; set; }
+
+        public string DisplayName { get; set; }
     }
 }

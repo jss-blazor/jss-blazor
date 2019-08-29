@@ -1,0 +1,58 @@
+@inherits ComponentBase
+
+@RenderFile()
+
+@code {
+    [Parameter]
+    public Field Field { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object> HtmlAttributes { get; set; } = new Dictionary<string, object>();
+
+    private RenderFragment RenderFile() => builder =>
+    {
+        if (Field == null || (Field.Value == null && string.IsNullOrWhiteSpace(Field.Src)))
+        {
+            return;
+        }
+
+        var href = GetHref();
+        var linkText = GetLinkText();
+
+        builder.OpenElement(0, "a");
+        if (!string.IsNullOrWhiteSpace(href))
+        {
+            builder.AddAttribute(1, "href", href);
+        }
+        builder.AddMultipleAttributes(1, HtmlAttributes);
+        if (ChildContent == null && !string.IsNullOrWhiteSpace(linkText))
+        {
+            builder.AddContent(2, linkText);
+        }
+        ChildContent?.Invoke(builder);
+        builder.CloseElement();
+    };
+
+    private string GetLinkText()
+    {
+        if (!string.IsNullOrWhiteSpace(Field?.Src))
+        {
+            var title = Field.Title;
+            return !string.IsNullOrWhiteSpace(title) ? title : Field.DisplayName;
+        }
+        var rawValue = Field?.Value?.RawValue;
+        return rawValue?["title"]?.ToString() ?? rawValue?["displayName"]?.ToString();
+    }
+
+    private string GetHref()
+    {
+        if (!string.IsNullOrWhiteSpace(Field?.Src))
+        {
+            return Field.Src;
+        }
+        return Field?.Value?.RawValue?["src"]?.ToString();
+    }
+}
