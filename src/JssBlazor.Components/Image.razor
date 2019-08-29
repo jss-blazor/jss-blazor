@@ -95,7 +95,11 @@
         IDictionary<string, string> otherAttrs,
         ImageSizeParameters imageParams)
     {
-        var newAttributes = new Dictionary<string, string>();
+        var newAttributes = new Dictionary<string, string>
+        {
+            { "class", Class }
+        };
+
         foreach (var otherAttr in otherAttrs)
         {
             newAttributes.Add(otherAttr.Key, otherAttr.Value);
