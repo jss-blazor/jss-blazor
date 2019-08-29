@@ -8,9 +8,6 @@
     public string Class { get; set; }
 
     [Parameter]
-    public Field Media { get; set; }
-
-    [Parameter]
     public Field Field { get; set; }
 
     [Parameter]
@@ -39,25 +36,18 @@
 
     private RenderFragment RenderImage() => builder =>
     {
-        if (Field != null && Media == null)
-        {
-            Media = Field;
-        }
-
-        var dynamicMedia = Media;
-
-        if (Media == null || (string.IsNullOrWhiteSpace(dynamicMedia.Editable) && dynamicMedia.Value == null && string.IsNullOrWhiteSpace(dynamicMedia.Src)))
+        if (Field == null || (string.IsNullOrWhiteSpace(Field.Editable) && Field.Value == null && string.IsNullOrWhiteSpace(Field.Src)))
         {
             return;
         }
 
         // we likely have an experience editor value, should be a string
-        if (Editable && !string.IsNullOrWhiteSpace(dynamicMedia.Editable))
+        if (Editable && !string.IsNullOrWhiteSpace(Field.Editable))
         {
-            var foundImg = MediaApi.FindEditorImageTag(dynamicMedia.Editable);
+            var foundImg = MediaApi.FindEditorImageTag(Field.Editable);
             if (foundImg == null)
             {
-                GetEditableWrapper(dynamicMedia.Editable)(builder);
+                GetEditableWrapper(Field.Editable)(builder);
                 return;
             }
 
@@ -74,21 +64,20 @@
 
             var imgAttr = GetImageAttributes(foundImgAttributes["src"], SrcSet, foundImgAttributes, ImageParams);
             var imgHtml = BuildImgHtml(imgAttr);
-            var editableMarkup = dynamicMedia.Editable.Replace(foundImg.ImgTag, imgHtml.ToString());
+            var editableMarkup = Field.Editable.Replace(foundImg.ImgTag, imgHtml.ToString());
             GetEditableWrapper(editableMarkup)(builder);
             return;
         }
 
         // some wise-guy/gal is passing in a 'raw' image object value
         IDictionary<string, string> imageAttributes = null;
-        if (!string.IsNullOrWhiteSpace(dynamicMedia.Src))
+        if (!string.IsNullOrWhiteSpace(Field.Src))
         {
-            if (Media == null) return;
-            imageAttributes = GetImageAttributes(Media.Src, SrcSet, HtmlAttributes, ImageParams);
+            imageAttributes = GetImageAttributes(Field.Src, SrcSet, HtmlAttributes, ImageParams);
         }
-        else if (dynamicMedia?.Value?.RawValue != null)
+        else if (Field.Value?.RawValue != null)
         {
-            imageAttributes = GetImageAttributes(dynamicMedia.Value.RawValue["src"]?.ToString(), SrcSet, HtmlAttributes, ImageParams);
+            imageAttributes = GetImageAttributes(Field.Value.RawValue["src"]?.ToString(), SrcSet, HtmlAttributes, ImageParams);
         }
         if (imageAttributes == null) return;
 
