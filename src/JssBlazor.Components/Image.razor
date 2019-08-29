@@ -77,7 +77,30 @@
         }
         else if (Field.Value?.RawValue != null)
         {
-            imageAttributes = GetImageAttributes(Field.Value.RawValue["src"]?.ToString(), SrcSet, HtmlAttributes, ImageParams);
+            string src = null;
+            var foundImgAttributes = new Dictionary<string, string>();
+            foreach (var htmlAttribute in HtmlAttributes)
+            {
+                if ("src".Equals(htmlAttribute.Key, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    src = htmlAttribute.Value;
+                    continue;
+                }
+                foundImgAttributes.Add(htmlAttribute.Key, htmlAttribute.Value);
+            }
+            foreach (var foundImgAttribute in Field.Value.RawValue)
+            {
+                var key = foundImgAttribute.Path;
+                if ("src".Equals(key, StringComparison.InvariantCultureIgnoreCase) && string.IsNullOrWhiteSpace(src))
+                {
+                    src = Field.Value.RawValue[key].ToString();
+                    continue;
+                }
+                if (foundImgAttributes.ContainsKey(key)) continue;
+                var value = Field.Value.RawValue[key].ToString();
+                foundImgAttributes.Add(key, value);
+            }
+            imageAttributes = GetImageAttributes(Field.Value.RawValue["src"]?.ToString(), SrcSet, foundImgAttributes, ImageParams);
         }
         if (imageAttributes == null) return;
 
