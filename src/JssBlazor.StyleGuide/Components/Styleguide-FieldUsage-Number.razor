@@ -1,5 +1,7 @@
 @inherits JssComponentBase
 
-<Styleguide_Specimen Component="@Component"
-                     E2eId="styleguide-fieldusage-number">
-</Styleguide_Specimen>
+    <Styleguide_Specimen Component="@Component"
+                         E2eId="styleguide-fieldusage-number">
+        @*Direct access to the value, which is a JS number, is also supported.*@
+        <p>value: (not editable): @LayoutDataUtilities.GetFieldValue(Component, "sample")</p>
+    </Styleguide_Specimen>
