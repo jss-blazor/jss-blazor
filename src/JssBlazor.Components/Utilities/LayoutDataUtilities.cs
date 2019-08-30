@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using JssBlazor.Core.Models.LayoutService;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace JssBlazor.Components.Utilities
 {
@@ -35,6 +38,7 @@ namespace JssBlazor.Components.Utilities
                 switch(value.GetType().Name)
                 {
                     case "BooleanFieldValue":
+                    case "DateFieldValue":
                         renderedValue = fields[fieldName]?.Value.RawValue.ToString();
                         break;
                     default:
@@ -43,6 +47,19 @@ namespace JssBlazor.Components.Utilities
                 }
             }
             return string.IsNullOrWhiteSpace(renderedValue) ? defaultValue : renderedValue;
+        }
+
+        public static T GetFieldValue<T>(IRendering rendering, string fieldName)
+        {
+            var fields = rendering.Fields;
+            var value = fields[fieldName].Value.RawValue.Value<T>();
+            return value;
+        }
+
+        public static T GetFieldValue<T>(this Core.Models.LayoutService.Fields.Field field)
+        {
+            var value = field.Value.RawValue.Value<T>();
+            return value;
         }
     }
 }

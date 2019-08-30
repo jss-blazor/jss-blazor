@@ -1,5 +1,29 @@
 @inherits JssComponentBase
 
-<Styleguide_Specimen Component="@Component"
-                     E2eId="styleguide-fieldusage-date">
-</Styleguide_Specimen>
+@{
+    var date = LayoutDataUtilities.GetFieldValue<System.DateTime>(Component, "date");
+    var dateTime = LayoutDataUtilities.GetFieldValue<System.DateTime>(Component, "dateTime");
+    var utc = dateTime.ToUniversalTime();
+    var localDate = dateTime.ToLocalTime().Date;
+    var localTime = dateTime.ToLocalTime();
+}
+    <Styleguide_Specimen Component="@Component"
+                         E2eId="styleguide-fieldusage-date">
+        <ul>
+            <li>
+                Date: @date.ToLongDateString()
+            </li>
+            <li>
+                Date (datetime): @LayoutDataUtilities.GetFieldValue(Component, "dateTime")
+            </li>
+            <li>
+                UTC Date string: @utc
+            </li>
+            <li>
+                Localized Date string (local timezone): @localTime
+            </li>
+            <li>
+                Short Date string: <Date Field="@Component.Fields["date"]" Format="Date.DateStringFormat.ShortDateString" />
+            </li>
+        </ul>
+    </Styleguide_Specimen>
