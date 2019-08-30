@@ -52,22 +52,39 @@ namespace JssBlazor.Components.Utilities
         public static T GetFieldValue<T>(IRendering rendering, string fieldName)
         {
             var fields = rendering.Fields;
-            var value = fields[fieldName].Value.RawValue.Value<T>();
-            return value;
+            if(fields[fieldName].Value != null && fields[fieldName].Value.RawValue != null)
+            {
+                var value = fields[fieldName].Value.RawValue.Value<T>();
+                return value;
+            }
+            return default(T);
         }
 
         public static T GetFieldValue<T>(this Core.Models.LayoutService.Fields.Field field)
         {
-            var value = field.Value.RawValue.Value<T>();
-            return value;
+            if (field.Value != null && field.Value.RawValue != null)
+            {
+                var value = field.Value.RawValue.Value<T>();
+                return value;
+            }
+            return default(T);
         }
 
         public static T GetFieldValue<T>(this Core.Models.LayoutService.Fields.Field field, string key)
         {
-            var value = field.Value.RawValue[key];
-            if(value != null)
-                return value.Value<T>();
+            if (field.Value != null && field.Value.RawValue != null)
+            {
+                var value = field.Value.RawValue[key];
+                if (value != null)
+                    return value.Value<T>();
+            }
             return default(T);
+        }
+
+        public static Core.Models.LayoutService.Fields.Field GetLinkedField<T>(this Core.Models.LayoutService.Fields.Field field, string key)
+        {
+            var value = field.Value.RawValue[key];
+            return null;
         }
     }
 }
