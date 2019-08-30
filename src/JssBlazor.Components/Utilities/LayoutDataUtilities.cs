@@ -61,5 +61,13 @@ namespace JssBlazor.Components.Utilities
             var value = field.Value.RawValue.Value<T>();
             return value;
         }
+
+        public static T GetFieldValue<T>(this Core.Models.LayoutService.Fields.Field field, string key)
+        {
+            var value = field.Value.RawValue[key];
+            if(value != null)
+                return value.Value<T>();
+            return default(T);
+        }
     }
 }
