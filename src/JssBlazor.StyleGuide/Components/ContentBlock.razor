@@ -1,6 +1,6 @@
 @inherits JssComponentBase
 
-<h2 class="display-4">@Heading</h2>
+@if (!string.IsNullOrEmpty(Heading.Value)) { <h2 class="display-4">@Heading</h2> }
 <div class="contentDescription">@Content</div>
 
 @code {
