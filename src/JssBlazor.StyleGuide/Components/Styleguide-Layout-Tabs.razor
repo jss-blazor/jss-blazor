@@ -1,5 +1,40 @@
 @inherits JssComponentBase
 
-<Styleguide_Specimen Component="@Component"
-                     E2eId="styleguide-layout-tabs">
-</Styleguide_Specimen>
+@{
+    var tabs = Component.Placeholders["jss-tabs"].ToList();
+}
+    <Styleguide_Specimen Component="@Component"
+                         E2eId="styleguide-layout-tabs">
+
+        <ul class="nav nav-tabs">
+            @for (var i = 0; i < tabs.Count(); i++)
+            {
+                <li class="nav-item" key="tab @i">
+                    @{
+                        var active = ActiveTabIndex == i ? "active" : "";
+                        var aClass = $"nav-link {active}";
+                    }
+
+                    <a class="@aClass"
+                       href="#t"
+                        @onclick="@(new Action(() => SetActiveTab(i)))">
+                        <Text Field="@tabs[i].Fields["title"]" />
+
+                    </a>
+                </li>
+            }
+        </ul>
+        <div class="p-3 border-left border-right border-bottom">
+            <Styleguide_Layout_Tabs_Tab Component="@tabs[ActiveTabIndex]" />
+        </div>
+
+    </Styleguide_Specimen>
+
+@code {
+    private int ActiveTabIndex { get; set; } = 0;
+
+    public void SetActiveTab(int i)
+    {
+        ActiveTabIndex = i;
+    }
+}
