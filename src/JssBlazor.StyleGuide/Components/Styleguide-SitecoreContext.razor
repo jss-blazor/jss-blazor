@@ -1,5 +1,28 @@
 @inherits JssComponentBase
+@using Newtonsoft.Json;
+@using Newtonsoft.Json.Linq;
+@inject JssBlazor.Core.Services.ILayoutService _layoutService
+@inject JssBlazor.Core.Services.IComponentFactory _componentFactory
+@inject JssBlazor.Core.Services.IRouteResolver _routeResolver
 
-<Styleguide_Specimen Component="@Component"
-                     E2eId="styleguide-sitecore-context">
-</Styleguide_Specimen>
+    <Styleguide_Specimen Component="@Component"
+                         E2eId="styleguide-sitecore-context">
+        <p>The current Sitecore Context is...</p>
+        <pre style="max-height: 400px; overflow: scroll">
+            @Json
+        </pre>
+    </Styleguide_Specimen>
+
+@code {
+
+    private string Json { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        // The property _layoutService received an implementation
+        // of ILayoutService through dependency injection. Use
+        // _layoutService to obtain data from the server.
+        var layoutServiceResult = await _layoutService.GetRouteAsync("/styleguide");
+
+        Json = JToken.Parse(layoutServiceResult.RawContext).ToString(Formatting.Indented);
+    }
+}

@@ -29,6 +29,9 @@ namespace JssBlazor.RenderingHost.Controllers
             try
             {
                 _layoutServiceResultProvider.Result = renderRequest.FunctionArgs.LayoutServiceResult;
+                _layoutServiceResultProvider.Result.Route = renderRequest.Args[0];
+                _layoutServiceResultProvider.Result.RawContext = renderRequest.Args[1];
+                _layoutServiceResultProvider.Result.RawRouteContext = renderRequest.Args[2];
                 var appHtml = await _preRenderer.RenderAppAsync<App>("app", ControllerContext, ViewData, TempData);
                 var resultModel = new RenderResult
                 {
