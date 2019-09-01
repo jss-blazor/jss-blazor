@@ -1,5 +1,43 @@
 @inherits JssComponentBase
 
-<Styleguide_Specimen Component="@Component"
-                     E2eId="styleguide-componentparams">
-</Styleguide_Specimen>
+    <Styleguide_Specimen Component="@Component"
+                         E2eId="styleguide-componentparams">
+        <p class="@CssClass">
+            The CSS class of this paragraph (<code>@CssClass</code>) is set using a param
+        </p>
+        <div>
+            @* Note that all params come in as string values, like this boolean-like param here: *@
+            useCallToAction param: <code>@UseCallToAction</code>
+            <br />
+            param type: <code>@{@UseCallToAction.GetType().Name}</code>
+            @if (UseCallToAction)
+            {
+                <div class="alert alert-info">the call to action is shown</div>
+            }
+        </div>
+        <p>columns param: @Columns</p>
+        <div class="row">
+            @for (var i = 0; i < ColumnsArray.Count(); i++)
+            {
+                <div key="col-${@i}" class="col-sm">
+                    Column @i
+                </div>
+            }            
+        </div>
+    </Styleguide_Specimen>
+
+@code {
+
+    public string CssClass { get; set; }
+    public bool UseCallToAction  { get; set; }
+    public int Columns  { get; set; }
+    public List<int> ColumnsArray  { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        CssClass = Component.Params["cssClass"].ToString();
+        UseCallToAction = Boolean.Parse(Component.Params["useCallToAction"].ToString());
+        Columns = int.Parse(Component.Params["columns"].ToString());
+        ColumnsArray = new List<int>{ 0 };
+    }
+}

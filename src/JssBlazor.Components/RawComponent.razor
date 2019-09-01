@@ -6,7 +6,7 @@
     private RenderFragment RenderRawComponent() => builder =>
     {
         builder.OpenElement(0, Component.Name);
-        foreach (var attribute in Component.Attributes)
+        foreach (var attribute in Component.Params)
         {
             builder.AddAttribute(0, attribute.Key, attribute.Value);
         }
