@@ -8,6 +8,9 @@ SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: Office/32x32/book2.png
+- ID: "cd72e892-d8bb-487c-9eb1-6a57c48c72cc"
+  Hint: Fallback Domain
+  Value: "{3A7B3548-4241-553F-AAF4-DC54674B6D81}"
 Languages:
 - Language: en
   Fields:
