@@ -1,5 +1,74 @@
 @inherits JssComponentBase
+@using Newtonsoft.Json;
+@using Newtonsoft.Json.Linq;
 
-<Styleguide_Specimen Component="@Component"
-                     E2eId="styleguide-fieldusage-content-list">
-</Styleguide_Specimen>
+    <Styleguide_Specimen Component="@Component"
+                         E2eId="styleguide-fieldusage-content-list">
+
+        @foreach (var localField in @LocalContentField)
+        {
+            <div>
+                @*The referenced item's fields can be rendered and edited using normal helper components:*@
+                <p>
+                    Field: <Text Field="@localField" />
+                </p>
+            </div>
+        }
+
+        @foreach (var sharedField in SharedContentField)
+        {
+            <div>
+                @*The referenced item's fields can be rendered and edited using normal helper components:*@
+                <p>
+                    Field: <Text Field="@sharedField" />
+                </p>
+            </div>
+        }
+
+    </Styleguide_Specimen>
+
+@code {
+
+    List<Core.Models.LayoutService.Fields.Field> LocalContentField { get; set; }
+    List<Core.Models.LayoutService.Fields.Field> SharedContentField { get; set; }
+
+    class FieldValue : JssBlazor.Core.Models.LayoutService.Fields.IFieldValue
+    {
+        public string Rendered { get; set; }
+        public JToken RawValue { get; set; }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        LocalContentField = GetField("localContentList");
+        SharedContentField = GetField("sharedContentList");
+    }
+
+    private List<Core.Models.LayoutService.Fields.Field> GetField(string fieldName)
+    {
+        var fields = new List<Core.Models.LayoutService.Fields.Field>();
+        var contentField = Component.Fields[fieldName];
+        var fieldValues = ((JssBlazor.Core.Models.LayoutService.Fields.ArrayFieldValue)contentField.Value).FieldValue.ToList();
+
+        foreach (var fieldValueItem in fieldValues)
+        {
+            var rawFields = fieldValueItem["fields"].Children();
+
+            foreach (JProperty fieldProp in rawFields)
+            {
+                string value = fieldProp.Value["value"].Value<string>();
+                JToken jTokenValue = (JToken)fieldProp.Value;
+
+                var field = new Core.Models.LayoutService.Fields.Field()
+                {
+                    Value = new FieldValue() { Rendered = value, RawValue = jTokenValue }
+                };
+
+                fields.Add(field);
+            }
+        }
+
+        return fields;
+    }
+
+}
