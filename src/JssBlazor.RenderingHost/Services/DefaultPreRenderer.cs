@@ -49,7 +49,7 @@ namespace JssBlazor.RenderingHost.Services
 
             var helper = (HtmlHelper)_htmlHelper;
             helper.Contextualize(viewContext);
-            var appHtmlRenderer = await _htmlHelper.RenderComponentAsync<T>();
+            var appHtmlRenderer = await _htmlHelper.RenderComponentAsync<T>(RenderMode.ServerPrerendered);
 
             await using var appHtmlWriter = new StringWriter();
             appHtmlRenderer.WriteTo(appHtmlWriter, HtmlEncoder.Default);
