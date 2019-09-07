@@ -5,17 +5,7 @@
         <Placeholder Name="jss-styleguide-layout" Rendering="@Component" />
     </div>
     <div class="col-sm-4 col-lg-2 order-sm-first pt-2">
-        @Sections()
-    </div>
-</div>
-
-@code {
-    private RenderFragment Sections() => builder =>
-    {
-        var sections = GetSectionsFromPlaceholder(Component, "jss-styleguide-layout")
-            .Select(section => MapSection(section, "jss-styleguide-section"));
-
-        @foreach (var section in sections)
+        @foreach (var section in Sections)
         {
             <nav @key="@section.Heading" class="nav flex-column pt-2">
                 <a href="@GetSectionLink(section)" class="nav-item font-weight-bold">
@@ -30,11 +20,22 @@
                                 @child.Heading
                             </a>
                         }
+                        /**/
+                        /**/
                     </nav>
                 }
+                /**/
+                /**/
             </nav>
         }
-    };
+        /**/
+        /**/
+    </div>
+</div>
+
+@code {
+
+    private IEnumerable<Section> Sections { get; set; }
 
     private IEnumerable<IRendering> GetSectionsFromPlaceholder(IRendering rendering, string placeholderName)
     {
@@ -70,5 +71,11 @@
         public string Heading { get; set; }
         public IEnumerable<Section> Children { get; set; } = Enumerable.Empty<Section>();
         public bool ShowChildren => Children.Any();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Sections = GetSectionsFromPlaceholder(Component, "jss-styleguide-layout")
+            .Select(section => MapSection(section, "jss-styleguide-section"));
     }
 }
