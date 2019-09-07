@@ -40,7 +40,7 @@ namespace JssBlazor.RenderingHost
             // Required to render JssBlazor.StyleGuide on the server.
             services.AddServerSideBlazor();
             // Replace Blazor's out-of-the-box IUriHelper with one that correctly resolves URLs server side.
-            services.AddScoped<IUriHelper, HardcodedRemoteUriHelper>();
+            services.AddScoped<NavigationManager, HardcodedRemoteUriHelper>();
 
             services.AddSingleton<Func<string, IFileInfo>>(serviceProvider => (subpath) =>
             {
@@ -74,6 +74,7 @@ namespace JssBlazor.RenderingHost
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapBlazorHub();
                 endpoints.MapControllers();
             });
         }
