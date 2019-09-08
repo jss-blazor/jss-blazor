@@ -34,7 +34,7 @@ namespace JssBlazor.RenderingHost.Services
             var appHtml = await GetAppHtmlAsync<T>(actionContext, viewData, tempData);
             var indexHtml = await GetIndexHtmlAsync();
 
-            var preRenderedApp = await ReplaceAppNodeWithPreRenderedAppAsync(indexHtml, appHtml, domElementSelector);
+            var preRenderedApp = await InsertAppHtml(indexHtml, appHtml, domElementSelector);
             return preRenderedApp;
         }
 
@@ -60,14 +60,14 @@ namespace JssBlazor.RenderingHost.Services
 
         private async Task<string> GetIndexHtmlAsync()
         {
-            var routeYml = _fileInfoFactory("index.html");
-            await using var stream = routeYml.CreateReadStream();
+            var indexHtml = _fileInfoFactory("index.html");
+            await using var stream = indexHtml.CreateReadStream();
             using var reader = new StreamReader(stream);
             var routeString = await reader.ReadToEndAsync();
             return routeString;
         }
 
-        private static async Task<string> ReplaceAppNodeWithPreRenderedAppAsync(
+        private static async Task<string> InsertAppHtml(
             string indexHtml,
             string appHtml,
             string domElementSelector)
@@ -75,17 +75,9 @@ namespace JssBlazor.RenderingHost.Services
             var htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(indexHtml);
 
-            var tempNode = htmlDocument.CreateElement("temp");
-            tempNode.InnerHtml = appHtml;
-
             var appNode = htmlDocument.DocumentNode.SelectSingleNode($"//{domElementSelector}");
-            var currentNode = appNode;
-            foreach (var childNode in tempNode.ChildNodes)
-            {
-                appNode.ParentNode.InsertAfter(childNode, currentNode);
-                currentNode = childNode;
-            }
-            appNode.Remove();
+            appNode.RemoveAllChildren();
+            appNode.InnerHtml = appHtml;
 
             await using var stringWriter = new StringWriter();
             htmlDocument.Save(stringWriter);
