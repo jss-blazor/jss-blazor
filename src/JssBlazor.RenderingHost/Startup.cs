@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using JssBlazor.RenderingHost.Services;
 using JssBlazor.Core.Models;
 using JssBlazor.Core.Services;
@@ -10,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Components.Routing;
 
 namespace JssBlazor.RenderingHost
 {
@@ -40,8 +38,8 @@ namespace JssBlazor.RenderingHost
 
             // Required to render JssBlazor.StyleGuide on the server.
             services.AddServerSideBlazor();
-            // Replace Blazor's out-of-the-box IUriHelper with one that correctly resolves URLs server side.
-            services.AddScoped<IHostEnvironmentNavigationManager, HardcodedRemoteUriHelper>();
+            // Replace Blazor's out-of-the-box NavigationManager with one that correctly resolves URLs server side.
+            services.AddScoped<NavigationManager, HardcodedRemoteNavigationManager>();
 
             services.AddSingleton<Func<string, IFileInfo>>(serviceProvider => (subpath) =>
             {
@@ -75,7 +73,6 @@ namespace JssBlazor.RenderingHost
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapBlazorHub();
                 endpoints.MapControllers();
             });
         }
