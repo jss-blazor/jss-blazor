@@ -19,6 +19,5 @@ namespace JssBlazor.Core.Models.LayoutService
         public Guid TemplateId { get; set; }
         public string TemplateName { get; set; }
         public IDictionary<string, IEnumerable<ComponentDefinition>> Placeholders { get; set; }
-        public IDictionary<string, object> Params { get; set; }
     }
 }
