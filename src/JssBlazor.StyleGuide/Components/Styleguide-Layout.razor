@@ -67,7 +67,7 @@
         public bool ShowChildren => Children.Any();
     }
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
         Sections = GetSectionsFromPlaceholder(Component, "jss-styleguide-layout")
             .Select(section => MapSection(section, "jss-styleguide-section"));
