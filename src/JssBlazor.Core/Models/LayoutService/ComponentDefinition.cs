@@ -11,10 +11,11 @@ namespace JssBlazor.Core.Models.LayoutService
         public Guid? DataSource { get; set; }
         public IDictionary<string, Field> Fields { get; set; }
         public IDictionary<string, IEnumerable<ComponentDefinition>> Placeholders { get; set; }
+        public IDictionary<string, object> Params { get; set; }
 
         // Properties used by "raw components"
         public string Name { get; set; }
+        public IDictionary<string, string> Attributes { get; set; }
         public string Contents { get; set; }
-        public IDictionary<string, object> Params { get; set; }
     }
 }
