@@ -37,7 +37,7 @@ namespace JssBlazor.Core.Services
                             Name = "JssDisconnectedLayoutService"
                         }
                     },
-                    Route = new RouteData
+                    Route = new RenderedItem
                     {
                         DatabaseName = AvailableInConnectedMode,
                         DeviceId = AvailableInConnectedModeId,
