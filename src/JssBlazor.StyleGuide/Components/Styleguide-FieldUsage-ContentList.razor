@@ -38,7 +38,7 @@
         public JToken RawValue { get; set; }
     }
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
         LocalContentField = GetField("localContentList");
         SharedContentField = GetField("sharedContentList");

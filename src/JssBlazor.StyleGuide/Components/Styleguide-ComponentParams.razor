@@ -33,7 +33,7 @@
     public int Columns  { get; set; }
     public List<int> ColumnsArray  { get; set; }
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
         CssClass = Component.Params["cssClass"].ToString();
         UseCallToAction = Boolean.Parse(Component.Params["useCallToAction"].ToString());
