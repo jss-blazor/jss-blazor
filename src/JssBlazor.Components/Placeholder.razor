@@ -23,7 +23,7 @@
             builder.AddMarkupContent(0, StartTag);
 
             var componentType = ComponentFactory.GetComponentType(component);
-            builder.OpenComponent(0, componentType);
+            builder.OpenComponent(1, componentType);
             builder.AddAttribute(2, "Component", component);
             builder.CloseComponent();
 
