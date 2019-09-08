@@ -1,7 +1,6 @@
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using JssBlazor.Core.Services;
 using JssBlazor.RenderingHost.Models;
 using JssBlazor.RenderingHost.Services;
 using JssBlazor.StyleGuide;
@@ -14,16 +13,13 @@ namespace JssBlazor.RenderingHost.Controllers
     public class RenderingHostController : Controller
     {
         private readonly ILayoutServiceResultProvider _layoutServiceResultProvider;
-        private readonly ILayoutService _layoutService;
         private readonly IPreRenderer _preRenderer;
 
         public RenderingHostController(
             ILayoutServiceResultProvider layoutServiceResultProvider,
-            ILayoutService layoutService,
             IPreRenderer preRenderer)
         {
             _layoutServiceResultProvider = layoutServiceResultProvider ?? throw new ArgumentNullException(nameof(layoutServiceResultProvider));
-            _layoutService = layoutService ?? throw new ArgumentNullException(nameof(layoutService));
             _preRenderer = preRenderer ?? throw new ArgumentNullException(nameof(preRenderer));
         }
 
@@ -33,12 +29,6 @@ namespace JssBlazor.RenderingHost.Controllers
             try
             {
                 _layoutServiceResultProvider.Result = renderRequest.FunctionArgs.LayoutServiceResult;
-                _layoutServiceResultProvider.Result.Route = renderRequest.Args[0];
-                _layoutServiceResultProvider.Result.RawContext = renderRequest.Args[1];
-                _layoutServiceResultProvider.Result.RawRouteContext = renderRequest.Args[2];
-
-                _layoutService.Current = _layoutServiceResultProvider.Result;
-                ViewData.Add("layoutServiceResult", _layoutServiceResultProvider.Result);
 
                 var appHtml = await _preRenderer.RenderAppAsync<App>("app", ControllerContext, ViewData, TempData);
                 var resultModel = new RenderResult

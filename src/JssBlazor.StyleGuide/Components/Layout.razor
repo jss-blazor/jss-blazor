@@ -1,10 +1,10 @@
 @inherits LayoutComponentBase
-@inject JssBlazor.Core.Services.ILayoutService _layoutService
 
 <Helmet>
-    <VisitorIdentification />
     <title>@(Route.Sitecore.Route.Fields["pageTitle"]?.Value.Rendered ?? "Page")</title>
 </Helmet>
+
+<VisitorIdentification />
 
 <Navigation />
 
@@ -15,9 +15,4 @@
 @code {
     [Parameter]
     public LayoutServiceResult Route { get; set; }
-
-    protected override async Task OnInitializedAsync()
-    {
-        Route = _layoutService.Current;
-    }
 }

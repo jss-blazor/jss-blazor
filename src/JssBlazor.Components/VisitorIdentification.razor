@@ -1,16 +1,6 @@
-@inject IJSRuntime JsRuntime;
-@inject JssBlazor.Core.Services.ILayoutService _layoutService
-
-
-<meta name="VIcurrentDateTime" content=@VisitorIdentificationTimestamp />
+<meta name="VIcurrentDateTime" content="@SitecoreContext.Context.VisitorIdentificationTimestamp" />
 
 @code {
-
-    [Parameter]
-    public string VisitorIdentificationTimestamp { get; set; }
-
-    protected override async Task OnInitializedAsync()
-    {
-        VisitorIdentificationTimestamp = _layoutService.Current.Sitecore.Context.VisitorIdentificationTimestamp.ToString();
-    }
+    [CascadingParameter]
+    public RenderingData SitecoreContext { get; set; }
 }

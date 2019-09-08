@@ -5,7 +5,6 @@ namespace JssBlazor.Core.Services
 {
     public interface ILayoutService
     {
-        LayoutServiceResult Current { get; set; }
         Task<LayoutServiceResult> GetRouteAsync(string path);
     }
 }

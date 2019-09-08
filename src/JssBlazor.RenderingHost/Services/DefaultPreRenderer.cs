@@ -3,7 +3,6 @@ using System.IO;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
-using JssBlazor.Core.Models.LayoutService;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -34,11 +33,8 @@ namespace JssBlazor.RenderingHost.Services
         {
             var appHtml = await GetAppHtmlAsync<T>(actionContext, viewData, tempData);
             var indexHtml = await GetIndexHtmlAsync();
-            var layoutServiceResult =  viewData["layoutServiceResult"] as LayoutServiceResult;
-            var title = layoutServiceResult?.Sitecore.Route.Fields["pageTitle"]?.Value.Rendered ?? "Page";
-            var visitorId = layoutServiceResult?.Sitecore.Context.VisitorIdentificationTimestamp ?? -1;
 
-            var preRenderedApp = await ReplaceAppNodeWithPreRenderedAppAsync(title, visitorId, indexHtml, appHtml, domElementSelector);
+            var preRenderedApp = await ReplaceAppNodeWithPreRenderedAppAsync(indexHtml, appHtml, domElementSelector);
             return preRenderedApp;
         }
 
@@ -72,8 +68,6 @@ namespace JssBlazor.RenderingHost.Services
         }
 
         private static async Task<string> ReplaceAppNodeWithPreRenderedAppAsync(
-            string title,
-            long visitorId,
             string indexHtml,
             string appHtml,
             string domElementSelector)
@@ -83,14 +77,6 @@ namespace JssBlazor.RenderingHost.Services
 
             var tempNode = htmlDocument.CreateElement("temp");
             tempNode.InnerHtml = appHtml;
-
-            var titleNode = htmlDocument.DocumentNode.SelectSingleNode($"//title");
-            titleNode.InnerHtml = title;
-
-            var visitorIdentificationNode = htmlDocument.DocumentNode.SelectSingleNode($"//visitoridentification");
-            var newNodeStr = $"<meta name=\"VIcurrentDateTime\" content=\"{visitorId}\">";
-            var newNode = HtmlNode.CreateNode(newNodeStr);
-            visitorIdentificationNode.ParentNode.ReplaceChild(newNode, visitorIdentificationNode);
 
             var appNode = htmlDocument.DocumentNode.SelectSingleNode($"//{domElementSelector}");
             var currentNode = appNode;

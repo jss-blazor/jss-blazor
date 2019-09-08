@@ -1,28 +1,30 @@
 @inherits JssComponentBase
-@using Newtonsoft.Json;
-@using Newtonsoft.Json.Linq;
-@inject JssBlazor.Core.Services.ILayoutService _layoutService
-@inject JssBlazor.Core.Services.IComponentFactory _componentFactory
-@inject JssBlazor.Core.Services.IRouteResolver _routeResolver
+@using ErrorEventArgs = Newtonsoft.Json.Serialization.ErrorEventArgs;
 
-    <Styleguide_Specimen Component="@Component"
-                         E2eId="styleguide-sitecore-context">
-        <p>The current Sitecore Context is...</p>
-        <pre style="max-height: 400px; overflow: scroll">
-            @Json
-        </pre>
-    </Styleguide_Specimen>
+<Styleguide_Specimen Component="@Component"
+                     E2eId="styleguide-sitecore-context">
+    <p>The current Sitecore Context is...</p>
+    <pre style="max-height: 400px; overflow: scroll">@RenderSitecoreContext()</pre>
+</Styleguide_Specimen>
 
 @code {
+    [CascadingParameter]
+    public RenderingData SitecoreContext { get; set; }
 
-    private string Json { get; set; }
-    protected override async Task OnInitializedAsync()
+    private string RenderSitecoreContext()
     {
-        // The property _layoutService received an implementation
-        // of ILayoutService through dependency injection. Use
-        // _layoutService to obtain data from the server.
-        var layoutServiceResult = _layoutService.Current;
+        return JsonConvert.SerializeObject(SitecoreContext, new JsonSerializerSettings
+        {
+            Error = HandleSerializationError,
+            Formatting = Formatting.Indented
+        });
+    }
 
-        Json = JToken.Parse(layoutServiceResult.RawContext).ToString(Formatting.Indented);
+    // Serialization of the RenderingData fails due to unknown reasons. This function logs
+    // serialization errors to the console and allows serialization to continue.
+    private void HandleSerializationError(object sender, ErrorEventArgs args)
+    {
+        Console.WriteLine(args.ErrorContext.Error.Message);
+        args.ErrorContext.Handled = true;
     }
 }

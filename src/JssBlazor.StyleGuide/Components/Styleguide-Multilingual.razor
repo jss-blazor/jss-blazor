@@ -1,9 +1,7 @@
 @inherits JssComponentBase
-@inject JssBlazor.Core.Services.ILayoutService _layoutService
 
 <Styleguide_Specimen Component="@Component"
                      E2eId="styleguide-multilingual">
-
     <Text Field=@Component.Fields["sample"] Encode="false" Tag="p" />
 
     <p>
@@ -16,21 +14,10 @@
         <a href="/da-DK/styleguide">Show in Danish</a>
     </p>
 
-    <p>The current language is: <strong>@CurrentLanguage</strong></p>
-
+    <p>The current language is: <strong>@SitecoreContext.Context.Language</strong></p>
 </Styleguide_Specimen>
 
 @code {
-
-    public string CurrentLanguage { get; set; }
-
-    protected override void OnInitialized()
-    {
-        // the withNamespaces() _higher order component_ wraps the
-        // component in another component and injects the `i18n`
-        // and `t` props into it so that we can use them for translation.
-        // Any component that wants to use translation will need to use this,
-        // or the react-i18next render props API. See the react-i18next docs for more details.
-        CurrentLanguage = _layoutService.Current.Sitecore.Context.Language;
-    }
+    [CascadingParameter]
+    public RenderingData SitecoreContext { get; set; }
 }
