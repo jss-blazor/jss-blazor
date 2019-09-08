@@ -4,7 +4,7 @@ using JssBlazor.Core.Models.LayoutService.Fields;
 
 namespace JssBlazor.Core.Models.LayoutService
 {
-    public class RenderedItem : IRendering
+    public class RouteData: IRendering
     {
         public Guid Uid { get; set; }
         public string Name { get; set; }
