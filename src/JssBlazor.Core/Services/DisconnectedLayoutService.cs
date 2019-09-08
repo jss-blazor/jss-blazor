@@ -15,6 +15,8 @@ namespace JssBlazor.Core.Services
 
         private readonly IRouteResolver _routeResolver;
 
+        public LayoutServiceResult Current { get; set; }
+
         public DisconnectedLayoutService(IRouteResolver routeResolver)
         {
             _routeResolver = routeResolver ?? throw new ArgumentNullException(nameof(routeResolver));

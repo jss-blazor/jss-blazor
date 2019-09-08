@@ -1,25 +1,29 @@
 @inherits JssComponentBase
+@inject JssBlazor.Core.Services.ILayoutService _layoutService
 
-    <Styleguide_Specimen Component="@Component"
-                         E2eId="styleguide-multilingual">
+<Styleguide_Specimen Component="@Component"
+                     E2eId="styleguide-multilingual">
 
-        <Text Field=@Component.Fields["sample"] Encode="false" Tag="p" />
+    <Text Field=@Component.Fields["sample"] Encode="false" Tag="p" />
 
-        <p>
-            This is a static dictionary entry from <code>/data/dictionary</code>:&nbsp;{props.t('styleguide-sample')}
-        </p>
+    <p>
+        This is a static dictionary entry from <code>/data/dictionary</code>:&nbsp;{props.t('styleguide-sample')}
+    </p>
 
-        <p>
-            <a href="/en/styleguide">Show in English</a>
-            <br />
-            <a href="/da-DK/styleguide">Show in Danish</a>
-        </p>
+    <p>
+        <a href="/en/styleguide">Show in English</a>
+        <br />
+        <a href="/da-DK/styleguide">Show in Danish</a>
+    </p>
 
-        <p>The current language is: {props.i18n.language}</p>
+    <p>The current language is: <strong>@CurrentLanguage</strong></p>
 
-    </Styleguide_Specimen>
+</Styleguide_Specimen>
 
 @code {
+
+    public string CurrentLanguage { get; set; }
+
     protected override void OnInitialized()
     {
         // the withNamespaces() _higher order component_ wraps the
@@ -27,5 +31,6 @@
         // and `t` props into it so that we can use them for translation.
         // Any component that wants to use translation will need to use this,
         // or the react-i18next render props API. See the react-i18next docs for more details.
+        CurrentLanguage = _layoutService.Current.Sitecore.Context.Language;
     }
 }

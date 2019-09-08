@@ -16,6 +16,8 @@ namespace JssBlazor.StyleGuide.Services
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 
+        public LayoutServiceResult Current { get; set; }
+
         public async Task<LayoutServiceResult> GetRouteAsync(string path)
         {
             // _httpClient.GetJsonAsync<LayoutServiceResult>(path) has issues deserializing the
