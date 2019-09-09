@@ -17,9 +17,9 @@ namespace JssBlazor.StyleGuide.DisconnectedServer
         }
 
         [HttpGet("[action]")]
-        public async Task<LayoutServiceResult> Render(string item)
+        public async Task<LayoutServiceResult> Render(string item, string sc_lang)
         {
-            var result = await _layoutService.GetRouteAsync(item);
+            var result = await _layoutService.GetRouteDataAsync(item, sc_lang);
             return result;
         }
     }

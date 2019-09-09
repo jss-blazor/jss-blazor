@@ -20,16 +20,16 @@ namespace JssBlazor.Core.Services
             _routeResolver = routeResolver ?? throw new ArgumentNullException(nameof(routeResolver));
         }
 
-        public async Task<LayoutServiceResult> GetRouteAsync(string path)
+        public async Task<LayoutServiceResult> GetRouteDataAsync(string route, string language)
         {
-            var route = await _routeResolver.GetRouteAsync(path);
+            var disconnectedRoute = await _routeResolver.GetRouteAsync(route);
             var result = new LayoutServiceResult
             {
                 Sitecore = new RenderingData
                 {
                     Context = new SitecoreContext
                     {
-                        Language = "en",
+                        Language = language,
                         PageEditing = false,
                         PageState = "normal",
                         Site = new Site
@@ -43,14 +43,14 @@ namespace JssBlazor.Core.Services
                         DeviceId = AvailableInConnectedModeId,
                         DisplayName = AvailableInConnectedMode,
                         ItemId = AvailableInConnectedModeId,
-                        ItemLanguage = "en",
+                        ItemLanguage = language,
                         ItemVersion = 1,
                         LayoutId = AvailableInConnectedModeId,
                         TemplateId = AvailableInConnectedModeId,
                         TemplateName = AvailableInConnectedMode,
-                        Name = route.Id,
-                        Fields = MapFields(route.Fields),
-                        Placeholders = MapPlaceholders(route.Placeholders)
+                        Name = disconnectedRoute.Id,
+                        Fields = MapFields(disconnectedRoute.Fields),
+                        Placeholders = MapPlaceholders(disconnectedRoute.Placeholders)
                     }
 
                 }

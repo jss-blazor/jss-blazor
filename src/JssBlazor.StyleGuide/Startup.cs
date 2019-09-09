@@ -1,3 +1,4 @@
+using System;
 using JssBlazor.Components;
 using JssBlazor.Core.Models;
 using JssBlazor.Core.Services;
@@ -11,13 +12,19 @@ namespace JssBlazor.StyleGuide
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(_ => new ComponentFactoryOptions
+            services.AddSingleton(new ComponentFactoryOptions
             {
                 ComponentAssemblyFormat = "JssBlazor.StyleGuide.Components.{0}, JssBlazor.StyleGuide",
                 MissingComponentType = typeof(MissingComponent).AssemblyQualifiedName,
                 RawComponentType = typeof(RawComponent).AssemblyQualifiedName
             });
             services.AddSingleton<IComponentFactory, DefaultComponentFactory>();
+            services.AddSingleton(new SitecoreConfiguration
+            {
+                DefaultLanguage = "en",
+                SitecoreApiKey = new Guid("a3ff4713-af3b-4faa-a471-4780c19a4dd8"),
+                SitecoreApiHost = "http://styleguide.sitecore"
+            });
             services.AddSingleton<ILayoutService, RemoteLayoutService>();
         }
 

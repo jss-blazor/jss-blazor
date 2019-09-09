@@ -1,5 +1,11 @@
 @inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
 @inject ILayoutService LayoutService
+
+@code {
+    @* https://github.com/JamesNK/Newtonsoft.Json/issues/2020#issuecomment-518351156 *@
+    private System.ComponentModel.ReferenceConverter ReferenceConverter = new System.ComponentModel.ReferenceConverter(typeof(Layout));
+}
 
 @if (Route == null)
 {
@@ -17,6 +23,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Route = await LayoutService.GetRouteAsync("sitecore/api/layout/render");
+        var routePath = NavigationManager.GetSitecoreRoutePath();
+        Route = await LayoutService.GetRouteDataAsync(routePath, null);
     }
 }

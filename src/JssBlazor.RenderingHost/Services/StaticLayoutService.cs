@@ -14,7 +14,7 @@ namespace JssBlazor.RenderingHost.Services
             _layoutServiceResultProvider = layoutServiceResultProvider ?? throw new ArgumentNullException(nameof(layoutServiceResultProvider));
         }
 
-        public Task<LayoutServiceResult> GetRouteAsync(string path)
+        public Task<LayoutServiceResult> GetRouteDataAsync(string route, string language)
         {
             return Task.FromResult(_layoutServiceResultProvider.Result);
         }
