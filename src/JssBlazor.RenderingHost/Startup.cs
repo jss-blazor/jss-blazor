@@ -1,14 +1,9 @@
-using System;
-using JssBlazor.RenderingHost.Services;
-using JssBlazor.Core.Models;
-using JssBlazor.Core.Services;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using JssBlazor.RenderingHost.Extensions;
 
 namespace JssBlazor.RenderingHost
 {
@@ -27,29 +22,7 @@ namespace JssBlazor.RenderingHost
             services.AddMvc();
             services.AddHttpContextAccessor();
 
-            services.AddSingleton<Func<string, IFileInfo>>(serviceProvider => subpath =>
-            {
-                var webHostEnvironment = serviceProvider.GetRequiredService<IWebHostEnvironment>();
-                return webHostEnvironment.WebRootFileProvider.GetFileInfo(subpath);
-            });
-            services.AddSingleton<IRouteResolver, YamlRouteResolver>();
-            services.AddSingleton<ILayoutServiceResultProvider, StaticLayoutServiceResultProvider>();
-            services.AddSingleton<ILayoutService, StaticLayoutService>();
-
-            // Required to render JssBlazor.StyleGuide on the server.
-            services.AddServerSideBlazor();
-            // Replace Blazor's out-of-the-box NavigationManager with one that correctly resolves URLs server side.
-            services.AddScoped<NavigationManager, HardcodedRemoteNavigationManager>();
-
-            services.AddSingleton<Func<string, IFileInfo>>(serviceProvider => (subpath) =>
-            {
-                var webHostEnvironment = serviceProvider.GetService<IWebHostEnvironment>();
-                return webHostEnvironment.WebRootFileProvider.GetFileInfo(subpath);
-            });
-            services.AddScoped<IPreRenderer, DefaultPreRenderer>();
-
-            services.AddSingleton(_ => Configuration.GetSection("ComponentFactory").Get<ComponentFactoryOptions>());
-            services.AddSingleton<IComponentFactory, DefaultComponentFactory>();
+            services.AddJssBlazorRenderingHost(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
