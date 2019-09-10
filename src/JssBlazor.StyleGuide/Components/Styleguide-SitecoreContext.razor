@@ -1,5 +1,7 @@
 @inherits JssComponentBase
-@using ErrorEventArgs = Newtonsoft.Json.Serialization.ErrorEventArgs;
+@using Microsoft.Extensions.Logging
+@using ErrorEventArgs = Newtonsoft.Json.Serialization.ErrorEventArgs
+@inject ILogger<Styleguide_SitecoreContext> Logger
 
 <Styleguide_Specimen Component="@Component"
                      E2eId="styleguide-sitecore-context">
@@ -24,7 +26,7 @@
     // serialization errors to the console and allows serialization to continue.
     private void HandleSerializationError(object sender, ErrorEventArgs args)
     {
-        Console.WriteLine(args.ErrorContext.Error.Message);
+        Logger.LogWarning(args.ErrorContext.Error, $"[{this.GetType().FullName}] {args.ErrorContext.Error.Message}");
         args.ErrorContext.Handled = true;
     }
 }
