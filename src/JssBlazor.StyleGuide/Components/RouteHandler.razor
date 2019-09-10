@@ -21,7 +21,7 @@
     [Parameter]
     public LayoutServiceResult Route { get; set; }
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnParametersSetAsync()
     {
         var routePath = NavigationManager.GetSitecoreRoutePath();
         Route = await LayoutService.GetRouteDataAsync(routePath, null);

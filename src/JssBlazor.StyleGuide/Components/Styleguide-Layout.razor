@@ -67,7 +67,7 @@
         public bool ShowChildren => Children.Any();
     }
 
-    protected override void OnInitialized()
+    protected override void OnParametersSet()
     {
         Sections = GetSectionsFromPlaceholder(Component, "jss-styleguide-layout")
             .Select(section => MapSection(section, "jss-styleguide-section"));
