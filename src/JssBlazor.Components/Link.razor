@@ -4,9 +4,6 @@
 
 @code {
     [Parameter]
-    public string Class { get; set; }
-
-    [Parameter]
     public Field Field { get; set; }
 
     [Parameter]
@@ -24,8 +21,6 @@
         {
             return;
         }
-
-        HtmlAttributes.Add("class", Class);
 
         var href = GetHref();
         var linkText = GetLinkText();
