@@ -26,7 +26,7 @@
     // serialization errors to the console and allows serialization to continue.
     private void HandleSerializationError(object sender, ErrorEventArgs args)
     {
-        Logger.LogWarning(args.ErrorContext.Error, $"[{this.GetType().FullName}] {args.ErrorContext.Error.Message}");
+        Logger.LogWarning(args.ErrorContext.Error, LogUtility.FormatLogMessage(this, args.ErrorContext.Error.Message));
         args.ErrorContext.Handled = true;
     }
 }
