@@ -7,6 +7,7 @@ namespace JssBlazor.Core.Extensions
         public static string GetSitecoreRoutePath(this NavigationManager navigationManager)
         {
             var sitecoreRoutePath = navigationManager.ToBaseRelativePath(navigationManager.Uri);
+            sitecoreRoutePath = sitecoreRoutePath.Split('#')[0];
             if (!sitecoreRoutePath.StartsWith("/"))
             {
                 sitecoreRoutePath = $"/{sitecoreRoutePath}";
