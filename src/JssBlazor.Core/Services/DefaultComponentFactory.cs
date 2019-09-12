@@ -21,8 +21,14 @@ namespace JssBlazor.Core.Services
 
         public RenderFragment RenderComponent(ComponentDefinition component) => builder =>
         {
+            RenderComponent(component, null)(builder);
+        };
+
+        public RenderFragment RenderComponent(ComponentDefinition component, object componentKey) => builder =>
+        {
             var componentType = GetComponentType(component);
             builder.OpenComponent(0, componentType);
+            builder.SetKey(componentKey);
             builder.AddAttribute(1, "Component", component);
             builder.CloseComponent();
         };
@@ -43,6 +49,15 @@ namespace JssBlazor.Core.Services
             {
                 return _missingComponentType;
             }
+        }
+
+        public object GetComponentKey(ComponentDefinition componentDefinition, string identifier)
+        {
+            if (componentDefinition.Uid == Guid.Empty)
+            {
+                return $"component-{identifier}";
+            }
+            return componentDefinition.Uid;
         }
 
         private string GetComponentTypeName(ComponentDefinition componentDefinition)

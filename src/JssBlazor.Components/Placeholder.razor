@@ -57,9 +57,11 @@
             return;
         }
 
-        foreach (var component in components)
+        for (int i = 0; i < components.Count(); i++)
         {
-            ComponentFactory.RenderComponent(component)(builder);
+            var component = components.ElementAt(i);
+            var componentKey = ComponentFactory.GetComponentKey(component, i.ToString());
+            ComponentFactory.RenderComponent(component, componentKey)(builder);
         }
     };
 
