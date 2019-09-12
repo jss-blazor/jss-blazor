@@ -1,9 +1,4 @@
 @inherits JssComponentBase
 
-@if (!string.IsNullOrEmpty(Heading.Value)) { <h2 class="display-4">@Heading</h2> }
-<div class="contentDescription">@Content</div>
-
-@code {
-    private MarkupString Heading => GetMarkupFieldValue("heading");
-    private MarkupString Content => GetMarkupFieldValue("content");
-}
+<PlainText Tag="h2" Class="display-4" Field="@Component.Fields["heading"]" />
+<RichText Class="contentDescription" Field="@Component.Fields["content"]" />
