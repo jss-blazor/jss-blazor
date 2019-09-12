@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using JssBlazor.Core.Models.LayoutService;
-using Newtonsoft.Json;
+using JssBlazor.Core.Models.LayoutService.Fields;
 using Newtonsoft.Json.Linq;
 
 namespace JssBlazor.Components.Utilities
@@ -24,7 +23,10 @@ namespace JssBlazor.Components.Utilities
             return rendering.Placeholders[placeholderName];
         }
 
-        public static string GetFieldValue(IRendering rendering, string fieldName, string defaultValue = null)
+        public static string GetFieldValue(
+            IRendering rendering,
+            string fieldName,
+            string defaultValue = null)
         {
             if (rendering == null) return defaultValue;
             string renderedValue = null;
@@ -49,7 +51,9 @@ namespace JssBlazor.Components.Utilities
             return string.IsNullOrWhiteSpace(renderedValue) ? defaultValue : renderedValue;
         }
 
-        public static T GetFieldValue<T>(IRendering rendering, string fieldName)
+        public static T GetFieldValue<T>(
+            IRendering rendering,
+            string fieldName)
         {
             var fields = rendering.Fields;
             if(fields[fieldName].Value != null && fields[fieldName].Value.RawValue != null)
@@ -57,20 +61,20 @@ namespace JssBlazor.Components.Utilities
                 var value = fields[fieldName].Value.RawValue.Value<T>();
                 return value;
             }
-            return default(T);
+            return default;
         }
 
-        public static T GetFieldValue<T>(this Core.Models.LayoutService.Fields.Field field)
+        public static T GetFieldValue<T>(this Field field)
         {
             if (field.Value != null && field.Value.RawValue != null)
             {
                 var value = field.Value.RawValue.Value<T>();
                 return value;
             }
-            return default(T);
+            return default;
         }
 
-        public static T GetFieldValue<T>(this Core.Models.LayoutService.Fields.Field field, string key)
+        public static T GetFieldValue<T>(this Field field, string key)
         {
             if (field.Value != null && field.Value.RawValue != null)
             {
@@ -78,10 +82,10 @@ namespace JssBlazor.Components.Utilities
                 if (value != null)
                     return value.Value<T>();
             }
-            return default(T);
+            return default;
         }
 
-        public static Core.Models.LayoutService.Fields.Field GetLinkedField<T>(this Core.Models.LayoutService.Fields.Field field, string key)
+        public static Field GetLinkedField<T>(this Field field, string key)
         {
             var value = field.Value.RawValue[key];
             return null;
