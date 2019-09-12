@@ -1,12 +1,11 @@
 @inherits JssComponentBase
-
 @*
- * Demonstrates usage of a custom content field type within JSS.
- * See /sitecore/definitions/components/Styleguide-FieldUsage-Custom.sitecore.js
- * for the definition of the structure of the custom field. This code is just for display.
+    * Demonstrates usage of a custom content field type within JSS.
+    * See /sitecore/definitions/components/Styleguide-FieldUsage-Custom.sitecore.js
+    * for the definition of the structure of the custom field. This code is just for display.
 *@
 <Styleguide_Specimen Component="@Component"
                      E2eId="styleguide-fieldusage-custom">
     @* Because the integer field is essentially text, we can render it with the Text helper *@
-    <Text Field="@Component.Fields["customIntField"]" />
+    <PlainText Field="@Component.Fields["customIntField"]" />
 </Styleguide_Specimen>

@@ -3,32 +3,30 @@
 @{
     var sharedItemLink = Component.Fields["sharedItemLink"];
     var localItemLink = Component.Fields["localItemLink"];
-
-
 }
 
-    <Styleguide_Specimen Component="@Component" E2eId="styleguide-fieldusage-itemlink">
-        <h5>Shared Item Link</h5>
+<Styleguide_Specimen Component="@Component" E2eId="styleguide-fieldusage-itemlink">
+    <h5>Shared Item Link</h5>
 
-        @*Item link fields are returned with their value as the referenced item value.*@
+    @*Item link fields are returned with their value as the referenced item value.*@
 
-        @if (sharedItemLink != null)
-        {
-            <div>
-                @*The referenced item's fields can be rendered and edited using normal helper components:*@
-                <p>
-                    Field: <Text Field="@sharedItemLink" />
-                </p>
-            </div>
-        }
+    @if (sharedItemLink != null)
+    {
+        <div>
+            @*The referenced item's fields can be rendered and edited using normal helper components:*@
+            <p>
+                Field: <PlainText Field="@sharedItemLink" />
+            </p>
+        </div>
+    }
 
-        <h5>Local Item Link</h5>
-        @if (localItemLink != null)
-        {
-            <div>
-                <p>
-                    Field: <Text Field="@localItemLink" />
-                </p>
-            </div>
-        }
-    </Styleguide_Specimen>
+    <h5>Local Item Link</h5>
+    @if (localItemLink != null)
+    {
+        <div>
+            <p>
+                Field: <PlainText Field="@localItemLink" />
+            </p>
+        </div>
+    }
+</Styleguide_Specimen>

@@ -9,7 +9,7 @@
                 <a class="@GetTabClass(i)"
                    @onclick="@(() => SetActiveTab(i))"
                    href="#t">
-                    <Text Field="@Tabs[i].Fields["title"]" />
+                    <PlainText Field="@Tabs[i].Fields["title"]" />
                 </a>
             </li>
         }

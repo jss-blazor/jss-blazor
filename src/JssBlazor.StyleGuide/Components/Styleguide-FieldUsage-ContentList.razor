@@ -1,34 +1,30 @@
 @inherits JssComponentBase
-@using Newtonsoft.Json;
 @using Newtonsoft.Json.Linq;
 
-    <Styleguide_Specimen Component="@Component"
-                         E2eId="styleguide-fieldusage-content-list">
+<Styleguide_Specimen Component="@Component"
+                     E2eId="styleguide-fieldusage-content-list">
+    @foreach (var localField in @LocalContentField)
+    {
+        <div>
+            @*The referenced item's fields can be rendered and edited using normal helper components:*@
+            <p>
+                Field: <PlainText Field="@localField" />
+            </p>
+        </div>
+    }
 
-        @foreach (var localField in @LocalContentField)
-        {
-            <div>
-                @*The referenced item's fields can be rendered and edited using normal helper components:*@
-                <p>
-                    Field: <Text Field="@localField" />
-                </p>
-            </div>
-        }
-
-        @foreach (var sharedField in SharedContentField)
-        {
-            <div>
-                @*The referenced item's fields can be rendered and edited using normal helper components:*@
-                <p>
-                    Field: <Text Field="@sharedField" />
-                </p>
-            </div>
-        }
-
-    </Styleguide_Specimen>
+    @foreach (var sharedField in SharedContentField)
+    {
+        <div>
+            @*The referenced item's fields can be rendered and edited using normal helper components:*@
+            <p>
+                Field: <PlainText Field="@sharedField" />
+            </p>
+        </div>
+    }
+</Styleguide_Specimen>
 
 @code {
-
     List<Core.Models.LayoutService.Fields.Field> LocalContentField { get; set; }
     List<Core.Models.LayoutService.Fields.Field> SharedContentField { get; set; }
 
@@ -70,5 +66,4 @@
 
         return fields;
     }
-
 }

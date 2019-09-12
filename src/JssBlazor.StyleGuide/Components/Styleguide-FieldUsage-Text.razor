@@ -2,14 +2,15 @@
 
 <Styleguide_Specimen Component="@Component"
                      E2eId="styleguide-fieldusage-text">
-    <Text Field="@Component.Fields["sample"]" />
+    @* Note that in JSS Blazor the <Text /> component is called <PlainText /> because <text /> is reserved Razor syntax. *@
+    <PlainText Field="@Component.Fields["sample"]" />
 
-    <Text Field="@Component.Fields["sample2"]"
-          Tag="section"
-          Editable="@false"
-          Encode="@false"
-          class="font-weight-bold"
-          HtmlAttributes="@(new Dictionary<string, string> { { "data-sample", "other-attributes-pass-through" } })" />
+    <PlainText Field="@Component.Fields["sample2"]"
+               Tag="section"
+               Editable="@false"
+               Encode="@false"
+               class="font-weight-bold"
+               HtmlAttributes="@(new Dictionary<string, string> { { "data-sample", "other-attributes-pass-through" } })" />
 
     <div>Raw value (not editable): @LayoutDataUtilities.GetFieldValue(Component, "sample")</div>
 </Styleguide_Specimen>
