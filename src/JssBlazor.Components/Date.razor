@@ -4,9 +4,7 @@
 
 @code {
     public enum DateStringFormat { LongTimeString, LongDateString, ShortTimeString, ShortDateString };
-    [Parameter]
-    public string Class { get; set; }
-
+    
     [Parameter]
     public Field Field { get; set; }
 
@@ -19,8 +17,8 @@
     [Parameter]
     public bool Editable { get; set; } = true;
 
-    [Parameter]
-    public IDictionary<string, string> HtmlAttributes { get; set; } = new Dictionary<string, string>();
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object> HtmlAttributes { get; set; }
 
     private RenderFragment RenderDate() => builder =>
     {
@@ -28,7 +26,6 @@
         {
             return;
         }
-
 
         var value = Field.GetFieldValue<DateTime>();
         var result = value.ToLongDateString();
@@ -49,17 +46,10 @@
                 break;
         }
 
-
-
         var output = (!string.IsNullOrWhiteSpace(Field.Editable) && Editable) ? Field.Editable : result;
 
-        HtmlAttributes.Add("class", Class);
-
         builder.OpenElement(0, Tag);
-        foreach (var attribute in HtmlAttributes)
-        {
-            builder.AddAttribute(1, attribute.Key, attribute.Value);
-        }
+        builder.AddMultipleAttributes(1, HtmlAttributes);
         builder.AddMarkupContent(2, output);
         builder.CloseElement();
     };

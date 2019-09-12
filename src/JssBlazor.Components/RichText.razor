@@ -4,9 +4,6 @@
 
 @code {
     [Parameter]
-    public string Class { get; set; }
-
-    [Parameter]
     public Field Field { get; set; }
 
     [Parameter]
@@ -15,8 +12,8 @@
     [Parameter]
     public bool Editable { get; set; } = true;
 
-    [Parameter]
-    public IDictionary<string, string> HtmlAttributes { get; set; } = new Dictionary<string, string>();
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object> HtmlAttributes { get; set; }
 
     private RenderFragment RenderRichText() => builder =>
     {
@@ -26,14 +23,9 @@
         }
 
         var output = (!string.IsNullOrWhiteSpace(Field.Editable) && Editable) ? Field.Editable : Field.Value.Rendered;
-
-        HtmlAttributes.Add("class", Class);
-
+        
         builder.OpenElement(0, Tag);
-        foreach (var attribute in HtmlAttributes)
-        {
-            builder.AddAttribute(1, attribute.Key, attribute.Value);
-        }
+        builder.AddMultipleAttributes(1, HtmlAttributes);
         builder.AddMarkupContent(2, output);
         builder.CloseElement();
     };

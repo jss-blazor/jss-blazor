@@ -10,7 +10,7 @@
                Editable="@false"
                Encode="@false"
                class="font-weight-bold"
-               HtmlAttributes="@(new Dictionary<string, string> { { "data-sample", "other-attributes-pass-through" } })" />
+               data-sample="other-attributes-pass-through" />
 
     <div>Raw value (not editable): @LayoutDataUtilities.GetFieldValue(Component, "sample")</div>
 </Styleguide_Specimen>

@@ -4,9 +4,6 @@
 
 @code {
     [Parameter]
-    public string Class { get; set; }
-
-    [Parameter]
     public Field Field { get; set; }
 
     [Parameter]
@@ -18,8 +15,8 @@
     [Parameter]
     public bool Encode { get; set; } = true;
 
-    [Parameter]
-    public IDictionary<string, string> HtmlAttributes { get; set; } = new Dictionary<string, string>();
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object> HtmlAttributes { get; set; }
 
     private RenderFragment RenderText() => builder =>
     {
@@ -36,16 +33,11 @@
         var output = (!string.IsNullOrWhiteSpace(Field.Editable) && Editable) ? Field.Editable : Field.Value.Rendered;
         var renderMarkup = (!string.IsNullOrEmpty(Field.Editable) && Editable) || !Encode;
 
-        HtmlAttributes.Add("class", Class);
-
         if (!string.IsNullOrWhiteSpace(Tag) || renderMarkup)
         {
             var tag = !string.IsNullOrWhiteSpace(Tag) ? Tag : "span";
             builder.OpenElement(0, tag);
-            foreach (var attribute in HtmlAttributes)
-            {
-                builder.AddAttribute(1, attribute.Key, attribute.Value);
-            }
+            builder.AddMultipleAttributes(1, HtmlAttributes);
 
             if (renderMarkup)
             {
@@ -55,6 +47,7 @@
             {
                 builder.AddContent(2, output);
             }
+
             builder.CloseElement();
             return;
         }
