@@ -1,21 +1,25 @@
 @inherits JssComponentBase
 
-    <Styleguide_Specimen Component="@Component" E2eId="styleguide-layout-reuse">
-        <div class="row">
-            @*
-        This placeholder is using _render props_ to enable customizing the markup for each component within.
-        In this case, it's placing each component in its own column of a flexbox layout - giving an n-up columnar layout.
-        The component itself does not need to know it's living in a columnar layout.
-        There are three render props available:
-        renderEach - called once for each content component
-        Sitecore Experience Editor markup is automatically rendered in between content components when present
-        renderEmpty - called when the placeholder contains no content components. Can be used to wrap the Sitecore EE empty placeholder
-        markup in something that's visually correct, like here where we need to wrap it in a column div to make it selectable.
-        render - called once and passed _all_ components in the placeholder. Allows custom iteration. EE code markup must be accounted for.
-        Generally speaking stick to renderEach and renderEmpty unless doing something really custom.
-            *@
+<Styleguide_Specimen Component="@Component" E2eId="styleguide-layout-reuse">
+    <div class="row">
+        @*
+            This placeholder is using _render props_ to enable customizing the markup for each component within.
+            In this case, it's placing each component in its own column of a flexbox layout - giving an n-up columnar layout.
+            The component itself does not need to know it's living in a columnar layout.
+
+            There are three render props available:
+            renderEach - called once for each content component
+                Sitecore Experience Editor markup is automatically rendered in between content components when present
+            renderEmpty - called when the placeholder contains no content components. Can be used to wrap the Sitecore EE empty placeholder
+                markup in something that's visually correct, like here where we need to wrap it in a column div to make it selectable.
+            render - called once and passed _all_ components in the placeholder. Allows custom iteration. EE code markup must be accounted for.
+
+            Generally speaking stick to renderEach and renderEmpty unless doing something really custom.
+        *@
+        <div class="col-sm">
             <Placeholder Rendering="@Component"
-                         Name="jss-reuse-example" StartTag="<div class='col-sm'>" EndTag="</div>">
+                         Name="jss-reuse-example">
             </Placeholder>
         </div>
-    </Styleguide_Specimen>
+    </div>
+</Styleguide_Specimen>

@@ -9,25 +9,15 @@
     [Parameter]
     public IRendering Rendering { get; set; }
 
-    [Parameter]
-    public string StartTag { get; set; }
-
-    [Parameter]
-    public string EndTag { get; set; }
-
     private RenderFragment RenderPlaceholder() => builder =>
     {
         var components = Rendering.Placeholders[Name];
         foreach (var component in components)
         {
-            builder.AddMarkupContent(0, StartTag);
-
             var componentType = ComponentFactory.GetComponentType(component);
-            builder.OpenComponent(1, componentType);
-            builder.AddAttribute(2, "Component", component);
+            builder.OpenComponent(0, componentType);
+            builder.AddAttribute(1, "Component", component);
             builder.CloseComponent();
-
-            builder.AddMarkupContent(3, EndTag);
         }
     };
 }
