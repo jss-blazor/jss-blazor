@@ -1,6 +1,25 @@
 @inherits JssComponentBase
 
+@*
+ * This is a single tab within the tabs sample component. These are added to the tabs placeholder.
+ * This component demonstrates conditionally altering rendering when in the Sitecore Experience Editor to improve
+ * author experience.    
+*@
+
 <div data-e2e-class="styleguide-layout-tabs-tab">
-    <PlainText Tag="h5" Field="@Component.Fields["title"]" />
+    @if (SitecoreContext.Context.PageEditing)
+    {
+        @*
+            When we're editing the tabs we stack each tab vertically,
+            which means there's no regular tab titles rendered.
+            So we conditionally render the tab title here, when editing.
+        *@
+        <PlainText Tag="h5" Field="@Component.Fields["title"]" />
+    }
     <RichText Field="@Component.Fields["content"]" />
 </div>
+
+@code {
+    [CascadingParameter]
+    public RenderingData SitecoreContext { get; set; }
+}
