@@ -1,37 +1,44 @@
 @inherits JssComponentBase
 
-@{
-    var tabs = Component.Placeholders["jss-tabs"].ToList();
-}
-    <Styleguide_Specimen Component="@Component"
-                         E2eId="styleguide-layout-tabs">
-
-        <ul class="nav nav-tabs">
-            @for (var i = 0; i < tabs.Count(); i++)
-            {
-                <li class="nav-item" key="tab @i">
-                    @{
-                        var active = ActiveTabIndex == i ? "active" : "";
-                        var aClass = $"nav-link {active}";
-                    }
-
-                    <a class="@aClass"
-                       href="#t"
-                        @onclick="@(new Action(() => SetActiveTab(i)))">
-                        <Text Field="@tabs[i].Fields["title"]" />
-
-                    </a>
-                </li>
-            }
-        </ul>
-        <div class="p-3 border-left border-right border-bottom">
-            <Styleguide_Layout_Tabs_Tab Component="@tabs[ActiveTabIndex]" />
-        </div>
-
-    </Styleguide_Specimen>
+<Styleguide_Specimen Component="@Component"
+                     E2eId="styleguide-layout-tabs">
+    <ul class="nav nav-tabs">
+        @for (var i = 0; i < Tabs.Count(); i++)
+        {
+            <li class="nav-item" @key="@GetTabKey(i)">
+                <a class="@GetTabClass(i)"
+                   @onclick="@(() => SetActiveTab(i))"
+                   href="#t">
+                    <Text Field="@Tabs[i].Fields["title"]" />
+                </a>
+            </li>
+        }
+    </ul>
+    <div class="p-3 border-left border-right border-bottom">
+        <Styleguide_Layout_Tabs_Tab Component="@Tabs[ActiveTabIndex]" />
+    </div>
+</Styleguide_Specimen>
 
 @code {
     private int ActiveTabIndex { get; set; } = 0;
+
+    private ComponentDefinition[] Tabs { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        Tabs = Component.Placeholders["jss-tabs"].Where(c => c.Uid != Guid.Empty).ToArray();
+    }
+
+    private string GetTabKey(int tabIndex)
+    {
+        return $"tab{tabIndex}";
+    }
+
+    private string GetTabClass(int tabIndex)
+    {
+        var tabClass = "nav-link";
+        return ActiveTabIndex == tabIndex ? $"{tabClass} active" : tabClass;
+    }
 
     public void SetActiveTab(int i)
     {
