@@ -5,11 +5,23 @@
     <ul class="nav nav-tabs">
         @for (var i = 0; i < Tabs.Count(); i++)
         {
+            @*
+                i must be copied into a separate variable, otherwise the onclick delegate will
+                receive a reference to i and behave unexpectedly (i.e., crash because i is
+                going to be evaluated as Tabs.Count() + 1 by the time onclick is invoked).
+            *@
+            var tabIndex = i;
             <li class="nav-item" @key="@GetTabKey(i)">
-                <a class="@GetTabClass(i)"
-                   @onclick="@(() => SetActiveTab(i))"
-                   href="#t">
-                    <PlainText Field="@Tabs[i].Fields["title"]" />
+                @*
+                    Note that as of .NET Core 3.0 Preview 9 there is no native mechanism to stop
+                    event propagation on events (e.g., onclick). In the React sample app, the
+                    href attribute in this sample is set to "#t" and event propagation is
+                    (presumably) suppressed natively; here we must use "javascript: void(0);".
+                *@
+                <a class="@GetTabClass(tabIndex)"
+                   @onclick="@(() => SetActiveTab(tabIndex))"
+                   href="javascript: void(0);">
+                    <PlainText Field="@Tabs[tabIndex].Fields["title"]" />
                 </a>
             </li>
         }
@@ -40,8 +52,8 @@
         return ActiveTabIndex == tabIndex ? $"{tabClass} active" : tabClass;
     }
 
-    public void SetActiveTab(int i)
+    public void SetActiveTab(int tabIndex)
     {
-        ActiveTabIndex = i;
+        ActiveTabIndex = tabIndex;
     }
 }
