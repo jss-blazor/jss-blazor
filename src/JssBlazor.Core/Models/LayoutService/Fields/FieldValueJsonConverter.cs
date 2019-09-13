@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -59,7 +58,9 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            base.ToString();
+            if (!(value is FieldValue fieldValue)) return;
+            if (fieldValue?.RawValue == null) return;
+            serializer.Serialize(writer, fieldValue.RawValue);
         }
     }
 }
