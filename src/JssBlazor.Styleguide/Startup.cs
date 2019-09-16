@@ -29,6 +29,7 @@ namespace JssBlazor.Styleguide
             services.AddSingleton<ILayoutService, RemoteLayoutService>();
 
             services.AddTransient<ITrackingApi, TrackingApi>();
+            services.AddSingleton<IInitialStateLoader, ClientInitialStateLoader>();
         }
 
         public void Configure(IComponentsApplicationBuilder app)

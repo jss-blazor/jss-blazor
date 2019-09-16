@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.FileProviders;
+using Newtonsoft.Json;
 
 namespace JssBlazor.RenderingHost.Services
 {
@@ -16,13 +17,16 @@ namespace JssBlazor.RenderingHost.Services
     {
         private readonly IHtmlHelper _htmlHelper;
         private readonly Func<string, IFileInfo> _fileInfoFactory;
+        private readonly ILayoutServiceResultProvider _layoutServiceResultProvider;
 
         public DefaultPreRenderer(
             IHtmlHelper htmlHelper,
-            Func<string, IFileInfo> fileInfoFactory)
+            Func<string, IFileInfo> fileInfoFactory,
+            ILayoutServiceResultProvider layoutServiceResultProvider)
         {
             _htmlHelper = htmlHelper ?? throw new ArgumentNullException(nameof(htmlHelper));
             _fileInfoFactory = fileInfoFactory ?? throw new ArgumentNullException(nameof(fileInfoFactory));
+            _layoutServiceResultProvider = layoutServiceResultProvider ?? throw new ArgumentNullException(nameof(layoutServiceResultProvider));
         }
 
         public async Task<string> RenderAppAsync<T>(
@@ -48,7 +52,10 @@ namespace JssBlazor.RenderingHost.Services
             var indexHtml = await GetIndexHtmlAsync();
 
             var preRenderedApp = await InsertAppHtml(indexHtml, appHtml, domElementSelector, pageEditing);
-            return preRenderedApp;
+            if (pageEditing) return preRenderedApp;
+
+            var statefulPreRenderedApp = await InsertInitialState(preRenderedApp);
+            return statefulPreRenderedApp;
         }
 
         private async Task<string> GetAppHtmlAsync(
@@ -117,6 +124,39 @@ namespace JssBlazor.RenderingHost.Services
             htmlDocument.Save(stringWriter);
 
             return stringWriter.ToString();
+        }
+
+        private async Task<string> InsertInitialState(
+            string indexHtml)
+        {
+            var htmlDocument = new HtmlDocument();
+            htmlDocument.OptionCheckSyntax = false;
+            htmlDocument.LoadHtml(indexHtml);
+
+            var stateNode = HtmlNode.CreateNode("<script></script>");
+            stateNode.Attributes.Add("type", "application/json");
+            stateNode.Attributes.Add("id", "__JSS_STATE__");
+
+            var fetcherScript = HtmlNode.CreateNode("<script></script>");
+            fetcherScript.InnerHtml = "window.jssBlazor = {}; window.jssBlazor.getInitialState = () => { return document.getElementById(\"__JSS_STATE__\").innerHTML; }";
+
+            var body = htmlDocument.DocumentNode.SelectSingleNode("//body");
+            body.AppendChild(stateNode);
+            body.AppendChild(fetcherScript);
+
+            await using var stringWriter = new StringWriter();
+            htmlDocument.Save(stringWriter);
+
+            // HTML Agility Pack modifies the state object when setting it on the stateNode and there
+            // doesn't appear to be away to stop that behavior. Using string replace to bypass it for now.
+            var layoutServiceResult = _layoutServiceResultProvider.Result;
+            var initialState = JsonConvert.SerializeObject(layoutServiceResult);
+
+            var initialStateDocument = stringWriter.ToString();
+            initialStateDocument = initialStateDocument.Replace(
+                "<script type=\"application/json\" id=\"__JSS_STATE__\"></script>",
+                $"<script type=\"application/json\" id=\"__JSS_STATE__\">{initialState}</script>");
+            return initialStateDocument;
         }
     }
 }

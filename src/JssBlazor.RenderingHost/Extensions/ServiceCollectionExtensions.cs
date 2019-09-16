@@ -57,6 +57,7 @@ namespace JssBlazor.RenderingHost.Extensions
                 return webHostEnvironment.WebRootFileProvider.GetFileInfo(subpath);
             });
             services.AddScoped<IPreRenderer, DefaultPreRenderer>();
+            services.AddSingleton<IInitialStateLoader, ServerInitialStateLoader>();
 
             services.AddSingleton(_ => configuration.GetSection("ComponentFactory").Get<ComponentFactoryOptions>());
             services.AddSingleton<IComponentFactory, DefaultComponentFactory>();

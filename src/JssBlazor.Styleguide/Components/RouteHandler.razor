@@ -1,5 +1,6 @@
 @inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
+@inject IInitialStateLoader InitialStateLoader
 @inject ILayoutService LayoutService
 
 @code {
@@ -18,12 +19,26 @@
 </CascadingValue>
 
 @code {
+    private bool _initialLoad = true;
+
     [Parameter]
     public LayoutServiceResult Route { get; set; }
 
     protected override async Task OnParametersSetAsync()
     {
         var routePath = NavigationManager.GetSitecoreRoutePath();
+
+        if (_initialLoad)
+        {
+            _initialLoad = false;
+            var initialState = await InitialStateLoader.GetInitialStateAsync();
+            if (initialState != null)
+            {
+                Route = initialState;
+                return;
+            }
+        }
+
         Route = await LayoutService.GetRouteDataAsync(routePath, null);
     }
 }
