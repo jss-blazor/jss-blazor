@@ -1,0 +1,20 @@
+@inherits JssComponentBase
+
+<div data-e2e-id="styleguide-customroutetype">
+    <PlainText Tag="h3" Field="@SitecoreContext.Route.Fields["headline"]" />
+
+    <p>
+        <em>
+            By <PlainText Field="@SitecoreContext.Route.Fields["author"]" />
+        </em>
+    </p>
+
+    <RichText Field="@SitecoreContext.Route.Fields["content"]" />
+
+    <NavLink href="/styleguide">Return to the Styleguide</NavLink>
+</div>
+
+@code {
+    [CascadingParameter]
+    public RenderingData SitecoreContext { get; set; }
+}
