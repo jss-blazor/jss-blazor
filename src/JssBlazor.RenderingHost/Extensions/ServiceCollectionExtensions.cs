@@ -20,7 +20,6 @@ namespace JssBlazor.RenderingHost.Extensions
             // Replace Blazor's out-of-the-box NavigationManager with one that correctly resolves URLs server side.
             services.AddScoped<NavigationManager, HardcodedRemoteNavigationManager>();
 
-            services.AddSingleton<IRouteResolver, YamlRouteResolver>();
             services.AddSingleton<ILayoutServiceResultProvider, StaticLayoutServiceResultProvider>();
             services.AddSingleton<ILayoutService, StaticLayoutService>();
 
