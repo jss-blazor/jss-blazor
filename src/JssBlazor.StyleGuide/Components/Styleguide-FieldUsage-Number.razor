@@ -1,7 +1,23 @@
 @inherits JssComponentBase
 
-    <Styleguide_Specimen Component="@Component"
-                         E2eId="styleguide-fieldusage-number">
-        @*Direct access to the value, which is a JS number, is also supported.*@
-        <p>value: (not editable): @LayoutDataUtilities.GetFieldValue(Component, "sample")</p>
-    </Styleguide_Specimen>
+<Styleguide_Specimen Component="@Component"
+                     E2eId="styleguide-fieldusage-number">
+    @*Basic emission of a number field for editing can be done with the component.*@
+    <PlainText Field="@Component.Fields["sample"]" />
+
+    @*Direct access to the value, which is a JS number, is also supported.*@
+    <p>
+        C# value type: @fieldValue.GetType().Name
+        <br />
+        C# value: @fieldValue
+    </p>
+</Styleguide_Specimen>
+
+@code {
+    private decimal fieldValue;
+
+    protected override void OnParametersSet()
+    {
+        fieldValue = Component.Fields["sample"].GetFieldValue<decimal>();
+    }
+}
