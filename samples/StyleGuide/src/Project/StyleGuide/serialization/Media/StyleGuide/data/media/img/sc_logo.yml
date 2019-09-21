@@ -8,9 +8,6 @@ SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: "-/media/190D062DED895D74ABB3BA02E9CF4319.ashx?h=16&thn=1&w=16"
-- ID: "22eac599-f13b-4607-a89d-c091763a467d"
-  Hint: Width
-  Value: 205
 - ID: "40e50ed9-ba07-4702-992e-a912738d32dc"
   Hint: Blob
   BlobID: "0140489d-eae3-44e3-af37-3a060ff900fc"
@@ -27,9 +24,6 @@ SharedFields:
 - ID: "cb09946f-3218-4823-87d2-d5007c199a96"
   Hint: Dimensions
   Value: 205 x 51
-- ID: "de2ca9e4-c117-4c8a-a139-1ff4b199d15a"
-  Hint: Height
-  Value: 51
 Languages:
 - Language: en
   Versions:
