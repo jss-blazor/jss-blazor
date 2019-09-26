@@ -1,4 +1,190 @@
 @inherits JssComponentBase
+@using System.Text;
+@using Microsoft.Extensions.Logging
+@inject ILogger<Styleguide_Tracking> Logger
+
 <Styleguide_Specimen Component="@Component"
                      E2eId="styleguide-tracking">
+    <div>
+        <p class="alert alert-warning">
+            Note: The JSS tracker API is disabled by default. Consult the <a href="https://jss.sitecore.com/docs/fundamentals/services/tracking">tracking documentation</a> to enable it.
+        </p>
+        <div class="row">
+            <fieldset class="form-group col-sm">
+                <legend>Event</legend>
+                <p>
+                    Events are defined in <code>/sitecore/system/Settings/Analytics/Page Events</code>
+                </p>
+                <label htmlFor="event">Event GUID or Name</label>
+                <input type="text"
+                       id="event"
+                       class="form-control"
+                       @bind="_event"
+                       placeholder="e.g., Download brochure" />
+                <button type="button"
+                        class="btn btn-primary mt-3"
+                        @onclick="SubmitEvent">
+                    Submit
+                </button>
+            </fieldset>
+
+            <fieldset class="form-group col-sm">
+                <legend>Goal</legend>
+                <p>
+                    Goals are defined in <code>/sitecore/system/Marketing Control Panel/Goals</code>
+                </p>
+                <label htmlFor="goal">Goal GUID or Name</label>
+                <input type="text"
+                       class="form-control"
+                       id="goal"
+                       @bind="_goal"
+                       placeholder="e.g., Register" />
+                <button type="button"
+                        class="btn btn-primary mt-3"
+                        @onclick="SubmitGoal">
+                    Submit
+                </button>
+            </fieldset>
+        </div>
+        <div class="row">
+            <fieldset class="form-group col-sm">
+                <legend>Outcome</legend>
+                <p>
+                    Outcomes are defined in
+                    <code>/sitecore/system/Marketing Control Panel/Outcomes</code>
+                </p>
+                <label htmlFor="outcomeName">Outcome GUID or Name</label>
+                <input type="text"
+                       class="form-control"
+                       id="outcomeName"
+                       @bind="_outcomeName"
+                       placeholder="e.g., Marketing Lead" />
+                <br />
+                <label htmlFor="outcomeValue">Monetary Value (optional)</label>
+                <input type="number"
+                       class="form-control"
+                       id="outcomeValue"
+                       @bind="_outcomeValue"
+                       placeholder="e.g., 1337.00" />
+                <button type="button"
+                        class="btn btn-primary mt-3"
+                        @onclick="SubmitOutcome">
+                    Submit
+                </button>
+            </fieldset>
+
+            <fieldset class="form-group col-sm">
+                <legend>Campaign</legend>
+                <p>
+                    Campaigns are defined in
+                    <code>/sitecore/system/Marketing Control Panel/Campaigns</code>
+                </p>
+                <label htmlFor="campaign">Campaign GUID or Name</label>
+                <input type="text"
+                       class="form-control"
+                       id="campaign"
+                       @bind="_campaign"
+                       placeholder="e.g., Twitter Share Buttons" />
+                <button type="button"
+                        class="btn btn-primary mt-3"
+                        @onclick="TriggerCampaign">
+                    Submit
+                </button>
+            </fieldset>
+        </div>
+        <div class="row">
+            <fieldset class="form-group col-sm">
+                <legend>Page View</legend>
+                <p>
+                    Track arbitrary page views for custom routing or offline use. Note that Layout
+                    Service tracks page views by default unless <code>tracking=false</code> is passed
+                    in its query string.
+                </p>
+                <label htmlFor="pageId">Page Item GUID</label>
+                <input type="text"
+                       class="form-control"
+                       id="pageId"
+                       @bind="_pageId"
+                       placeholder="e.g., {11111111-1111-1111-1111-111111111111}" />
+                <br />
+                <label htmlFor="pageUrl">Page URL</label>
+                <input type="text"
+                       class="form-control"
+                       id="pageUrl"
+                       @bind="_pageUrl"
+                       placeholder="e.g., /foo/bar" />
+                <button type="button"
+                        class="btn btn-primary mt-3"
+                        @onclick="SubmitPageView">
+                    Submit
+                </button>
+            </fieldset>
+
+            <fieldset class="form-group col-sm">
+                <legend>Batching</legend>
+                <p>
+                    The tracking API supports pushing a whole batch of events in a single request.
+                    This can be useful for queuing strategies or offline PWA usage.
+                </p>
+                <button type="button"
+                        class="btn btn-primary"
+                        @onclick="SubmitBatching">
+                    Submit Batch of Events
+                </button>
+            </fieldset>
+        </div>
+        <div class="row">
+            <fieldset class="form-group col-sm">
+                <legend>Interaction Control</legend>
+                <p>
+                    Tracking data is not pushed into the xConnect service until your session ends on
+                    the Sitecore server. Click this button to instantly end your session and flush the
+                    data - great for debugging and testing.
+                </p>
+                <p class="alert alert-warning">
+                    Note: By default <em>anonymous</em> contacts will not be shown in Experience
+                    Profile. If your interactions are not showing up in Experience Profile, you may
+                    need to
+                    <a href="https://doc.sitecore.net/developers/xp/xconnect/xconnect-search-indexer/enable-anonymous-contact-indexing.html">
+                        enable anonymous contact indexing.
+                    </a>
+                </p>
+                <button type="button"
+                        class="btn btn-primary"
+                        @onclick="AbandonSession">
+                    End Interaction
+                </button>
+            </fieldset>
+        </div>
+    </div>
 </Styleguide_Specimen>
+
+@code {
+    private string _event;
+    private string _goal;
+    private string _outcomeName;
+    private decimal? _outcomeValue;
+    private string _campaign;
+    private string _pageId;
+    private string _pageUrl;
+
+    public void SubmitEvent() => LogEvent(nameof(SubmitEvent), _event);
+    public void SubmitGoal() => LogEvent(nameof(SubmitGoal), _goal);
+    public void SubmitOutcome() => LogEvent(nameof(SubmitOutcome), $"{{ name: {_outcomeName}, value: {_outcomeValue} }}");
+    public void TriggerCampaign() => LogEvent(nameof(TriggerCampaign), _campaign);
+    public void SubmitPageView() => LogEvent(nameof(SubmitPageView), $"{{ pageId: {_pageId}, pageUrl: {_pageUrl} }}");
+    public void SubmitBatching() => LogEvent(nameof(SubmitBatching));
+    public void AbandonSession() => LogEvent(nameof(AbandonSession));
+
+    private void LogEvent(string eventName, object data = null)
+    {
+        var message = new StringBuilder($"Event fired: {eventName}");
+        if (data != null)
+        {
+            message.Append($" with data: {data.ToString()}");
+        }
+        message.Append(".");
+        var formattedMessage = LogUtility.FormatLogMessage(this, message.ToString());
+        Logger.LogInformation(formattedMessage);
+    }
+}
