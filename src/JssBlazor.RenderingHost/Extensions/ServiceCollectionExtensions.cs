@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using JssBlazor.Tracking.Services;
 
 namespace JssBlazor.RenderingHost.Extensions
 {
@@ -32,6 +33,9 @@ namespace JssBlazor.RenderingHost.Extensions
 
             services.AddSingleton(_ => configuration.GetSection("ComponentFactory").Get<ComponentFactoryOptions>());
             services.AddSingleton<IComponentFactory, DefaultComponentFactory>();
+
+            services.AddSingleton(_ => configuration.GetSection("SitecoreConfiguration").Get<SitecoreConfiguration>());
+            services.AddSingleton<ITrackingApi, LoggerTrackingApi>();
         }
     }
 }

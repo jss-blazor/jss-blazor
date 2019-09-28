@@ -3,6 +3,7 @@ using JssBlazor.Components;
 using JssBlazor.Core.Models;
 using JssBlazor.Core.Services;
 using JssBlazor.StyleGuide.Services;
+using JssBlazor.Tracking.Services;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -26,6 +27,7 @@ namespace JssBlazor.StyleGuide
                 SitecoreApiHost = "http://styleguide.sitecore"
             });
             services.AddSingleton<ILayoutService, RemoteLayoutService>();
+            services.AddSingleton<ITrackingApi, LoggerTrackingApi>();
         }
 
         public void Configure(IComponentsApplicationBuilder app)

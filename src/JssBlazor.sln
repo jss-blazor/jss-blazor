@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JssBlazor.LayoutService", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StyleGuide", "StyleGuide", "{F984DABF-1D68-4F8F-856F-3144EF9391DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JssBlazor.Tracking", "JssBlazor.Tracking\JssBlazor.Tracking.csproj", "{E2E54709-6CDC-4AD3-9B24-24FD999BEC52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +62,10 @@ Global
 		{653B75C1-4489-4948-B820-7C4C53F583D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{653B75C1-4489-4948-B820-7C4C53F583D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{653B75C1-4489-4948-B820-7C4C53F583D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2E54709-6CDC-4AD3-9B24-24FD999BEC52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2E54709-6CDC-4AD3-9B24-24FD999BEC52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2E54709-6CDC-4AD3-9B24-24FD999BEC52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2E54709-6CDC-4AD3-9B24-24FD999BEC52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +77,7 @@ Global
 		{50414029-28A3-46C3-B4DE-A70636363410} = {F42D2F00-6624-4C21-83EE-0B31E365AE3B}
 		{DBC8A6F1-1F7F-497B-9E86-8D08D73EC6C1} = {F42D2F00-6624-4C21-83EE-0B31E365AE3B}
 		{653B75C1-4489-4948-B820-7C4C53F583D8} = {84760A93-6E83-419B-B006-27716D248DB0}
+		{E2E54709-6CDC-4AD3-9B24-24FD999BEC52} = {F42D2F00-6624-4C21-83EE-0B31E365AE3B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F9DC17C5-E512-44E8-ACF6-592A905B387F}

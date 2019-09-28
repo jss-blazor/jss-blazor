@@ -1,7 +1,6 @@
 @inherits JssComponentBase
-@using System.Text;
-@using Microsoft.Extensions.Logging
-@inject ILogger<Styleguide_Tracking> Logger
+@inject ITrackingApi TrackingApi
+@inject SitecoreConfiguration SitecoreConfiguration
 
 <Styleguide_Specimen Component="@Component"
                      E2eId="styleguide-tracking">
@@ -23,7 +22,7 @@
                        placeholder="e.g., Download brochure" />
                 <button type="button"
                         class="btn btn-primary mt-3"
-                        @onclick="SubmitEvent">
+                        @onclick="SubmitEventAsync">
                     Submit
                 </button>
             </fieldset>
@@ -41,7 +40,7 @@
                        placeholder="e.g., Register" />
                 <button type="button"
                         class="btn btn-primary mt-3"
-                        @onclick="SubmitGoal">
+                        @onclick="SubmitGoalAsync">
                     Submit
                 </button>
             </fieldset>
@@ -68,7 +67,7 @@
                        placeholder="e.g., 1337.00" />
                 <button type="button"
                         class="btn btn-primary mt-3"
-                        @onclick="SubmitOutcome">
+                        @onclick="SubmitOutcomeAsync">
                     Submit
                 </button>
             </fieldset>
@@ -87,7 +86,7 @@
                        placeholder="e.g., Twitter Share Buttons" />
                 <button type="button"
                         class="btn btn-primary mt-3"
-                        @onclick="TriggerCampaign">
+                        @onclick="TriggerCampaignAsync">
                     Submit
                 </button>
             </fieldset>
@@ -115,7 +114,7 @@
                        placeholder="e.g., /foo/bar" />
                 <button type="button"
                         class="btn btn-primary mt-3"
-                        @onclick="SubmitPageView">
+                        @onclick="SubmitPageViewAsync">
                     Submit
                 </button>
             </fieldset>
@@ -128,7 +127,7 @@
                 </p>
                 <button type="button"
                         class="btn btn-primary"
-                        @onclick="SubmitBatching">
+                        @onclick="SubmitBatchingAsync">
                     Submit Batch of Events
                 </button>
             </fieldset>
@@ -151,7 +150,7 @@
                 </p>
                 <button type="button"
                         class="btn btn-primary"
-                        @onclick="AbandonSession">
+                        @onclick="AbandonSessionAsync">
                     End Interaction
                 </button>
             </fieldset>
@@ -168,23 +167,49 @@
     private string _pageId;
     private string _pageUrl;
 
-    public void SubmitEvent() => LogEvent(nameof(SubmitEvent), _event);
-    public void SubmitGoal() => LogEvent(nameof(SubmitGoal), _goal);
-    public void SubmitOutcome() => LogEvent(nameof(SubmitOutcome), $"{{ name: {_outcomeName}, value: {_outcomeValue} }}");
-    public void TriggerCampaign() => LogEvent(nameof(TriggerCampaign), _campaign);
-    public void SubmitPageView() => LogEvent(nameof(SubmitPageView), $"{{ pageId: {_pageId}, pageUrl: {_pageUrl} }}");
-    public void SubmitBatching() => LogEvent(nameof(SubmitBatching));
-    public void AbandonSession() => LogEvent(nameof(AbandonSession));
+    private TrackingRequestOptions _trackingRequestOptions;
 
-    private void LogEvent(string eventName, object data = null)
+    protected override void OnParametersSet()
     {
-        var message = new StringBuilder($"Event fired: {eventName}");
-        if (data != null)
+        _trackingRequestOptions = new TrackingRequestOptions
         {
-            message.Append($" with data: {data.ToString()}");
-        }
-        message.Append(".");
-        var formattedMessage = LogUtility.FormatLogMessage(this, message.ToString());
-        Logger.LogInformation(formattedMessage);
+            Host = SitecoreConfiguration.SitecoreApiHost,
+            QueryStringParams = new Dictionary<string, string>
+            {
+                { "sc_apikey", SitecoreConfiguration.SitecoreApiKey.ToString("N") }
+            }
+        };
+    }
+
+    public async Task SubmitEventAsync() => await TrackingApi.TrackEventAsync(new Event { EventId = _event }, _trackingRequestOptions);
+    public async Task SubmitGoalAsync() => await TrackingApi.TrackEventAsync(new Goal { GoalId = _goal }, _trackingRequestOptions);
+    public async Task SubmitOutcomeAsync() => await TrackingApi.TrackEventAsync(new Outcome { OutcomeId = _outcomeName, CurrencyCode = "USD", MonetaryValue = _outcomeValue }, _trackingRequestOptions);
+    public async Task TriggerCampaignAsync() => await TrackingApi.TrackEventAsync(new Campaign { CampaignId = _campaign }, _trackingRequestOptions);
+    public async Task SubmitPageViewAsync() => await TrackingApi.TrackEventAsync(new PageView { PageId = _pageId, Url = _pageUrl }, _trackingRequestOptions);
+
+    public async Task SubmitBatchingAsync()
+    {
+        var events = new ITrackingModel[]
+        {
+            new Event { EventId = "Download" },
+            new Goal { GoalId = "Instant Demo" },
+            new Outcome { OutcomeId = "Opportunity" },
+            new PageView { PageId = "{110D559F-DEA5-42EA-9C1C-8A5DF7E70EF9}", Url = "/arbitrary/url/you/own" },
+            // this goal will be added to the new page/route ID set above, not the current route
+            new Goal { GoalId = "Register" }
+        };
+        await TrackingApi.TrackEventsAsync(events, _trackingRequestOptions);
+    }
+
+    public async Task AbandonSessionAsync()
+    {
+        var abandonOptions = new TrackingRequestOptions
+        {
+            Action = "Flush",
+            Host = _trackingRequestOptions.Host,
+            QueryStringParams = _trackingRequestOptions.QueryStringParams,
+            ServiceUrl = _trackingRequestOptions.ServiceUrl
+        };
+        await TrackingApi.TrackEventAsync(null, abandonOptions);
     }
 }
