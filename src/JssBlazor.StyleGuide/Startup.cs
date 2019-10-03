@@ -27,7 +27,8 @@ namespace JssBlazor.StyleGuide
                 SitecoreApiHost = "http://styleguide.sitecore"
             });
             services.AddSingleton<ILayoutService, RemoteLayoutService>();
-            services.AddSingleton<ITrackingApi, LoggerTrackingApi>();
+
+            services.AddTransient<ITrackingApi, TrackingApi>();
         }
 
         public void Configure(IComponentsApplicationBuilder app)

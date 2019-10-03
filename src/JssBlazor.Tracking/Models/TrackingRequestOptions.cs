@@ -12,7 +12,7 @@ namespace JssBlazor.Tracking.Models
         /// <summary>
         /// Relative path from host to tracking service. Default: /sitecore/api/jss/track
         /// </summary>
-        public string ServiceUrl { get; set; }
+        public string ServiceUrl { get; set; } = "/sitecore/api/jss/track";
 
         /// <summary>
         /// An object of key:value pairs to be stringified and used as query string parameters.
