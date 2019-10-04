@@ -34,7 +34,7 @@
     private IEnumerable<IRendering> GetSectionsFromPlaceholder(IRendering rendering, string placeholderName)
     {
         return LayoutDataUtilities.GetChildPlaceholder(rendering, placeholderName)
-            .Where(section => LayoutDataUtilities.GetFieldValue(section, "heading") != null);
+            .Where(section => section.GetFieldValue("heading") != null);
     }
 
     private Section MapSection(IRendering rendering, string childPlaceholderName = null)
@@ -42,7 +42,7 @@
         var section = new Section
         {
             Id = StyleguideUtilities.GetMarkupId(rendering),
-            Heading = LayoutDataUtilities.GetFieldValue(rendering, "heading")
+            Heading = rendering.GetFieldValue("heading")
         };
 
         if (!string.IsNullOrWhiteSpace(childPlaceholderName))

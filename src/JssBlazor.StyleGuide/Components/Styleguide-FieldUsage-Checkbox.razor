@@ -1,9 +1,9 @@
 @inherits JssComponentBase
 
-    <Styleguide_Specimen Component="@Component"
-                         E2eId="styleguide-fieldusage-checkbox">
-        <ul>
-            <li><code>checkbox</code> is @LayoutDataUtilities.GetFieldValue(Component, "checkbox")</li>
-            <li><code>checkbox2</code> is @LayoutDataUtilities.GetFieldValue(Component, "checkbox2")</li>
-        </ul>
+<Styleguide_Specimen Component="@Component"
+                     E2eId="styleguide-fieldusage-checkbox">
+    <ul>
+        <li><code>checkbox</code> is @Component.GetFieldValue("checkbox")</li>
+        <li><code>checkbox2</code> is @Component.GetFieldValue("checkbox2")</li>
+    </ul>
 </Styleguide_Specimen>

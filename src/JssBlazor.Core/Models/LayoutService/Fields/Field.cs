@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace JssBlazor.Core.Models.LayoutService.Fields
 {
@@ -14,5 +15,19 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
         public string Title { get; set; }
 
         public string DisplayName { get; set; }
+
+        public T GetFieldValue<T>()
+        {
+            var rawValue = Value?.RawValue;
+            if (rawValue == null) return default;
+            return rawValue.Value<T>();
+        }
+
+        public T GetFieldValue<T>(string key)
+        {
+            var rawValue = Value?.RawValue?[key];
+            if (rawValue == null) return default;
+            return rawValue.Value<T>();
+        }
     }
 }

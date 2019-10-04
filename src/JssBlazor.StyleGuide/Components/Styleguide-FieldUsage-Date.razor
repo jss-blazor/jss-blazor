@@ -1,8 +1,8 @@
 @inherits JssComponentBase
 
 @{
-    var date = LayoutDataUtilities.GetFieldValue<DateTime>(Component, "date");
-    var dateTime = LayoutDataUtilities.GetFieldValue<DateTime>(Component, "dateTime");
+    var date = Component.GetFieldValue<DateTime>("date");
+    var dateTime = Component.GetFieldValue<DateTime>("dateTime");
     var utc = dateTime.ToUniversalTime();
     var localDate = dateTime.ToLocalTime().Date;
     var localTime = dateTime.ToLocalTime();
@@ -15,7 +15,7 @@
             Date: @date.ToLongDateString()
         </li>
         <li>
-            Date (datetime): @LayoutDataUtilities.GetFieldValue(Component, "dateTime")
+            Date (datetime): @Component.GetFieldValue("dateTime")
         </li>
         <li>
             UTC Date string: @utc
