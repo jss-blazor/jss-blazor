@@ -84,11 +84,5 @@ namespace JssBlazor.Components.Utilities
             }
             return default;
         }
-
-        public static Field GetLinkedField<T>(this Field field, string key)
-        {
-            var value = field.Value.RawValue[key];
-            return null;
-        }
     }
 }
