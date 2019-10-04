@@ -30,7 +30,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JssBlazor.LayoutService", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StyleGuide", "StyleGuide", "{F984DABF-1D68-4F8F-856F-3144EF9391DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JssBlazor.Tracking", "JssBlazor.Tracking\JssBlazor.Tracking.csproj", "{E2E54709-6CDC-4AD3-9B24-24FD999BEC52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JssBlazor.Tracking", "JssBlazor.Tracking\JssBlazor.Tracking.csproj", "{E2E54709-6CDC-4AD3-9B24-24FD999BEC52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
