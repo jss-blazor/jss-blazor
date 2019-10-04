@@ -35,7 +35,7 @@ namespace JssBlazor.RenderingHost.Extensions
             services.AddSingleton<IComponentFactory, DefaultComponentFactory>();
 
             services.AddSingleton(_ => configuration.GetSection("SitecoreConfiguration").Get<SitecoreConfiguration>());
-            services.AddSingleton<ITrackingApi, LoggerTrackingApi>();
+            services.AddSingleton<ITrackingApi, TrackingApi>();
         }
     }
 }
