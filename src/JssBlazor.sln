@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{AF8D
 		..\.gitattributes = ..\.gitattributes
 		..\.gitignore = ..\.gitignore
 		..\NuGet.config = ..\NuGet.config
-		..\README.md = ..\README.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JssBlazor.Components", "JssBlazor.Components\JssBlazor.Components.csproj", "{DBC8A6F1-1F7F-497B-9E86-8D08D73EC6C1}"

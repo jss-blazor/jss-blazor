@@ -14,10 +14,16 @@ principles found in the `/samples` folder. The Style Guide sample site is built
 using all of the same components and content as found in the boilerplate
 projects for JSS Angular, React, and Vue.js.
 
-## Style Guide
+## SDK 🛠️
 
-To get started with the Style Guide, follow along with its [README.md][3].
+To get started working with the JSS Blazor SDK, follow along with its
+[README][3].
+
+## Style Guide 🎨
+
+To get started with the Style Guide, follow along with its [README][4].
 
 [1]: https://jss.sitecore.com
 [2]: https://dotnet.microsoft.com/apps/aspnet/web-apps/client
-[3]: /samples/StyleGuide/README.md
+[3]: /src/README.md
+[4]: /samples/StyleGuide/README.md
