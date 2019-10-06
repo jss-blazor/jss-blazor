@@ -16,6 +16,12 @@ namespace JssBlazor.RenderingHost.Extensions
     {
         public static void AddJssBlazorRenderingHost(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddBlazorServices();
+            services.AddJssBlazorServices(configuration);
+        }
+
+        private static void AddBlazorServices(this IServiceCollection services)
+        {
             // Required for Blazor server-side rendering.
             services.AddServerSideBlazor();
 
@@ -32,7 +38,10 @@ namespace JssBlazor.RenderingHost.Extensions
                 };
                 return httpClient;
             });
+        }
 
+        private static void AddJssBlazorServices(this IServiceCollection services, IConfiguration configuration)
+        {
             services.AddSingleton<ILayoutServiceResultProvider, StaticLayoutServiceResultProvider>();
             services.AddSingleton<ILayoutService, StaticLayoutService>();
 
