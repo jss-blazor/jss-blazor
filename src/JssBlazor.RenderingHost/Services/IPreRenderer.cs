@@ -11,7 +11,8 @@ namespace JssBlazor.RenderingHost.Services
             string domElementSelector,
             ActionContext actionContext,
             ViewDataDictionary viewData,
-            ITempDataDictionary tempData)
+            ITempDataDictionary tempData,
+            bool pageEditing)
             where T : IComponent;
     }
 }

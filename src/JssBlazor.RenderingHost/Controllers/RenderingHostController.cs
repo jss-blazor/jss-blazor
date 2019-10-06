@@ -28,9 +28,11 @@ namespace JssBlazor.RenderingHost.Controllers
         {
             try
             {
-                _layoutServiceResultProvider.Result = renderRequest.FunctionArgs.LayoutServiceResult;
+                var layoutServiceResult = renderRequest.FunctionArgs.LayoutServiceResult;
+                _layoutServiceResultProvider.Result = layoutServiceResult;
 
-                var appHtml = await _preRenderer.RenderAppAsync<App>("app", ControllerContext, ViewData, TempData);
+                var pageEditing = layoutServiceResult.Sitecore.Context.PageEditing;
+                var appHtml = await _preRenderer.RenderAppAsync<App>("app", ControllerContext, ViewData, TempData, pageEditing);
                 var resultModel = new RenderResult
                 {
                     Html = appHtml,

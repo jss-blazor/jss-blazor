@@ -28,13 +28,14 @@ namespace JssBlazor.RenderingHost.Services
             string domElementSelector,
             ActionContext actionContext,
             ViewDataDictionary viewData,
-            ITempDataDictionary tempData)
+            ITempDataDictionary tempData,
+            bool pageEditing)
             where T : IComponent
         {
             var appHtml = await GetAppHtmlAsync<T>(actionContext, viewData, tempData);
             var indexHtml = await GetIndexHtmlAsync();
 
-            var preRenderedApp = await InsertAppHtml(indexHtml, appHtml, domElementSelector);
+            var preRenderedApp = await InsertAppHtml(indexHtml, appHtml, domElementSelector, pageEditing);
             return preRenderedApp;
         }
 
@@ -70,7 +71,8 @@ namespace JssBlazor.RenderingHost.Services
         private static async Task<string> InsertAppHtml(
             string indexHtml,
             string appHtml,
-            string domElementSelector)
+            string domElementSelector,
+            bool pageEditing)
         {
             var htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(indexHtml);
@@ -78,6 +80,13 @@ namespace JssBlazor.RenderingHost.Services
             var appNode = htmlDocument.DocumentNode.SelectSingleNode($"//{domElementSelector}");
             appNode.RemoveAllChildren();
             appNode.InnerHtml = appHtml;
+
+            if (pageEditing)
+            {
+                // Blazor breaks Experience Editor functionality, so remove the Blazor bundle in the Experience Editor.
+                var blazorScript = htmlDocument.DocumentNode.SelectSingleNode($"//script[contains(@src, 'blazor.webassembly.js')]");
+                blazorScript.Remove();
+            }
 
             await using var stringWriter = new StringWriter();
             htmlDocument.Save(stringWriter);
