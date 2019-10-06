@@ -25,7 +25,7 @@ Languages:
       Value: 20190620T030907Z
     - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
       Hint: __Workflow state
-      Value: "{FCFDBB96-946A-4D2F-BCCD-5573073FC176}"
+      Value: "{AF32C98B-C828-42AF-A649-74C1DE3303FB}"
     - ID: "725bea95-4e18-5fc0-87a9-757c7d893c13"
       Hint: sample1
       Value: |
@@ -33,4 +33,4 @@ Languages:
     - ID: "af80cb10-966b-502b-8960-1405edcdc187"
       Hint: sample2
       Value: |
-        <image alt="Sitecore JSS Logo" mediaid="{26DFB991-E51D-5F42-8B19-6657B53E4682}" />
+        <image alt="JSS Blazor Logo" mediaid="{75235C46-BC26-4A81-A447-C5C0748E3F04}" />
