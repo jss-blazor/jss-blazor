@@ -22,9 +22,6 @@ namespace JssBlazor.RenderingHost.Extensions
 
         private static void AddBlazorServices(this IServiceCollection services)
         {
-            // Required for Blazor server-side rendering.
-            services.AddServerSideBlazor();
-
             // Replace Blazor's out-of-the-box NavigationManager with one that correctly resolves URLs server side.
             services.AddScoped<NavigationManager, HardcodedRemoteNavigationManager>();
 
