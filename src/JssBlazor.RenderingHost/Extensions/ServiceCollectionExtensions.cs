@@ -1,13 +1,14 @@
 using System;
-using JssBlazor.RenderingHost.Services;
+using System.Net.Http;
 using JssBlazor.Core.Models;
 using JssBlazor.Core.Services;
+using JssBlazor.RenderingHost.Services;
+using JssBlazor.Tracking.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
-using JssBlazor.Tracking.Services;
 
 namespace JssBlazor.RenderingHost.Extensions
 {
@@ -20,6 +21,17 @@ namespace JssBlazor.RenderingHost.Extensions
 
             // Replace Blazor's out-of-the-box NavigationManager with one that correctly resolves URLs server side.
             services.AddScoped<NavigationManager, HardcodedRemoteNavigationManager>();
+
+            // An HttpClient is registered out-of-the-box with Blazor WebAssembly.
+            services.AddTransient(serviceProvider =>
+            {
+                var navigationManager = serviceProvider.GetRequiredService<NavigationManager>();
+                var httpClient = new HttpClient
+                {
+                    BaseAddress = new Uri(navigationManager.BaseUri)
+                };
+                return httpClient;
+            });
 
             services.AddSingleton<ILayoutServiceResultProvider, StaticLayoutServiceResultProvider>();
             services.AddSingleton<ILayoutService, StaticLayoutService>();
@@ -35,7 +47,7 @@ namespace JssBlazor.RenderingHost.Extensions
             services.AddSingleton<IComponentFactory, DefaultComponentFactory>();
 
             services.AddSingleton(_ => configuration.GetSection("SitecoreConfiguration").Get<SitecoreConfiguration>());
-            services.AddSingleton<ITrackingApi, TrackingApi>();
+            services.AddTransient<ITrackingApi, TrackingApi>();
         }
     }
 }
