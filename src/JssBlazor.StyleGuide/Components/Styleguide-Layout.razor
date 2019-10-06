@@ -8,7 +8,8 @@
         @foreach (var section in Sections)
         {
             <nav @key="@section.Heading" class="nav flex-column pt-2">
-                <a href="@GetSectionLink(section)" class="nav-item font-weight-bold">
+                @* Anchor navigation doesn't work with Blazor Assembly unless event.stopPropagation() is added to onclick *@
+                <a href="@GetSectionLink(section)" class="nav-item font-weight-bold" onclick="event.stopPropagation();">
                     @section.Heading
                 </a>
                 @if (section.ShowChildren)
@@ -16,7 +17,8 @@
                     <nav class="nav flex-column">
                         @foreach (var child in section.Children)
                         {
-                            <a @key="child.Id" href="@GetSectionLink(child)">
+                            @* Anchor navigation doesn't work with Blazor Assembly unless event.stopPropagation() is added to onclick *@
+                            <a @key="child.Id" href="@GetSectionLink(child)" onclick="event.stopPropagation();">
                                 @child.Heading
                             </a>
                         }
