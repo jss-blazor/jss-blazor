@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+
 namespace JssBlazor.Core.Models.LayoutService
 {
     public static class RenderingExtensions
@@ -35,6 +38,19 @@ namespace JssBlazor.Core.Models.LayoutService
             var field = rendering?.Fields?[fieldName];
             if (field == null) return default;
             return field.GetFieldValue<T>();
+        }
+
+        public static IEnumerable<ComponentDefinition> GetPlaceholderData(
+            this IRendering rendering,
+            string placeholderName)
+        {
+            if (!rendering.Placeholders?.ContainsKey(placeholderName) ?? false)
+            {
+                return Enumerable.Empty<ComponentDefinition>();
+            }
+
+            var result = rendering.Placeholders[placeholderName];
+            return result ?? Enumerable.Empty<ComponentDefinition>();
         }
     }
 }

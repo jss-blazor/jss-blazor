@@ -9,12 +9,78 @@
     [Parameter]
     public IRendering Rendering { get; set; }
 
+    /// <summary>
+    /// Render function that enables control over the rendering of the components in the placeholder.
+    /// Useful for techniques like wrapping each child in a wrapper component.
+    /// </summary>
+    [Parameter]
+    public RenderFragment<PlaceholderRenderContext> Render { get; set; }
+
+    /// <summary>
+    /// Render function that is called for each non-system component added to the placeholder.
+    /// Mutually exclusive with `render`. System components added during Experience Editor are automatically rendered as-is.
+    /// </summary>
+    [Parameter]
+    public RenderFragment<PlaceholderRenderEachContext> RenderEach { get; set; }
+
+    [Parameter]
+    public RenderFragment<PlaceholderRenderContext> RenderEmpty { get; set; }
+
     private RenderFragment RenderPlaceholder() => builder =>
     {
-        var components = Rendering.Placeholders[Name];
+        var components = Rendering.GetPlaceholderData(Name);
+        if (RenderEmpty != null && components.All(c => ComponentFactory.GetComponentType(c) == typeof(RawComponent)))
+        {
+            var context = GetRenderContext(components);
+            RenderEmpty(context)(builder);
+            return;
+        }
+        else if (Render != null)
+        {
+            var context = GetRenderContext(components);
+            Render(context)(builder);
+            return;
+        }
+        else if (RenderEach != null)
+        {
+            for (int i = 0; i < components.Count(); i++)
+            {
+                var component = components.ElementAt(i);
+                if ("text/sitecore".Equals(component.Type, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    ComponentFactory.RenderComponent(component)(builder);
+                    continue;
+                }
+                var context = GetRenderEachContext(component, i);
+                RenderEach(context)(builder);
+            }
+            return;
+        }
+
         foreach (var component in components)
         {
             ComponentFactory.RenderComponent(component)(builder);
         }
     };
+
+    private PlaceholderRenderContext GetRenderContext(IEnumerable<ComponentDefinition> components)
+    {
+        return new PlaceholderRenderContext
+        {
+            Components = components,
+            Name = Name,
+            Rendering = Rendering,
+            ComponentFactory = ComponentFactory
+        };
+    }
+
+    private PlaceholderRenderEachContext GetRenderEachContext(ComponentDefinition component, int index)
+    {
+        return new PlaceholderRenderEachContext
+        {
+            Component = component,
+            Index = index,
+            ComponentFactory = ComponentFactory
+        };
+    }
 }

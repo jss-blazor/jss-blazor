@@ -15,7 +15,8 @@ namespace JssBlazor.Core.Models.LayoutService
 
         // Properties used by "raw components"
         public string Name { get; set; }
-        public IDictionary<string, string> Attributes { get; set; }
+        public string Type { get; set; }
         public string Contents { get; set; }
+        public IDictionary<string, string> Attributes { get; set; }
     }
 }
