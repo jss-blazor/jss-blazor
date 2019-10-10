@@ -1,44 +1,81 @@
 @inherits JssComponentBase
+@inject IComponentFactory ComponentFactory
 
+@*
+    Demonstrates advanced component techniques in JSS.
+    This example implements a simple-looking tabs component.
+    Each tab is itself a child component added to a placeholder defined on the tabs component.
+    The tab component introspects its child components to render the tab headings (i.e. the tab children render partial content in two places).
+    When this component is edited in Sitecore Experience Editor, the tabbing behavior is turned off and each tab stacks on top of each other
+    for easy inline editing.
+*@
 <Styleguide_Specimen Component="@Component"
                      E2eId="styleguide-layout-tabs">
     <ul class="nav nav-tabs">
-        @for (var i = 0; i < Tabs.Count(); i++)
+        @*
+            When the page is editing, we hide the tab headings, because they are not updated when xEditor adds or removes a tab rendering.
+            Instead, we show the tab header inline with the tab contents (see Styleguide-Layout-Tabs-Tab).
+        *@
+        @if (!_isEditing)
         {
-            @*
-                i must be copied into a separate variable, otherwise the onclick delegate will
-                receive a reference to i and behave unexpectedly (i.e., crash because i is
-                going to be evaluated as Tabs.Count() + 1 by the time onclick is invoked).
-            *@
-            var tabIndex = i;
-            <li class="nav-item" @key="@GetTabKey(i)">
+            @for (var i = 0; i < _tabs.Count(); i++)
+            {
                 @*
-                    Note that as of .NET Core 3.0 Preview 9 there is no native mechanism to stop
-                    event propagation on events (e.g., onclick). In the React sample app, the
-                    href attribute in this sample is set to "#t" and event propagation is
-                    (presumably) suppressed natively; here we must use "javascript: void(0);".
+                    i must be copied into a separate variable, otherwise the onclick delegate will
+                    receive a reference to i and behave unexpectedly (i.e., crash because i is
+                    going to be evaluated as Tabs.Count() + 1 by the time onclick is invoked).
                 *@
-                <a class="@GetTabClass(tabIndex)"
-                   @onclick="@(() => SetActiveTab(tabIndex))"
-                   href="javascript: void(0);">
-                    <PlainText Field="@Tabs[tabIndex].Fields["title"]" />
-                </a>
-            </li>
+                var tabIndex = i;
+                <li class="nav-item" @key="@GetTabKey(i)">
+                    @*
+                        Note that as of .NET Core 3.0 Preview 9 there is no native mechanism to stop
+                        event propagation on events (e.g., onclick). In the React sample app, the
+                        href attribute in this sample is set to "#t" and event propagation is
+                        (presumably) suppressed natively; here we must use "javascript: void(0);".
+                    *@
+                    <a class="@GetTabClass(tabIndex)"
+                       @onclick="@(() => SetActiveTab(tabIndex))"
+                       href="javascript: void(0);">
+                        <PlainText Field="@_tabs[tabIndex].Fields["title"]" />
+                    </a>
+                </li>
+            }
         }
     </ul>
     <div class="p-3 border-left border-right border-bottom">
-        <Styleguide_Layout_Tabs_Tab Component="@Tabs[ActiveTabIndex]" />
+        @for (var i = 0; i < _tabs.Count(); i++)
+        {
+            var tab = _tabs[i];
+
+            // allow experience editor markup components to render
+            if (tab.Fields == null && _isEditing)
+            {
+                @ComponentFactory.RenderComponent(tab);
+                continue;
+            }
+
+            // we render the tab either if it's active - or we're editing,
+            // in which case we stack all tabs for visual editing
+            if (_activeTabIndex == i || _isEditing)
+            {
+                @ComponentFactory.RenderComponent(tab);
+                continue;
+            }
+        }
     </div>
 </Styleguide_Specimen>
 
 @code {
-    private int ActiveTabIndex { get; set; } = 0;
+    [CascadingParameter]
+    public RenderingData SitecoreContext { get; set; }
 
-    private ComponentDefinition[] Tabs { get; set; }
+    private int _activeTabIndex = 0;
+    private bool _isEditing => SitecoreContext.Context.PageEditing;
+    private ComponentDefinition[] _tabs;
 
     protected override void OnParametersSet()
     {
-        Tabs = Component.Placeholders["jss-tabs"].Where(c => c.Uid != Guid.Empty).ToArray();
+        _tabs = Component.Placeholders["jss-tabs"].ToArray();
     }
 
     private string GetTabKey(int tabIndex)
@@ -49,11 +86,11 @@
     private string GetTabClass(int tabIndex)
     {
         var tabClass = "nav-link";
-        return ActiveTabIndex == tabIndex ? $"{tabClass} active" : tabClass;
+        return _activeTabIndex == tabIndex ? $"{tabClass} active" : tabClass;
     }
 
     public void SetActiveTab(int tabIndex)
     {
-        ActiveTabIndex = tabIndex;
+        _activeTabIndex = tabIndex;
     }
 }

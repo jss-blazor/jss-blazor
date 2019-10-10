@@ -1,6 +1,7 @@
 using System;
 using JssBlazor.Core.Models;
 using JssBlazor.Core.Models.LayoutService;
+using Microsoft.AspNetCore.Components;
 
 namespace JssBlazor.Core.Services
 {
@@ -17,6 +18,14 @@ namespace JssBlazor.Core.Services
             _missingComponentType = Type.GetType(options.MissingComponentType);
             _rawComponentType = Type.GetType(options.RawComponentType);
         }
+
+        public RenderFragment RenderComponent(ComponentDefinition component) => builder =>
+        {
+            var componentType = GetComponentType(component);
+            builder.OpenComponent(0, componentType);
+            builder.AddAttribute(1, "Component", component);
+            builder.CloseComponent();
+        };
 
         public Type GetComponentType(ComponentDefinition componentDefinition)
         {
