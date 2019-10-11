@@ -37,7 +37,7 @@ namespace JssBlazor.Tracking.Services
             return $"{options.Host}{options.ServiceUrl}/{options.Action}";
         }
 
-        private async Task<T> FetchData<T>(
+        private async Task<string> FetchData<T>(
             string url,
             T data,
             IDictionary<string, string> parameters)
@@ -45,7 +45,7 @@ namespace JssBlazor.Tracking.Services
             var request = BuildRequest(url, data, parameters);
             var response = await _httpClient.SendAsync(request);
             var contentStream = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<T>(contentStream);
+            return contentStream;
         }
 
         private static HttpRequestMessage BuildRequest<T>(
