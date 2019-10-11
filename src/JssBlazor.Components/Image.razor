@@ -19,8 +19,8 @@
     [Parameter]
     public IEnumerable<ImageSizeParameters> SrcSet { get; set; }
 
-    [Parameter]
-    public IDictionary<string, string> HtmlAttributes { get; set; } = new Dictionary<string, string>();
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object> HtmlAttributes { get; set; } = new Dictionary<string, object>();
 
     private RenderFragment GetEditableWrapper(string editableMarkup) => builder =>
     {
@@ -51,7 +51,7 @@
                 return;
             }
 
-            var foundImgAttributes = new Dictionary<string, string>();
+            var foundImgAttributes = new Dictionary<string, object>();
             foreach (var htmlAttribute in HtmlAttributes)
             {
                 foundImgAttributes.Add(htmlAttribute.Key, htmlAttribute.Value);
@@ -62,7 +62,7 @@
                 foundImgAttributes.Add(foundImgAttribute.Key, foundImgAttribute.Value);
             }
 
-            var imgAttr = GetImageAttributes(foundImgAttributes["src"], SrcSet, foundImgAttributes, ImageParams);
+            var imgAttr = GetImageAttributes(foundImgAttributes["src"]?.ToString(), SrcSet, foundImgAttributes, ImageParams);
             var imgHtml = BuildImgHtml(imgAttr);
             var editableMarkup = Field.Editable.Replace(foundImg.ImgTag, imgHtml.ToString());
             GetEditableWrapper(editableMarkup)(builder);
@@ -70,7 +70,7 @@
         }
 
         // some wise-guy/gal is passing in a 'raw' image object value
-        IDictionary<string, string> imageAttributes = null;
+        IDictionary<string, object> imageAttributes = null;
         if (!string.IsNullOrWhiteSpace(Field.Src))
         {
             imageAttributes = GetImageAttributes(Field.Src, SrcSet, HtmlAttributes, ImageParams);
@@ -78,12 +78,12 @@
         else if (Field.Value?.RawValue != null)
         {
             string src = null;
-            var foundImgAttributes = new Dictionary<string, string>();
+            var foundImgAttributes = new Dictionary<string, object>();
             foreach (var htmlAttribute in HtmlAttributes)
             {
                 if ("src".Equals(htmlAttribute.Key, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    src = htmlAttribute.Value;
+                    src = htmlAttribute.Value?.ToString();
                     continue;
                 }
                 foundImgAttributes.Add(htmlAttribute.Key, htmlAttribute.Value);
@@ -112,13 +112,13 @@
         builder.CloseElement();
     };
 
-    private IDictionary<string, string> GetImageAttributes(
+    private IDictionary<string, object> GetImageAttributes(
         string src,
         IEnumerable<ImageSizeParameters> srcSet,
-        IDictionary<string, string> otherAttrs,
+        IDictionary<string, object> otherAttrs,
         ImageSizeParameters imageParams)
     {
-        var newAttributes = new Dictionary<string, string>
+        var newAttributes = new Dictionary<string, object>
         {
             { "class", Class }
         };
@@ -141,7 +141,7 @@
         return newAttributes;
     }
 
-    private string BuildImgHtml(IDictionary<string, string> attributes)
+    private string BuildImgHtml(IDictionary<string, object> attributes)
     {
         var imgHtml = new StringBuilder();
         imgHtml.Append("<img ");
