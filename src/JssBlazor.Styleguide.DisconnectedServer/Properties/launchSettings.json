@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "JssBlazor.Server": {
+    "JssBlazor.Styleguide.DisconnectedServer": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
