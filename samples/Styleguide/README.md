@@ -4,10 +4,10 @@ This is a sample application to show off JSS Blazor in a Helix solution.
 
 ## Setup
 
-1. Install the MVP preview of Sitecore 9.2.
+1. Install Sitecore 9.2.
    - Configure the install path as `C:/inetpub/wwwroot/styleguide.sitecore`.
    - Configure the host name as `styleguide.sitecore`.
-2. Install the JSS 12 MVP preview package in Sitecore.
+2. Install the JSS 12 package in Sitecore.
 3. Open the [`Styleguide.sln`][1] solution and modify the following
    files in the `.config` folder:
    - [`JssBlazor.Project.Common.Dev.config`][2]
