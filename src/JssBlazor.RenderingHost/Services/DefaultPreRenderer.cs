@@ -4,6 +4,7 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -32,31 +33,55 @@ namespace JssBlazor.RenderingHost.Services
             bool pageEditing)
             where T : IComponent
         {
-            var appHtml = await GetAppHtmlAsync<T>(actionContext, viewData, tempData);
+            return await RenderAppAsync(typeof(T), domElementSelector, actionContext, viewData, tempData, pageEditing);
+        }
+
+        public async Task<string> RenderAppAsync(
+            Type appType,
+            string domElementSelector,
+            ActionContext actionContext,
+            ViewDataDictionary viewData,
+            ITempDataDictionary tempData,
+            bool pageEditing)
+        {
+            var appHtml = await GetAppHtmlAsync(appType, actionContext, viewData, tempData);
             var indexHtml = await GetIndexHtmlAsync();
 
             var preRenderedApp = await InsertAppHtml(indexHtml, appHtml, domElementSelector, pageEditing);
             return preRenderedApp;
         }
 
-        private async Task<string> GetAppHtmlAsync<T>(
+        private async Task<string> GetAppHtmlAsync(
+            Type appType,
             ActionContext actionContext,
             ViewDataDictionary viewData,
             ITempDataDictionary tempData)
-            where T : IComponent
         {
             await using var viewWriter = new StringWriter();
             var viewContext = new ViewContext(actionContext, EmptyView.Default, viewData, tempData, viewWriter, new HtmlHelperOptions());
 
             var helper = (HtmlHelper)_htmlHelper;
             helper.Contextualize(viewContext);
-            var appHtmlRenderer = await _htmlHelper.RenderComponentAsync<T>(RenderMode.ServerPrerendered);
+            var appHtmlRenderer = await RenderComponentAsync(appType);
 
             await using var appHtmlWriter = new StringWriter();
             appHtmlRenderer.WriteTo(appHtmlWriter, HtmlEncoder.Default);
 
             var appHtml = appHtmlWriter.ToString();
             return appHtml;
+        }
+
+        private async Task<IHtmlContent> RenderComponentAsync(Type appType)
+        {
+            var renderComponentAsyncMethod = typeof(HtmlHelperComponentExtensions).GetMethod(
+                nameof(HtmlHelperComponentExtensions.RenderComponentAsync),
+                new[] { typeof(IHtmlHelper), typeof(RenderMode) });
+            var renderComponentAsyncOfAppTypeMethod = renderComponentAsyncMethod.MakeGenericMethod(new[] { appType });
+
+            var appHtmlRenderer = await (Task<IHtmlContent>)renderComponentAsyncOfAppTypeMethod.Invoke(
+                null,
+                new object[] { _htmlHelper, RenderMode.ServerPrerendered });
+            return appHtmlRenderer;
         }
 
         private async Task<string> GetIndexHtmlAsync()

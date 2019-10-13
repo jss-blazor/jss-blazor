@@ -1,20 +1,22 @@
+using JssBlazor.RenderingHost.Extensions;
+using JssBlazor.RenderingHost.Models;
+using JssBlazor.Styleguide;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using JssBlazor.RenderingHost.Extensions;
 
 namespace JssBlazor.RenderingHost
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -22,7 +24,12 @@ namespace JssBlazor.RenderingHost
             services.AddMvc();
             services.AddHttpContextAccessor();
 
-            services.AddJssBlazorRenderingHost(Configuration);
+            var appConfiguration = new BlazorAppConfiguration
+            {
+                AppComponentType = typeof(App),
+                AppDomElementSelector = "app"
+            };
+            services.AddJssBlazorRenderingHost(Configuration, appConfiguration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

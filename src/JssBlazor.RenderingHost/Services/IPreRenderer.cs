@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
@@ -14,5 +15,13 @@ namespace JssBlazor.RenderingHost.Services
             ITempDataDictionary tempData,
             bool pageEditing)
             where T : IComponent;
+
+        Task<string> RenderAppAsync(
+                    Type appType,
+                    string domElementSelector,
+                    ActionContext actionContext,
+                    ViewDataDictionary viewData,
+                    ITempDataDictionary tempData,
+                    bool pageEditing);
     }
 }

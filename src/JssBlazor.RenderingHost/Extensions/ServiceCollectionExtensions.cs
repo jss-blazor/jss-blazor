@@ -2,6 +2,7 @@ using System;
 using System.Net.Http;
 using JssBlazor.Core.Models;
 using JssBlazor.Core.Services;
+using JssBlazor.RenderingHost.Models;
 using JssBlazor.RenderingHost.Services;
 using JssBlazor.Tracking.Services;
 using Microsoft.AspNetCore.Components;
@@ -14,10 +15,13 @@ namespace JssBlazor.RenderingHost.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static void AddJssBlazorRenderingHost(this IServiceCollection services, IConfiguration configuration)
+        public static void AddJssBlazorRenderingHost(
+            this IServiceCollection services,
+            IConfiguration configuration,
+            BlazorAppConfiguration blazorAppConfiguration)
         {
             services.AddBlazorServices();
-            services.AddJssBlazorServices(configuration);
+            services.AddJssBlazorServices(configuration, blazorAppConfiguration);
         }
 
         private static void AddBlazorServices(this IServiceCollection services)
@@ -37,10 +41,15 @@ namespace JssBlazor.RenderingHost.Extensions
             });
         }
 
-        private static void AddJssBlazorServices(this IServiceCollection services, IConfiguration configuration)
+        private static void AddJssBlazorServices(
+            this IServiceCollection services,
+            IConfiguration configuration,
+            BlazorAppConfiguration blazorAppConfiguration)
         {
             services.AddSingleton<ILayoutServiceResultProvider, StaticLayoutServiceResultProvider>();
             services.AddSingleton<ILayoutService, StaticLayoutService>();
+
+            services.AddSingleton(blazorAppConfiguration);
 
             services.AddSingleton<Func<string, IFileInfo>>(serviceProvider => subpath =>
             {

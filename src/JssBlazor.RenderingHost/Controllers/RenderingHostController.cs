@@ -3,7 +3,6 @@ using System.Net;
 using System.Threading.Tasks;
 using JssBlazor.RenderingHost.Models;
 using JssBlazor.RenderingHost.Services;
-using JssBlazor.Styleguide;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JssBlazor.RenderingHost.Controllers
@@ -13,13 +12,16 @@ namespace JssBlazor.RenderingHost.Controllers
     public class RenderingHostController : Controller
     {
         private readonly ILayoutServiceResultProvider _layoutServiceResultProvider;
+        private readonly BlazorAppConfiguration _blazorAppConfiguration;
         private readonly IPreRenderer _preRenderer;
 
         public RenderingHostController(
             ILayoutServiceResultProvider layoutServiceResultProvider,
+            BlazorAppConfiguration blazorAppConfiguration,
             IPreRenderer preRenderer)
         {
             _layoutServiceResultProvider = layoutServiceResultProvider ?? throw new ArgumentNullException(nameof(layoutServiceResultProvider));
+            _blazorAppConfiguration = blazorAppConfiguration ?? throw new ArgumentNullException(nameof(blazorAppConfiguration));
             _preRenderer = preRenderer ?? throw new ArgumentNullException(nameof(preRenderer));
         }
 
@@ -31,8 +33,10 @@ namespace JssBlazor.RenderingHost.Controllers
                 var layoutServiceResult = renderRequest.FunctionArgs.LayoutServiceResult;
                 _layoutServiceResultProvider.Result = layoutServiceResult;
 
+                var appType = _blazorAppConfiguration.AppComponentType;
+                var appDomElementSelector = _blazorAppConfiguration.AppDomElementSelector;
                 var pageEditing = layoutServiceResult.Sitecore.Context.PageEditing;
-                var appHtml = await _preRenderer.RenderAppAsync<App>("app", ControllerContext, ViewData, TempData, pageEditing);
+                var appHtml = await _preRenderer.RenderAppAsync(appType, appDomElementSelector, ControllerContext, ViewData, TempData, pageEditing);
                 var resultModel = new RenderResult
                 {
                     Html = appHtml,
