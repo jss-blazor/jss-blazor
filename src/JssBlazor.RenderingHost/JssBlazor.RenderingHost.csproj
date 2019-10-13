@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JssBlazor.StyleGuide\JssBlazor.StyleGuide.csproj" />
+    <ProjectReference Include="..\JssBlazor.Styleguide\JssBlazor.Styleguide.csproj" />
   </ItemGroup>
 
 </Project>

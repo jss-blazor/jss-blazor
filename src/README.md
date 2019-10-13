@@ -41,13 +41,13 @@ Rendering Host in IIS as follows:
    [`JssBlazor.sln`][5].
 5. Set up a symbolic link in the Sitecore instance webroot (e.g.,
    `C:\inetpub\wwwroot\styleguide.sitecore`) that points to the
-   `JssBlazor.StyleGuide\dist\_framework` folder in the Rendering Host's
+   `JssBlazor.Styleguide\dist\_framework` folder in the Rendering Host's
    webroot*. This is a sample PowerShell script to do that:
 
    ```powershell
    cd C:\inetpub\wwwroot\styleguide.sitecore
 
-   New-Item -ItemType SymbolicLink -Path . -Name _framework -Value C:\inetpub\wwwroot\styleguide.renderinghost\JssBlazor.StyleGuide\dist\_framework
+   New-Item -ItemType SymbolicLink -Path . -Name _framework -Value C:\inetpub\wwwroot\styleguide.renderinghost\JssBlazor.Styleguide\dist\_framework
    ```
 
 *The Styleguide's Blazor bundle needs to be deployed to both Sitecore and the
@@ -56,7 +56,7 @@ Rendering Host to work. This symbolic link is a sloppy way to do it for now.
 ## Sitecore Setup
 
 Configure the `serverSideRenderingEngineEndpointUrl` for your JSS app to point
-to the Rendering Host. See [JssBlazor.Project.StyleGuide.Dev.config][6] in the
+to the Rendering Host. See [JssBlazor.Project.Styleguide.Dev.config][6] in the
 Styleguide for an example.
 
 [1]: https://dotnet.microsoft.com/download/dotnet-core/3.0
@@ -64,4 +64,4 @@ Styleguide for an example.
 [3]: PublishSettings.RenderingHost.targets
 [4]: JssBlazor.RenderingHost/JssBlazor.RenderingHost.csproj
 [5]: JssBlazor.sln
-[6]: ../samples/StyleGuide/src/Project/StyleGuide/sitecore/App_Config/Environment/JssBlazor/JssBlazor.Project.StyleGuide.Dev.config
+[6]: ../samples/Styleguide/src/Project/Styleguide/sitecore/App_Config/Environment/JssBlazor/JssBlazor.Project.Styleguide.Dev.config

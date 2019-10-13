@@ -1,0 +1,47 @@
+﻿---
+ID: "556bb2cb-2eeb-5beb-9e99-d8adf454bf75"
+Parent: "1ab4d859-bac9-5289-b4d5-813eda59631e"
+Template: "b157740a-4059-57a1-870b-b51e90ca9463"
+Path: "/sitecore/content/Styleguide/home/styleguide/Page Components/styleguide-jss-styleguide-section-B7FCF54E14D2DDEE96747EE3CC441EBE9A4FE9EE7D90F5ABCCDE076F5B72DBDA43"
+DB: master
+SharedFields:
+- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
+  Hint: __Workflow
+  Value: "{6C59AE29-D0A1-4B77-9305-0ABAB21D5FE5}"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: "Styleguide-FieldUsage-Link-9"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "13699043-14bd-503d-b5f5-e6ea56a60a5d"
+      Hint: internalLink
+      Value: |
+        <link linktype="internal" id="{0AC123B0-5ECC-5549-91E6-08E9D47B60A7}" />
+    - ID: "14696249-d47d-537f-95d1-a5de4eb4c426"
+      Hint: heading
+      Value: General Link
+    - ID: "1cbc894c-0534-532d-b9c6-6519d3e8c8d6"
+      Hint: emailLink
+      Value: |
+        <link text="Send an Email" url="mailto:foo@bar.com" linktype="mailto" />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190620T030907Z
+    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
+      Hint: __Workflow state
+      Value: "{FCFDBB96-946A-4D2F-BCCD-5573073FC176}"
+    - ID: "560ed2a6-7556-54b6-9144-7af93da5b2e3"
+      Hint: description
+      Value: <p>A <em>General Link</em> is a field that represents an <code>&lt;a&gt;</code> tag.</p>
+    - ID: "79bccaa7-2c95-5bf1-b37d-c8e8559fa47c"
+      Hint: paramsLink
+      Value: |
+        <link target="_blank" text="Sitecore Dev Site" title="&lt;a&gt; title attribute" url="https://dev.sitecore.net" class="font-weight-bold" linktype="external" />
+    - ID: "a6691091-19a0-5d0c-aebb-6a9b1b76a7e6"
+      Hint: externalLink
+      Value: |
+        <link text="Link to Sitecore" url="https://www.sitecore.com" linktype="external" />

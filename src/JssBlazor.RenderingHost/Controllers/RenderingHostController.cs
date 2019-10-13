@@ -3,7 +3,7 @@ using System.Net;
 using System.Threading.Tasks;
 using JssBlazor.RenderingHost.Models;
 using JssBlazor.RenderingHost.Services;
-using JssBlazor.StyleGuide;
+using JssBlazor.Styleguide;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JssBlazor.RenderingHost.Controllers

@@ -1,0 +1,25 @@
+﻿---
+ID: "8329758e-32dd-46bb-b1c7-349d8850810d"
+Parent: "717778f4-2204-4cd5-93ed-ae6b2e314e58"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: /sitecore/system/Settings/Services/API Keys/Project/Styleguide
+DB: master
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Type: TreelistEx
+  Value: |
+    {A6868D65-D612-401F-A40A-CD5BA0857B81}
+    {E642EF3A-ACF4-4238-B847-CE504C1E9780}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170321T073847Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

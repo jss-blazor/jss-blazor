@@ -1,0 +1,52 @@
+﻿---
+ID: "94a8c5d6-50ad-51a0-8f68-fead95ff4d24"
+Parent: "1ab4d859-bac9-5289-b4d5-813eda59631e"
+Template: "0cf01a65-8845-5e92-a68b-80aeaff00a5e"
+Path: "/sitecore/content/Styleguide/home/styleguide/Page Components/styleguide-jss-styleguide-section-B7985C8DEA10AB2C5CC77ABC90CF4126F21840592E09B2C6DB07D84D314CDCE0D4"
+DB: master
+SharedFields:
+- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
+  Hint: __Workflow
+  Value: "{6C59AE29-D0A1-4B77-9305-0ABAB21D5FE5}"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: "Styleguide-FieldUsage-ContentList-11"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "14696249-d47d-537f-95d1-a5de4eb4c426"
+      Hint: heading
+      Value: Content List
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190620T030907Z
+    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
+      Hint: __Workflow state
+      Value: "{FCFDBB96-946A-4D2F-BCCD-5573073FC176}"
+    - ID: "560ed2a6-7556-54b6-9144-7af93da5b2e3"
+      Hint: description
+      Value: |
+        <p>
+          <small>
+            Content Lists are a way to reference zero or more other content items.
+            Referenced items may be shared.
+            To reference a single content item, use an <em>Item Link</em> field.<br />
+            <strong>Note:</strong> Sitecore does not support inline editing of Content List fields. The value must be edited in Experience Editor by using the edit rendering fields button (looks like a pencil) with the whole component selected.
+          </small>
+        </p>
+        
+    - ID: "5aa5d795-f5de-5b96-83be-b8790e8af44b"
+      Hint: localContentList
+      Type: Treelist
+      Value: |
+        {CB3ADE51-E917-5AAB-BC7C-3C737F2A9540}
+        {D47663B6-DDAA-5F0A-BAA5-C7C77018AA31}
+    - ID: "fef409f9-c73e-528d-845b-0de521626953"
+      Hint: sharedContentList
+      Type: Treelist
+      Value: |
+        {2FB0D2CA-36F6-524B-B75A-FC5D97911624}
+        {6641FC55-49AE-5949-B00A-8FB354044195}

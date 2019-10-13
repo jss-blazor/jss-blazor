@@ -1,0 +1,22 @@
+﻿---
+ID: "ec240117-a39f-54c4-9c3e-40258851aaa0"
+Parent: "d4604840-e967-56a7-bed8-8320a03af848"
+Template: "d4604840-e967-56a7-bed8-8320a03af848"
+Path: "/sitecore/templates/Project/Styleguide/Styleguide-FieldUsage-RichText/__Standard Values"
+DB: master
+SharedFields:
+- ID: "ca9b9f52-4fb0-4f87-a79f-24dea62cda65"
+  Hint: __Default workflow
+  Value: "{6C59AE29-D0A1-4B77-9305-0ABAB21D5FE5}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190620T024502Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport

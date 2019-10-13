@@ -1,0 +1,42 @@
+﻿---
+ID: "61d8fc6b-a735-52da-9a63-5a72f238f4c1"
+Parent: "62be02f4-9931-5fdd-a438-df318936f121"
+Template: "59099202-09af-554e-93b9-10a2ee4021d3"
+Path: "/sitecore/content/Styleguide/home/graphql/sample-1"
+DB: master
+SharedFields:
+- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
+  Hint: __Workflow
+  Value: "{6C59AE29-D0A1-4B77-9305-0ABAB21D5FE5}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "04bf00db-f5fb-41f7-8ab7-22408372a981"
+      Hint: __Final Renderings
+      Type: Layout
+      Value: |
+        <r xmlns:p="p" xmlns:s="s"
+          p:p="1">
+          <d
+            id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+            <r
+              uid="{9157CC8C-5760-5114-9F2D-93CBE39B30DC}"
+              p:after="*[1=2]"
+              s:rname="ContentBlock"
+              s:ds="{00EC2633-0DA9-5CBA-BFAE-F6DD32C45F46}"
+              s:id="{B3C801F7-28D5-5DB5-93F1-43EA2715B1D1}"
+              s:par=""
+              s:ph="/jss-main" />
+          </d>
+        </r>
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190620T030906Z
+    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
+      Hint: __Workflow state
+      Value: "{FCFDBB96-946A-4D2F-BCCD-5573073FC176}"
+    - ID: "d9ac88b8-0229-59ea-bb1c-dfd54a178ae7"
+      Hint: pageTitle
+      Value: Sample 1 Page Title
