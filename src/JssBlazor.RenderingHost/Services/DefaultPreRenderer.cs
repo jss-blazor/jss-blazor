@@ -138,7 +138,7 @@ namespace JssBlazor.RenderingHost.Services
             stateNode.Attributes.Add("id", "__JSS_STATE__");
 
             var fetcherScript = HtmlNode.CreateNode("<script></script>");
-            fetcherScript.InnerHtml = "window.jssBlazor = {}; window.jssBlazor.getInitialState = () => { return document.getElementById(\"__JSS_STATE__\").innerHTML; }";
+            fetcherScript.InnerHtml = "window.jssBlazor = window.jssBlazor || {}; window.jssBlazor.getInitialState = () => { return document.getElementById(\"__JSS_STATE__\").innerHTML; }";
 
             var body = htmlDocument.DocumentNode.SelectSingleNode("//body");
             body.AppendChild(stateNode);
