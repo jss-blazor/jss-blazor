@@ -15,6 +15,8 @@ namespace JssBlazor.RenderingHost.Services
 {
     public class DefaultPreRenderer : IPreRenderer
     {
+        private const string AppStateId = "__JSS_STATE__";
+
         private readonly IHtmlHelper _htmlHelper;
         private readonly Func<string, IFileInfo> _fileInfoFactory;
         private readonly ILayoutServiceResultProvider _layoutServiceResultProvider;
@@ -129,16 +131,18 @@ namespace JssBlazor.RenderingHost.Services
         private async Task<string> InsertInitialState(
             string indexHtml)
         {
-            var htmlDocument = new HtmlDocument();
-            htmlDocument.OptionCheckSyntax = false;
+            var htmlDocument = new HtmlDocument
+            {
+                OptionCheckSyntax = false
+            };
             htmlDocument.LoadHtml(indexHtml);
 
             var stateNode = HtmlNode.CreateNode("<script></script>");
             stateNode.Attributes.Add("type", "application/json");
-            stateNode.Attributes.Add("id", "__JSS_STATE__");
+            stateNode.Attributes.Add("id", AppStateId);
 
             var fetcherScript = HtmlNode.CreateNode("<script></script>");
-            fetcherScript.InnerHtml = "window.jssBlazor = window.jssBlazor || {}; window.jssBlazor.getInitialState = () => { return document.getElementById(\"__JSS_STATE__\").innerHTML; }";
+            fetcherScript.InnerHtml = $"window.jssBlazor = window.jssBlazor || {{}}; window.jssBlazor.getInitialState = () => {{ return document.getElementById(\"{AppStateId}\").innerHTML; }}";
 
             var body = htmlDocument.DocumentNode.SelectSingleNode("//body");
             body.AppendChild(stateNode);
@@ -154,8 +158,8 @@ namespace JssBlazor.RenderingHost.Services
 
             var initialStateDocument = stringWriter.ToString();
             initialStateDocument = initialStateDocument.Replace(
-                "<script type=\"application/json\" id=\"__JSS_STATE__\"></script>",
-                $"<script type=\"application/json\" id=\"__JSS_STATE__\">{initialState}</script>");
+                $"<script type=\"application/json\" id=\"{AppStateId}\"></script>",
+                $"<script type=\"application/json\" id=\"{AppStateId}\">{initialState}</script>");
             return initialStateDocument;
         }
     }
