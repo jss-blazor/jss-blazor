@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace JssBlazor.RenderingHost
+namespace JssBlazor.Styleguide.RenderingHost
 {
     public class Program
     {

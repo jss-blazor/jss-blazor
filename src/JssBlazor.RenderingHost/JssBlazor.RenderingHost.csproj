@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
@@ -6,11 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.16" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JssBlazor.Styleguide\JssBlazor.Styleguide.csproj" />
+    <ProjectReference Include="..\JssBlazor.Core\JssBlazor.Core.csproj" />
+    <ProjectReference Include="..\JssBlazor.Tracking\JssBlazor.Tracking.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,13 +1,12 @@
 using JssBlazor.RenderingHost.Extensions;
 using JssBlazor.RenderingHost.Models;
-using JssBlazor.Styleguide;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace JssBlazor.RenderingHost
+namespace JssBlazor.Styleguide.RenderingHost
 {
     public class Startup
     {
