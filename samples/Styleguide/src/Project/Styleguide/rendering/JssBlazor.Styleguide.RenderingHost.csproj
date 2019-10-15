@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JssBlazor.RenderingHost\JssBlazor.RenderingHost.csproj" />
-    <ProjectReference Include="..\JssBlazor.Styleguide\JssBlazor.Styleguide.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\src\JssBlazor.RenderingHost\JssBlazor.RenderingHost.csproj" />
+    <ProjectReference Include="..\client\JssBlazor.Styleguide.csproj" />
   </ItemGroup>
 
 </Project>

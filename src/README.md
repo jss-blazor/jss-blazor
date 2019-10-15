@@ -39,7 +39,7 @@ Rendering Host in IIS as follows:
    [`PublishSettings.RenderingHost.targets`][3] and set the `publishUrl`
    property to your Rendering Host's physical path.
 4. Publish the [`JssBlazor.Styleguide.RenderingHost`][4] project in
-   [`JssBlazor.sln`][5].
+   [`Styleguide.sln`][5].
 5. Set up a symbolic link in the Sitecore instance webroot (e.g.,
    `C:\inetpub\wwwroot\styleguide.sitecore`) that points to the
    `JssBlazor.Styleguide\dist\_framework` folder in the Rendering Host's
@@ -60,7 +60,7 @@ Styleguide for an example.
 
 [1]: https://dotnet.microsoft.com/download/dotnet-core/3.0
 [2]: https://visualstudio.microsoft.com/vs/preview/
-[3]: PublishSettings.RenderingHost.targets
-[4]: JssBlazor.Styleguide.RenderingHost/JssBlazor.Styleguide.RenderingHost.csproj
-[5]: JssBlazor.sln
+[3]: ../samples/Styleguide/PublishSettings.RenderingHost.targets
+[4]: ../samples/Styleguide/src/Project/Styleguide/rendering/JssBlazor.Styleguide.RenderingHost.csproj
+[5]: ../samples/Styleguide/Styleguide.sln
 [6]: ../samples/Styleguide/src/Project/Styleguide/sitecore/App_Config/Environment/JssBlazor/JssBlazor.Project.Styleguide.Dev.config

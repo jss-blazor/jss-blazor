@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JssBlazor.Styleguide\JssBlazor.Styleguide.csproj" />
+    <ProjectReference Include="..\client\JssBlazor.Styleguide.csproj" />
   </ItemGroup>
 
 </Project>
