@@ -44,7 +44,6 @@ Rendering Host in IIS as follows:
    `C:\inetpub\wwwroot\styleguide.sitecore`) that points to the
    `JssBlazor.Styleguide\dist\_framework` folder in the Rendering Host's
    webroot*. This is a sample PowerShell script to do that:
-
    ```powershell
    cd C:\inetpub\wwwroot\styleguide.sitecore
    New-Item -ItemType SymbolicLink -Path . -Name _framework -Value C:\inetpub\wwwroot\styleguide.renderinghost\JssBlazor.Styleguide\dist\_framework
