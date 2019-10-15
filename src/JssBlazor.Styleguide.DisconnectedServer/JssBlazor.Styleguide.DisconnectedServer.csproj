@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JssBlazor.Core\JssBlazor.Core.csproj" />
     <ProjectReference Include="..\JssBlazor.Styleguide\JssBlazor.Styleguide.csproj" />
   </ItemGroup>
 
