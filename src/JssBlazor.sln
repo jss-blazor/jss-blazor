@@ -32,7 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Styleguide", "Styleguide", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JssBlazor.Tracking", "JssBlazor.Tracking\JssBlazor.Tracking.csproj", "{E2E54709-6CDC-4AD3-9B24-24FD999BEC52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JssBlazor.Styleguide.RenderingHost", "JssBlazor.Styleguide.RenderingHost\JssBlazor.Styleguide.RenderingHost.csproj", "{D19FBF02-C216-4750-BDC1-E0FF543F9B66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JssBlazor.Styleguide.RenderingHost", "JssBlazor.Styleguide.RenderingHost\JssBlazor.Styleguide.RenderingHost.csproj", "{D19FBF02-C216-4750-BDC1-E0FF543F9B66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
