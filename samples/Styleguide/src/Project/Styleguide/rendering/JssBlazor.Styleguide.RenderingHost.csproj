@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="..\client\wwwroot\index.html" Link="wwwroot\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\..\src\JssBlazor.RenderingHost\JssBlazor.RenderingHost.csproj" />
     <ProjectReference Include="..\client\JssBlazor.Styleguide.csproj" />
   </ItemGroup>
