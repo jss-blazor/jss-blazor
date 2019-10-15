@@ -1,8 +1,8 @@
-<Router AppAssembly="typeof(Program).Assembly">
+<DynamicRouter Layout="typeof(RouteHandler)">
     <Found Context="routeData">
         <RouteView RouteData="routeData" DefaultLayout="typeof(RouteHandler)" />
     </Found>
     <NotFound>
         <p>Sorry, there's nothing at this address.</p>
     </NotFound>
-</Router>
+</DynamicRouter>
