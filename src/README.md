@@ -9,7 +9,7 @@ The JSS Blazor SDK consists of four different packages:
    models; and Blazor component utilities.
 3. `JssBlazor.Tracking` - models and services for tracking visitor behavior
    through the JSS Tracking API.
-4. `JssBlazor.RenderingHost` - everything needed to start up a .NET Core
+4. `JssBlazor.RenderingHost` - everything needed to create a .NET Core
    Rendering Host to do server-side rendering of JSS Blazor apps in integrated
    mode. This is required for Experience Editor support.
 
@@ -35,9 +35,10 @@ Rendering Host in IIS as follows:
 2. Add a mapping to `C:\Windows\System32\drivers\etc\hosts` for the site.
    - e.g., `127.0.0.1 styleguide.renderinghost`
 3. If you use a physical path different than the one in step 1, create
-   `PublishSettings.RenderingHost.targets.user` next to [`PublishSettings.RenderingHost.targets`][3] and set the `publishUrl`
+   `PublishSettings.RenderingHost.targets.user` next to
+   [`PublishSettings.RenderingHost.targets`][3] and set the `publishUrl`
    property to your Rendering Host's physical path.
-4. Publish the [`JssBlazor.RenderingHost`][4] project in the
+4. Publish the [`JssBlazor.Styleguide.RenderingHost`][4] project in
    [`JssBlazor.sln`][5].
 5. Set up a symbolic link in the Sitecore instance webroot (e.g.,
    `C:\inetpub\wwwroot\styleguide.sitecore`) that points to the
@@ -46,7 +47,6 @@ Rendering Host in IIS as follows:
 
    ```powershell
    cd C:\inetpub\wwwroot\styleguide.sitecore
-
    New-Item -ItemType SymbolicLink -Path . -Name _framework -Value C:\inetpub\wwwroot\styleguide.renderinghost\JssBlazor.Styleguide\dist\_framework
    ```
 
@@ -62,6 +62,6 @@ Styleguide for an example.
 [1]: https://dotnet.microsoft.com/download/dotnet-core/3.0
 [2]: https://visualstudio.microsoft.com/vs/preview/
 [3]: PublishSettings.RenderingHost.targets
-[4]: JssBlazor.RenderingHost/JssBlazor.RenderingHost.csproj
+[4]: JssBlazor.Styleguide.RenderingHost/JssBlazor.Styleguide.RenderingHost.csproj
 [5]: JssBlazor.sln
 [6]: ../samples/Styleguide/src/Project/Styleguide/sitecore/App_Config/Environment/JssBlazor/JssBlazor.Project.Styleguide.Dev.config
