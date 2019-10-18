@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -15,6 +16,12 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
         public string Title { get; set; }
 
         public string DisplayName { get; set; }
+
+        public string Id { get; set; }
+
+        public string Url { get; set; }
+
+        public IDictionary<string, Field> Fields { get; set; }
 
         public T GetFieldValue<T>()
         {

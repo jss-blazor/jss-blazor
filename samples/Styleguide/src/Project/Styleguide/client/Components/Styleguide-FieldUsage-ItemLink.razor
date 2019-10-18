@@ -1,32 +1,40 @@
 @inherits JssComponentBase
 
-@{
-    var sharedItemLink = Component.Fields["sharedItemLink"];
-    var localItemLink = Component.Fields["localItemLink"];
-}
-
+@*
+    Demonstrates usage of a Content Link content field within JSS.
+    Content links are a reference to a single other piece of content.
+*@
 <Styleguide_Specimen Component="@Component" E2eId="styleguide-fieldusage-itemlink">
     <h5>Shared Item Link</h5>
-
     @*Item link fields are returned with their value as the referenced item value.*@
-
-    @if (sharedItemLink != null)
+    @if (_sharedItemLink != null)
     {
         <div>
             @*The referenced item's fields can be rendered and edited using normal helper components:*@
             <p>
-                Field: <PlainText Field="@sharedItemLink" />
+                Field: <PlainText Field="@_sharedItemLink.Fields["textField"]" />
             </p>
         </div>
     }
 
     <h5>Local Item Link</h5>
-    @if (localItemLink != null)
+    @if (_localItemLink != null)
     {
         <div>
             <p>
-                Field: <PlainText Field="@localItemLink" />
+                Field: <PlainText Field="@_localItemLink.Fields["textField"]" />
             </p>
         </div>
     }
 </Styleguide_Specimen>
+
+@code {
+    private Field _sharedItemLink;
+    private Field _localItemLink;    
+
+    protected override void OnParametersSet()
+    {
+        _sharedItemLink = Component.Fields["sharedItemLink"];
+        _localItemLink = Component.Fields["localItemLink"];
+    }
+}
