@@ -3,6 +3,10 @@
 @using ErrorEventArgs = Newtonsoft.Json.Serialization.ErrorEventArgs
 @inject ILogger<Styleguide_SitecoreContext> Logger
 
+@*
+    Demonstrates gaining access to the route-level Sitecore Context from
+    within other components.
+*@
 <Styleguide_Specimen Component="@Component"
                      E2eId="styleguide-sitecore-context">
     <p>The current Sitecore Context is...</p>
