@@ -81,10 +81,7 @@
         _tabs = Component.Placeholders["jss-tabs"].ToArray();
     }
 
-    private string GetTabKey(int tabIndex)
-    {
-        return $"tab{tabIndex}";
-    }
+    private string GetTabKey(int tabIndex) => $"tab{tabIndex}";
 
     private string GetTabClass(int tabIndex)
     {
@@ -92,8 +89,5 @@
         return _activeTabIndex == tabIndex ? $"{tabClass} active" : tabClass;
     }
 
-    public void SetActiveTab(int tabIndex)
-    {
-        _activeTabIndex = tabIndex;
-    }
+    private void SetActiveTab(int tabIndex) =>_activeTabIndex = tabIndex;
 }
