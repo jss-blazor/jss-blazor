@@ -28,8 +28,8 @@
                 var tabIndex = i;
                 <li class="nav-item" @key="@GetTabKey(i)">
                     @*
-                        Note that as of .NET Core 3.0 Preview 9 there is no native mechanism to stop
-                        event propagation on events (e.g., onclick). In the React sample app, the
+                        Note that as of .NET Core 3.1 Preview 1 there is no native mechanism to stop
+                        event propagation on events (e.g., onclick). In the React Styleguide, the
                         href attribute in this sample is set to "#t" and event propagation is
                         (presumably) suppressed natively; here we must use "javascript: void(0);".
                     *@
@@ -66,6 +66,9 @@
 </Styleguide_Specimen>
 
 @code {
+    /// We need to know if experience editor is active, to disable the dynamic tab behavior for editing.
+    /// We use a public RenderingData property with the [CascadingParameter] attribute to inject the
+    /// SitecoreContext into the component.
     [CascadingParameter]
     public RenderingData SitecoreContext { get; set; }
 
