@@ -1,5 +1,4 @@
 @inherits JssComponentBase
-@using Newtonsoft.Json.Linq;
 
 @*
     Demonstrates usage of a Content List field type within JSS.
@@ -13,67 +12,41 @@
         Content List fields are returned with their value as an array of the referenced items.
         So we can use foreach to traverse them.
     *@
-    @foreach (var localField in LocalContentField)
+    @foreach (var listItem in _localContentList)
     {
         <div>
             @* The referenced item's fields can be rendered and edited using normal helper components: *@
             <p>
-                Field: <PlainText Field="@localField" />
+                Field: <PlainText Field="@listItem.Fields["textField"]" />
             </p>
         </div>
     }
 
-    @foreach (var sharedField in SharedContentField)
+    @foreach (var listItem in _sharedContentList)
     {
         <div>
             @* The referenced item's fields can be rendered and edited using normal helper components: *@
             <p>
-                Field: <PlainText Field="@sharedField" />
+                Field: <PlainText Field="@listItem.Fields["textField"]" />
             </p>
         </div>
     }
 </Styleguide_Specimen>
 
 @code {
-    List<Core.Models.LayoutService.Fields.Field> LocalContentField { get; set; }
-    List<Core.Models.LayoutService.Fields.Field> SharedContentField { get; set; }
-
-    class FieldValue : JssBlazor.Core.Models.LayoutService.Fields.IFieldValue
-    {
-        public string Rendered { get; set; }
-        public JToken RawValue { get; set; }
-    }
+    private IEnumerable<Field> _localContentList;
+    private IEnumerable<Field> _sharedContentList;
 
     protected override void OnParametersSet()
     {
-        LocalContentField = GetField("localContentList");
-        SharedContentField = GetField("sharedContentList");
+        _localContentList = GetContentList("localContentList");
+        _sharedContentList = GetContentList("sharedContentList");
     }
 
-    private List<Core.Models.LayoutService.Fields.Field> GetField(string fieldName)
+    private IEnumerable<Field> GetContentList(string fieldName)
     {
-        var fields = new List<Core.Models.LayoutService.Fields.Field>();
-        var contentField = Component.Fields[fieldName];
-        var fieldValues = ((JssBlazor.Core.Models.LayoutService.Fields.ArrayFieldValue)contentField.Value).FieldValue.ToList();
-
-        foreach (var fieldValueItem in fieldValues)
-        {
-            var rawFields = fieldValueItem["fields"].Children();
-
-            foreach (JProperty fieldProp in rawFields)
-            {
-                string value = fieldProp.Value["value"].Value<string>();
-                JToken jTokenValue = (JToken)fieldProp.Value;
-
-                var field = new Core.Models.LayoutService.Fields.Field()
-                {
-                    Value = new FieldValue() { Rendered = value, RawValue = jTokenValue }
-                };
-
-                fields.Add(field);
-            }
-        }
-
-        return fields;
+        var contentList = Component.Fields[fieldName];
+        var listItems = contentList.Value.RawValue.ToObject<IEnumerable<Field>>();
+        return listItems;
     }
 }
