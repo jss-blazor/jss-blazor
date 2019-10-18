@@ -15,6 +15,9 @@
 </div>
 
 @code {
+    // Adding a public RenderingData property with the [CascadingParameter] attribute
+    // to a component is the magical glue that gives you route-level context access
+    // see the context examples in the styleguide for more details
     [CascadingParameter]
     public RenderingData SitecoreContext { get; set; }
 }
