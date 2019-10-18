@@ -1,12 +1,22 @@
 @inherits JssComponentBase
 @using Newtonsoft.Json.Linq;
 
+@*
+    Demonstrates usage of a Content List field type within JSS.
+    Content Lists are references to 0..n other content items.
+    In Sitecore terms, this maps by default to a Treelist field.
+*@
 <Styleguide_Specimen Component="@Component"
                      E2eId="styleguide-fieldusage-content-list">
-    @foreach (var localField in @LocalContentField)
+    <h5>Shared Content List</h5>
+    @*
+        Content List fields are returned with their value as an array of the referenced items.
+        So we can use foreach to traverse them.
+    *@
+    @foreach (var localField in LocalContentField)
     {
         <div>
-            @*The referenced item's fields can be rendered and edited using normal helper components:*@
+            @* The referenced item's fields can be rendered and edited using normal helper components: *@
             <p>
                 Field: <PlainText Field="@localField" />
             </p>
@@ -16,7 +26,7 @@
     @foreach (var sharedField in SharedContentField)
     {
         <div>
-            @*The referenced item's fields can be rendered and edited using normal helper components:*@
+            @* The referenced item's fields can be rendered and edited using normal helper components: *@
             <p>
                 Field: <PlainText Field="@sharedField" />
             </p>
