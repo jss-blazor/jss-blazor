@@ -1,9 +1,16 @@
 @inherits JssComponentBase
 
+@*
+    Demonstrates usage of a Rich Text (HTML) content field within JSS.    
+*@
 <Styleguide_Specimen Component="@Component"
                      E2eId="styleguide-fieldusage-text">
+    @* Basic usage of a rich text field. Wraps in a <div>. *@
     <RichText Field="@Component.Fields["sample"]" />
-
+    @*
+        Advanced usage of rich text field.
+        Specifies a custom wrapper tag, turns off Sitecore editing, and has a CSS class on the wrapper    
+    *@
     <RichText Field="@Component.Fields["sample2"]"
               Tag="section"
               Editable="@false"
