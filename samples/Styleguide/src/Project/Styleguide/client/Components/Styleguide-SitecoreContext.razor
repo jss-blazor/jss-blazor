@@ -1,7 +1,4 @@
 @inherits JssComponentBase
-@using Microsoft.Extensions.Logging
-@using ErrorEventArgs = Newtonsoft.Json.Serialization.ErrorEventArgs
-@inject ILogger<Styleguide_SitecoreContext> Logger
 
 @*
     Demonstrates gaining access to the route-level Sitecore Context from
@@ -21,16 +18,7 @@
     {
         return JsonConvert.SerializeObject(SitecoreContext, new JsonSerializerSettings
         {
-            Error = HandleSerializationError,
             Formatting = Formatting.Indented
         });
-    }
-
-    // Serialization of the RenderingData fails due to unknown reasons. This function logs
-    // serialization errors to the console and allows serialization to continue.
-    private void HandleSerializationError(object sender, ErrorEventArgs args)
-    {
-        Logger.LogWarning(args.ErrorContext.Error, LogUtility.FormatLogMessage(this, args.ErrorContext.Error.Message));
-        args.ErrorContext.Handled = true;
     }
 }
