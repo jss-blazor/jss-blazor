@@ -68,10 +68,7 @@
         return section;
     }
 
-    private string GetSectionLink(Section section)
-    {
-        return $"#{section.Id}";
-    }
+    private string GetSectionLink(Section section) => $"#{section.Id}";
 
     private class Section
     {
