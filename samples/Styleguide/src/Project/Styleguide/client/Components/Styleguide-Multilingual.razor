@@ -1,17 +1,21 @@
 @inherits JssComponentBase
 
+@*
+    Demonstrates using the dictionary functionality and defining route data in
+    multiple languages.
+*@
 <Styleguide_Specimen Component="@Component"
                      E2eId="styleguide-multilingual">
     <PlainText Field=@Component.Fields["sample"] Encode="false" Tag="p" />
 
     <p>
-        This is a static dictionary entry from <code>/data/dictionary</code>:&nbsp;{props.t('styleguide-sample')}
+        This is a static dictionary entry from <code>/data/dictionary</code>:&nbsp; @Component.Fields["sample"]
     </p>
 
     <p>
-        <a href="/en/styleguide">Show in English</a>
+        <NavLink href="/en/styleguide">Show in English</NavLink>
         <br />
-        <a href="/da-DK/styleguide">Show in Danish</a>
+        <NavLink href="/da-DK/styleguide">Show in Danish</NavLink>
     </p>
 
     <p>The current language is: <strong>@SitecoreContext.Context.Language</strong></p>
