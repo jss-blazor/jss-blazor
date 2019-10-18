@@ -1,5 +1,9 @@
 @inherits JssComponentBase
 
+@*
+    Helper component that displays explanatory information and where to find the definitions
+    of styleguide specimens.
+*@
 <div class="pt-3" id="@StyleguideUtilities.GetMarkupId(Component)" data-e2e-id="@E2eId">
     <PlainText Tag="h4"
                Field="@Component.Fields["heading"]" />
@@ -9,7 +13,8 @@
         <small>
             Implementation: <code>/src/JssBlazor.Styleguide/Components/@(Component.ComponentName).razor</code>
             <br />
-            Definition: <code>/sitecore/definitions/components/@(Component.ComponentName).razor</code>
+            Definition:
+            <code>/sitecore/definitions/components/@(Component.ComponentName).razor</code>
         </small>
     </p>
     <div class="border p-2">@ChildContent</div>
@@ -17,8 +22,8 @@
 
 @code {
     [Parameter]
-    public RenderFragment ChildContent { get; set; }
+    public string E2eId { get; set; }
 
     [Parameter]
-    public string E2eId { get; set; }
+    public RenderFragment ChildContent { get; set; }
 }
