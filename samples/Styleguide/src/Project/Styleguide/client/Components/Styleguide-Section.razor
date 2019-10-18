@@ -1,5 +1,10 @@
 @inherits JssComponentBase
 
+@*
+    Represents a category of styleguide specimens within the Styleguide-Layout.
+    Usage examples are added to the `styleguide-section` placeholder that this
+    exposes.
+*@
 <div class="pt-3" id="@StyleguideUtilities.GetMarkupId(Component)">
     <PlainText class="border-bottom" Field="@Component.Fields["heading"]" Tag="h3" />
     <Placeholder Name="jss-styleguide-section" Rendering="Component" />
