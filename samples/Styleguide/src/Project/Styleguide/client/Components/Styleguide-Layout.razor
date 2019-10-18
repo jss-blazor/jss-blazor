@@ -1,11 +1,16 @@
 @inherits JssComponentBase
 
+@*
+    The main layout (columns) of the styleguide.
+    Navigation is automatically generated based on the components added to the layout,
+    and does not need to be manually maintained.
+*@
 <div class="row">
     <div class="col-sm-8 col-lg-10">
         <Placeholder Name="jss-styleguide-layout" Rendering="@Component" />
     </div>
     <div class="col-sm-4 col-lg-2 order-sm-first pt-2">
-        @foreach (var section in Sections)
+        @foreach (var section in _sections)
         {
             <nav @key="@section.Heading" class="nav flex-column pt-2">
                 @* Anchor navigation doesn't work with Blazor Assembly unless event.stopPropagation() is added to onclick *@
@@ -30,8 +35,15 @@
 </div>
 
 @code {
+    private IEnumerable<Section> _sections { get; set; }
 
-    private IEnumerable<Section> Sections { get; set; }
+    protected override void OnParametersSet()
+    {
+        // this code reads the components in the child placeholders of this component,
+        // and projects them into the left navigation column for the styleguide
+        _sections = GetSectionsFromPlaceholder(Component, "jss-styleguide-layout")
+            .Select(section => MapSection(section, "jss-styleguide-section"));
+    }
 
     private IEnumerable<IRendering> GetSectionsFromPlaceholder(IRendering rendering, string placeholderName)
     {
@@ -67,11 +79,5 @@
         public string Heading { get; set; }
         public IEnumerable<Section> Children { get; set; } = Enumerable.Empty<Section>();
         public bool ShowChildren => Children.Any();
-    }
-
-    protected override void OnParametersSet()
-    {
-        Sections = GetSectionsFromPlaceholder(Component, "jss-styleguide-layout")
-            .Select(section => MapSection(section, "jss-styleguide-section"));
     }
 }
