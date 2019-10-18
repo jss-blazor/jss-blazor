@@ -1,4 +1,9 @@
 @inherits JssComponentBase
 
+@*
+    A simple Content BLock component, with a heading and rich text block.
+    This is the most basic building block of a content site, and the most basic
+    JSS component that's useful.
+*@
 <PlainText Tag="h2" class="display-4" Field="@Component.Fields["heading"]" />
 <RichText class="contentDescription" Field="@Component.Fields["content"]" />
