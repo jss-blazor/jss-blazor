@@ -1,6 +1,11 @@
 @inherits JssComponentBase
-@inject IComponentFactory ComponentFactory
 
+@*
+    Demonstrates how to reuse content within JSS. See /data/routes/styleguide/en.yml
+    for the reused content definition sample. This component also demonstrates how to use
+    the Placeholder component's render props API to wrap all components in the placeholder
+    in a column tag (thus creating a horizontally laid out placeholder)
+*@
 <Styleguide_Specimen Component="@Component" E2eId="styleguide-layout-reuse">
     <div class="row">
         @*
