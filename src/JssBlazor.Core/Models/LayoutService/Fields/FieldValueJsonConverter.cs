@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -17,40 +16,17 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
             JToken jToken = JToken.ReadFrom(reader);
             var jTokenType = jToken.Type.ToString().ToLower();
 
-            IFieldValue fieldValue;
-            switch (jTokenType)
+            var fieldValue = jTokenType switch
             {
-                case "array":
-                    fieldValue = new ArrayFieldValue
-                    {
-                        FieldValue = jToken.Values<JToken>().ToList().AsReadOnly()
-                    };
-                    break;
-                case "boolean":
-                    fieldValue = new BooleanFieldValue
-                    {
-                        FieldValue = jToken.Value<bool>()
-                    };
-                    break;
-                case "date":
-                    fieldValue = new DateFieldValue
-                    {
-                        FieldValue = jToken.Value<DateTime>()
-                    };
-                    break;
-                case "string":
-                    fieldValue = new FieldValue
-                    {
-                        Rendered = jToken.Value<string>()
-                    };
-                    break;
-                default:
-                    fieldValue = new FieldValue
-                    {
-                        Rendered = jToken.ToString()
-                    };
-                    break;
-            }
+                "string" => new FieldValue
+                {
+                    Rendered = jToken.Value<string>()
+                },
+                _ => new FieldValue
+                {
+                    Rendered = jToken.ToString()
+                },
+            };
             fieldValue.RawValue = jToken;
 
             return fieldValue;
