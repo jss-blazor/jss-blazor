@@ -1,5 +1,7 @@
 # JSS Blazor
 
+![JSS Blazor](assets/jss-blazor.png)
+
 JSS Blazor for [Sitecore JavaScript Services][1] allows you to build
 full-featured websites on top of Sitecore, entirely in C#, using
 [Blazor WebAssembly][2].
