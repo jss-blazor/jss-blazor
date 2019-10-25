@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using JssBlazor.Core.Models.LayoutService.Fields;
+using Newtonsoft.Json;
 
 namespace JssBlazor.Core.Models.LayoutService
 {
@@ -9,7 +10,10 @@ namespace JssBlazor.Core.Models.LayoutService
         public Guid Uid { get; set; }
         public string ComponentName { get; set; }
         public Guid? DataSource { get; set; }
+
+        [JsonProperty(ItemConverterType = typeof(FieldJsonConverter))]
         public IDictionary<string, Field> Fields { get; set; }
+
         public IDictionary<string, IEnumerable<ComponentDefinition>> Placeholders { get; set; }
         public IDictionary<string, string> Params { get; set; }
 

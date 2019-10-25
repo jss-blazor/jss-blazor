@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace JssBlazor.RenderingHost.Services
 {
@@ -152,9 +153,12 @@ namespace JssBlazor.RenderingHost.Services
             htmlDocument.Save(stringWriter);
 
             // HTML Agility Pack modifies the state object when setting it on the stateNode and there
-            // doesn't appear to be away to stop that behavior. Using string replace to bypass it for now.
+            // doesn't appear to be a way to stop that behavior. Using string replace to bypass it for now.
             var layoutServiceResult = _layoutServiceResultProvider.Result;
-            var initialState = JsonConvert.SerializeObject(layoutServiceResult);
+            var initialState = JsonConvert.SerializeObject(layoutServiceResult, new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            });
 
             var initialStateDocument = stringWriter.ToString();
             initialStateDocument = initialStateDocument.Replace(

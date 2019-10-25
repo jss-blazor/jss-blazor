@@ -23,6 +23,9 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
 
         public IDictionary<string, Field> Fields { get; set; }
 
+        [JsonExtensionData]
+        public IDictionary<string, JToken> AdditionalData { get; set; }
+
         public T GetFieldValue<T>()
         {
             var rawValue = Value?.RawValue;

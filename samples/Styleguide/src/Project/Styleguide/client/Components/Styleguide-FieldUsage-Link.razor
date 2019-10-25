@@ -5,22 +5,22 @@
 *@
 <Styleguide_Specimen Component="@Component"
                      E2eId="styleguide-fieldusage-link">
-    External link:&nbsp;
+    External link:
     <Link Field="@Component.Fields["externalLink"]" />
     <br />
-    Internal link:&nbsp;
+    Internal link:
     <Link Field="@Component.Fields["internalLink"]">
         <em>HTML</em> or other components can be used within link renderers, for example links to
         images.
     </Link>
     <br />
-    Email link:&nbsp;
+    Email link:
     <Link Field="@Component.Fields["emailLink"]" />
     <br />
-    All possible content params link:&nbsp;
+    All possible content params link:
     <Link Field="@Component.Fields["paramsLink"]" class="font-weight-bold" />
     <br />
-    The link component accepts params of its own:&nbsp;
+    The link component accepts params of its own:
     <Link Field="@Component.Fields["externalLink"]"
           ShowLinkTextWithChildrenPresent="@true"
           class="font-weight-bold"
