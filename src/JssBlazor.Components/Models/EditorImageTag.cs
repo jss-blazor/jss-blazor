@@ -5,6 +5,6 @@ namespace JssBlazor.Components.Models
     public class EditorImageTag
     {
         public string ImgTag { get; set; }
-        public IDictionary<string, string> Attrs { get; set; } = new Dictionary<string, string>();
+        public IDictionary<string, object> Attrs { get; set; } = new Dictionary<string, object>();
     }
 }

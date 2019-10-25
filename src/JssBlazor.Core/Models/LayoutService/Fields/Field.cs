@@ -11,8 +11,6 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
 
         public string Editable { get; set; }
 
-        public string Src { get; set; }
-
         public string Id { get; set; }
 
         public string Url { get; set; }

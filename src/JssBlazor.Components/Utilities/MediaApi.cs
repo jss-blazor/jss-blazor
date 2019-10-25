@@ -22,7 +22,7 @@ namespace JssBlazor.Components.Utilities
                 return null;
             }
 
-            var attributes = new Dictionary<string, string>();
+            var attributes = new Dictionary<string, object>();
             var attributeMatches = HtmlAttributesRegex.Matches(imageTagMatch.Groups[1].Value);
             foreach (Match attributeMatch in attributeMatches)
             {
