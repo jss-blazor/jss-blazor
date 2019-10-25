@@ -20,6 +20,10 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
                 {
                     return jToken.ToObject<LinkField>();
                 }
+                if (jToken.SelectToken("value.src") != null && jToken.SelectToken("value.displayName") != null)
+                {
+                    return jToken.ToObject<FileField>();
+                }
             }
             return jToken.ToObject<Field>();
         }

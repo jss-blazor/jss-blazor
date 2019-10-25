@@ -13,10 +13,6 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
 
         public string Src { get; set; }
 
-        public string Title { get; set; }
-
-        public string DisplayName { get; set; }
-
         public string Id { get; set; }
 
         public string Url { get; set; }

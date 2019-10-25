@@ -14,45 +14,27 @@
 
     private RenderFragment RenderFile() => builder =>
     {
-        if (Field == null || (Field.Value == null && string.IsNullOrWhiteSpace(Field.Src)))
+        var fileField = Field as FileField;
+        if (fileField?.Value == null)
         {
             return;
         }
 
-        var href = GetHref();
-        var linkText = GetLinkText();
+        string linkText = null;
+        if (ChildContent == null)
+        {
+            var title = fileField.Value.Title;
+            linkText = !string.IsNullOrWhiteSpace(title) ? title : fileField.Value.DisplayName;
+        }
 
         builder.OpenElement(0, "a");
-        if (!string.IsNullOrWhiteSpace(href))
-        {
-            builder.AddAttribute(1, "href", href);
-        }
+        builder.AddAttribute(1, "href", fileField.Value.Src);
         builder.AddMultipleAttributes(1, HtmlAttributes);
-        if (ChildContent == null && !string.IsNullOrWhiteSpace(linkText))
+        if (!string.IsNullOrWhiteSpace(linkText))
         {
             builder.AddContent(2, linkText);
         }
         ChildContent?.Invoke(builder);
         builder.CloseElement();
     };
-
-    private string GetLinkText()
-    {
-        if (!string.IsNullOrWhiteSpace(Field?.Src))
-        {
-            var title = Field.Title;
-            return !string.IsNullOrWhiteSpace(title) ? title : Field.DisplayName;
-        }
-        var rawValue = Field?.Value?.RawValue;
-        return rawValue?["title"]?.ToString() ?? rawValue?["displayName"]?.ToString();
-    }
-
-    private string GetHref()
-    {
-        if (!string.IsNullOrWhiteSpace(Field?.Src))
-        {
-            return Field.Src;
-        }
-        return Field?.Value?.RawValue?["src"]?.ToString();
-    }
 }
