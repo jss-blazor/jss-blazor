@@ -1,5 +1,6 @@
 using System;
 using JssBlazor.Components;
+using JssBlazor.Components.Extensions;
 using JssBlazor.Core.Models;
 using JssBlazor.Core.Services;
 using JssBlazor.Styleguide.Services;
@@ -35,6 +36,7 @@ namespace JssBlazor.Styleguide
         public void Configure(IComponentsApplicationBuilder app)
         {
             app.AddComponent<App>("app");
+            app.UseJssBlazorComponents();
         }
     }
 }
