@@ -2,18 +2,18 @@
 
 @RenderDate()
 
-@code {    
+@code {
     [Parameter]
     public Field Field { get; set; }
 
     [Parameter]
-    public DateStringFormat Format { get; set; }
-
-    [Parameter]
-    public string Tag { get; set; } = "span";
+    public string Tag { get; set; }
 
     [Parameter]
     public bool Editable { get; set; } = true;
+
+    [Parameter]
+    public RenderFragment<DateRenderContext> Render { get; set; }
 
     [Parameter(CaptureUnmatchedValues = true)]
     public IDictionary<string, object> HtmlAttributes { get; set; }
@@ -25,30 +25,45 @@
             return;
         }
 
-        var value = Field.GetFieldValue<DateTime>();
-        var result = value.ToLongDateString();
-
-        switch (Format)
+        if (Editable && !string.IsNullOrWhiteSpace(Field.Editable))
         {
-            case DateStringFormat.LongDateString:
-                result = value.ToLongDateString();
-                break;
-            case DateStringFormat.LongTimeString:
-                result = value.ToLongTimeString();
-                break;
-            case DateStringFormat.ShortDateString:
-                result = value.ToShortDateString();
-                break;
-            case DateStringFormat.ShortTimeString:
-                result = value.ToShortTimeString();
-                break;
+            var tag = string.IsNullOrWhiteSpace(Tag) ? "span" : Tag;
+            builder.OpenElement(0, tag);
+            builder.AddMultipleAttributes(1, HtmlAttributes);
+            builder.AddMarkupContent(2, Field.Editable);
+            builder.CloseElement();
+            return;
         }
 
-        var output = (!string.IsNullOrWhiteSpace(Field.Editable) && Editable) ? Field.Editable : result;
+        var dateTime = Field.Value.RawValue.ToObject<DateTime>();
+        if (Render != null)
+        {
+            if (string.IsNullOrWhiteSpace(Tag))
+            {
+                Render.Invoke(new DateRenderContext { Date = dateTime })(builder);
+                return;
+            }
 
-        builder.OpenElement(0, Tag);
-        builder.AddMultipleAttributes(1, HtmlAttributes);
-        builder.AddMarkupContent(2, output);
-        builder.CloseElement();
+            builder.OpenElement(0, Tag);
+            builder.AddMultipleAttributes(1, HtmlAttributes);
+            Render.Invoke(new DateRenderContext { Date = dateTime })(builder);
+            builder.CloseElement();
+            return;
+        }
+        else
+        {
+            var rendered = dateTime.ToString("yyyy-MM-ddTHH:mm:ssK");
+            if (string.IsNullOrWhiteSpace(Tag))
+            {
+                builder.AddContent(0, rendered);
+                return;
+            }
+
+            builder.OpenElement(0, Tag);
+            builder.AddMultipleAttributes(1, HtmlAttributes);
+            builder.AddContent(2, rendered);
+            builder.CloseElement();
+            return;
+        }
     };
 }

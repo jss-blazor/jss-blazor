@@ -1,30 +1,44 @@
 @inherits JssComponentBase
 
-@{
-    var date = Component.GetFieldValue<DateTime>("date");
-    var dateTime = Component.GetFieldValue<DateTime>("dateTime");
-    var utc = dateTime.ToUniversalTime();
-    var localDate = dateTime.ToLocalTime().Date;
-    var localTime = dateTime.ToLocalTime();
-}
-
+@*
+    Demonstrates usage of date and time content field types within JSS.
+*@
 <Styleguide_Specimen Component="@Component"
                      E2eId="styleguide-fieldusage-date">
     <ul>
         <li>
-            Date: @date.ToLongDateString()
+            Date helper: <Date Field="@Component.Fields["date"]" />
         </li>
         <li>
-            Date (datetime): @Component.GetFieldValue("dateTime")
+            Date helper (datetime): <Date Field="@Component.Fields["dateTime"]" />
         </li>
         <li>
-            UTC Date string: @utc
+            UTC Date string:
+            @*
+                Date helper supports a render templated parameter to give you direct access to the Date object for formatting.
+                IMPORTANT: the render parameter is ignored when in Experience Editor mode to support inline editing.
+            *@
+            <Date Field="@Component.Fields["date"]">
+                <Render>
+                    @context.Date.ToUniversalTime().ToString("ddd, dd MMM yyyy HH:mm:ss \"GMT\"")
+                </Render>
+            </Date>
         </li>
         <li>
-            Localized Date string (local timezone): @localTime
+            Localized Date string (local timezone):
+            <Date Field="@Component.Fields["date"]">
+                <Render>
+                    @context.Date.ToLocalTime().ToShortDateString()
+                </Render>
+            </Date>
         </li>
         <li>
-            Short Date string: <Date Field="@Component.Fields["date"]" Format="DateStringFormat.ShortDateString" />
+            Localized DateTime string (local timezone):
+            <Date Field="@Component.Fields["dateTime"]">
+                <Render>
+                    <em>@context.Date.ToLocalTime()</em>
+                </Render>
+            </Date>
         </li>
     </ul>
 </Styleguide_Specimen>
