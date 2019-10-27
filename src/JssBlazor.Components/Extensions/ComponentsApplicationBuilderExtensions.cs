@@ -3,7 +3,7 @@ using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 namespace JssBlazor.Components.Extensions
 {
-    public static class ServiceCollectionExtensions
+    public static class ComponentsApplicationBuilderExtensions
     {
         public static void UseJssBlazorComponents(this IComponentsApplicationBuilder app)
         {

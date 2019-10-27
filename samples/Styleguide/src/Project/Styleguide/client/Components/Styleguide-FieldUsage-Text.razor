@@ -3,18 +3,18 @@
 @*
     Demonstrates usage of a Text content field within JSS.
     Text fields are HTML encoded by default.
-    In JSS Blazor the <Text /> component is called <PlainText /> because <text></text> is reserved Razor syntax.
+    In JSS Blazor the <Text /> component is called <TextField /> because <text></text> is reserved Razor syntax.
 *@
 <Styleguide_Specimen Component="@Component"
                      E2eId="styleguide-fieldusage-text">
     @* Basic usage of a text field. No wrapper. *@
-    <PlainText Field="@Component.Fields["sample"]" />
+    <TextField Field="@Component.Fields["sample"]" />
 
     @*
         Advanced usage of text field.
         Specifies a wrapper tag, turns off Sitecore editing, supports raw HTML, and has a CSS class on the wrapper
     *@
-    <PlainText Field="@Component.Fields["sample2"]"
+    <TextField Field="@Component.Fields["sample2"]"
                Tag="section"
                Editable="@false"
                Encode="@false"

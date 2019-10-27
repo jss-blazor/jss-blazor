@@ -5,7 +5,7 @@ The JSS Blazor SDK consists of four different packages:
 1. `JssBlazor.Core` - core functionality shared by all other packages such as
    Layout Service models, the Component Factory, and general Blazor extensions.
 2. `JssBlazor.Components` - field helper components to render Sitecore fields
-   like `<PlainText />`, `<Image />`, and `<Placeholder />`; Blazor component
+   like `<TextField />`, `<Image />`, and `<Placeholder />`; Blazor component
    models; and Blazor component utilities.
 3. `JssBlazor.Tracking` - models and services for tracking visitor behavior
    through the JSS Tracking API.

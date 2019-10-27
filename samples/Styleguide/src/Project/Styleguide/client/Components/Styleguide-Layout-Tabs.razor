@@ -36,7 +36,7 @@
                     <a class="@GetTabClass(tabIndex)"
                        @onclick="@(() => SetActiveTab(tabIndex))"
                        href="javascript: void(0);">
-                        <PlainText Field="@_tabs[tabIndex].Fields["title"]" />
+                        <TextField Field="@_tabs[tabIndex].Fields["title"]" />
                     </a>
                 </li>
             }
