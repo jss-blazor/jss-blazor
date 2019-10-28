@@ -18,11 +18,10 @@ namespace JssBlazor.Core.Services
 
         public async Task<LayoutServiceResult> GetInitialStateAsync()
         {
-            var initialState = await _jsRuntime.InvokeAsync<string>("jssBlazor.getInitialState");
-            var htmlDecodedState = HttpUtility.HtmlDecode(initialState);
             try
             {
-                return JsonConvert.DeserializeObject<LayoutServiceResult>(htmlDecodedState);
+                var initialState = await _jsRuntime.InvokeAsync<string>("jssBlazor.getInitialState");
+                return JsonConvert.DeserializeObject<LayoutServiceResult>(initialState);
             }
             catch (Exception ex)
             {
