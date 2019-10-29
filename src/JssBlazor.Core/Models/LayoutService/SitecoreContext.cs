@@ -6,6 +6,6 @@ namespace JssBlazor.Core.Models.LayoutService
         public Site Site { get; set; }
         public string PageState { get; set; }
         public string Language { get; set; }
-        public long VisitorIdentificationTimestamp { get; set; } = -1;
+        public long? VisitorIdentificationTimestamp { get; set; }
     }
 }

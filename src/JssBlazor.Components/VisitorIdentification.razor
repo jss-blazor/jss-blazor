@@ -1,6 +1,32 @@
+@if (!ShouldRenderVisitorIdentification())
+{
+    return;
+}
+
 <meta name="VIcurrentDateTime" content="@SitecoreContext.Context.VisitorIdentificationTimestamp" />
+@EmitVisitorIdentificationScript()
 
 @code {
+    private bool _emittedVi = false;
+
     [CascadingParameter]
     public RenderingData SitecoreContext { get; set; }
+
+    private bool ShouldRenderVisitorIdentification()
+    {
+        return !_emittedVi && SitecoreContext.Context.VisitorIdentificationTimestamp != null;
+    }
+
+    private RenderFragment EmitVisitorIdentificationScript() => builder =>
+    {
+        var sb = new StringBuilder();
+        sb.AppendLine("<script>");
+        sb.AppendLine("const script = document.createElement('script');");
+        sb.AppendLine("script.src = '/layouts/system/VisitorIdentification.js';");
+        sb.AppendLine("script.type = 'text/javascript';");
+        sb.AppendLine("document.getElementsByTagName('head')[0].appendChild(script);");
+        sb.AppendLine("</script>");
+        builder.AddMarkupContent(0, sb.ToString());
+        _emittedVi = true;
+    };
 }
