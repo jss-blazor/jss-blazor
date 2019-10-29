@@ -4,11 +4,11 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -19,16 +19,16 @@ namespace JssBlazor.RenderingHost.Services
         private const string AppStateId = "__JSS_STATE__";
 
         private readonly IHtmlHelper _htmlHelper;
-        private readonly Func<string, IFileInfo> _fileInfoFactory;
+        private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly ILayoutServiceResultProvider _layoutServiceResultProvider;
 
         public DefaultPreRenderer(
             IHtmlHelper htmlHelper,
-            Func<string, IFileInfo> fileInfoFactory,
+            IWebHostEnvironment webHostEnvironment,
             ILayoutServiceResultProvider layoutServiceResultProvider)
         {
             _htmlHelper = htmlHelper ?? throw new ArgumentNullException(nameof(htmlHelper));
-            _fileInfoFactory = fileInfoFactory ?? throw new ArgumentNullException(nameof(fileInfoFactory));
+            _webHostEnvironment = webHostEnvironment ?? throw new ArgumentNullException(nameof(webHostEnvironment));
             _layoutServiceResultProvider = layoutServiceResultProvider ?? throw new ArgumentNullException(nameof(layoutServiceResultProvider));
         }
 
@@ -52,7 +52,7 @@ namespace JssBlazor.RenderingHost.Services
             bool pageEditing)
         {
             var appHtml = await GetAppHtmlAsync(appType, actionContext, viewData, tempData);
-            var indexHtml = await GetIndexHtmlAsync();
+            var indexHtml = await GetIndexHtmlAsync(appType);
 
             var preRenderedApp = await InsertAppHtml(indexHtml, appHtml, domElementSelector, pageEditing);
             if (pageEditing) return preRenderedApp;
@@ -94,9 +94,12 @@ namespace JssBlazor.RenderingHost.Services
             return appHtmlRenderer;
         }
 
-        private async Task<string> GetIndexHtmlAsync()
+        private async Task<string> GetIndexHtmlAsync(Type appType)
         {
-            var indexHtml = _fileInfoFactory("index.html");
+            var appName = appType.Assembly.GetName().Name;
+            var indexHtmlPath = Path.Combine(appName, "dist", "index.html");
+            var indexHtml = _webHostEnvironment.ContentRootFileProvider.GetFileInfo(indexHtmlPath);
+
             await using var stream = indexHtml.CreateReadStream();
             using var reader = new StreamReader(stream);
             var routeString = await reader.ReadToEndAsync();

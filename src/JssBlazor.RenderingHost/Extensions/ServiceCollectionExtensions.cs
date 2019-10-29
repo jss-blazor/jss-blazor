@@ -6,10 +6,8 @@ using JssBlazor.RenderingHost.Models;
 using JssBlazor.RenderingHost.Services;
 using JssBlazor.Tracking;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
 
 namespace JssBlazor.RenderingHost.Extensions
 {
@@ -51,11 +49,6 @@ namespace JssBlazor.RenderingHost.Extensions
 
             services.AddSingleton(blazorAppConfiguration);
 
-            services.AddSingleton<Func<string, IFileInfo>>(serviceProvider => subpath =>
-            {
-                var webHostEnvironment = serviceProvider.GetService<IWebHostEnvironment>();
-                return webHostEnvironment.WebRootFileProvider.GetFileInfo(subpath);
-            });
             services.AddScoped<IPreRenderer, DefaultPreRenderer>();
             services.AddSingleton<IInitialStateLoader, ServerInitialStateLoader>();
 
