@@ -4,7 +4,7 @@ using JssBlazor.Core.Models;
 using JssBlazor.Core.Services;
 using JssBlazor.RenderingHost.Models;
 using JssBlazor.RenderingHost.Services;
-using JssBlazor.Tracking.Services;
+using JssBlazor.Tracking;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -63,7 +63,7 @@ namespace JssBlazor.RenderingHost.Extensions
             services.AddSingleton<IComponentFactory, DefaultComponentFactory>();
 
             services.AddSingleton(_ => configuration.GetSection("SitecoreConfiguration").Get<SitecoreConfiguration>());
-            services.AddTransient<ITrackingApi, TrackingApi>();
+            services.AddJssBlazorTracking();
         }
     }
 }

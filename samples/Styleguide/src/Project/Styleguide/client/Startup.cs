@@ -1,10 +1,8 @@
 using System;
 using JssBlazor.Components;
 using JssBlazor.Components.Extensions;
-using JssBlazor.Core.Models;
-using JssBlazor.Core.Services;
-using JssBlazor.Styleguide.Services;
-using JssBlazor.Tracking.Services;
+using JssBlazor.Core.Extensions;
+using JssBlazor.Tracking;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,23 +12,17 @@ namespace JssBlazor.Styleguide
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(new ComponentFactoryOptions
+            services.AddJssBlazor(options =>
             {
-                ComponentAssemblyFormat = "JssBlazor.Styleguide.Components.{0}, JssBlazor.Styleguide",
-                MissingComponentType = typeof(MissingComponent).AssemblyQualifiedName,
-                RawComponentType = typeof(RawComponent).AssemblyQualifiedName
-            });
-            services.AddSingleton<IComponentFactory, DefaultComponentFactory>();
-            services.AddSingleton(new SitecoreConfiguration
-            {
-                DefaultLanguage = "en",
-                SitecoreApiKey = new Guid("a3ff4713-af3b-4faa-a471-4780c19a4dd8"),
-                SitecoreApiHost = "http://styleguide.sitecore"
-            });
-            services.AddSingleton<ILayoutService, RemoteLayoutService>();
+                options.ComponentFactoryOptions.ComponentAssemblyFormat = "JssBlazor.Styleguide.Components.{0}, JssBlazor.Styleguide";
+                options.ComponentFactoryOptions.MissingComponentType = typeof(MissingComponent).AssemblyQualifiedName;
+                options.ComponentFactoryOptions.RawComponentType = typeof(RawComponent).AssemblyQualifiedName;
 
-            services.AddTransient<ITrackingApi, TrackingApi>();
-            services.AddSingleton<IInitialStateLoader, ClientInitialStateLoader>();
+                options.SitecoreConfiguration.DefaultLanguage = "en";
+                options.SitecoreConfiguration.SitecoreApiKey = new Guid("a3ff4713-af3b-4faa-a471-4780c19a4dd8");
+                options.SitecoreConfiguration.SitecoreApiHost = "http://styleguide.sitecore";
+            });
+            services.AddJssBlazorTracking();
         }
 
         public void Configure(IComponentsApplicationBuilder app)

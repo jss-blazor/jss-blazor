@@ -7,7 +7,7 @@ using JssBlazor.Core.Models.LayoutService;
 using JssBlazor.Core.Services;
 using Newtonsoft.Json;
 
-namespace JssBlazor.Styleguide.Services
+namespace JssBlazor.Core
 {
     public class RemoteLayoutService : ILayoutService
     {
