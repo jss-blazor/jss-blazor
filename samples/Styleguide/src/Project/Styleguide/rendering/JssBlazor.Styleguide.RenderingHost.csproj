@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.0-preview1.19508.20" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\..\src\JssBlazor.RenderingHost\JssBlazor.RenderingHost.csproj" />
     <ProjectReference Include="..\client\JssBlazor.Styleguide.csproj" />
   </ItemGroup>

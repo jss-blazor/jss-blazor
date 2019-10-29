@@ -30,7 +30,7 @@ namespace JssBlazor.RenderingHost.Controllers
         {
             try
             {
-                var layoutServiceResult = renderRequest.FunctionArgs.LayoutServiceResult;
+                var layoutServiceResult = renderRequest.Args.LayoutServiceResult;
                 _layoutServiceResultProvider.Result = layoutServiceResult;
 
                 var appType = _blazorAppConfiguration.AppComponentType;
