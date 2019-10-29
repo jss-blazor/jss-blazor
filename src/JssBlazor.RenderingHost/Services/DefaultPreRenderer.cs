@@ -157,7 +157,8 @@ namespace JssBlazor.RenderingHost.Services
             var layoutServiceResult = _layoutServiceResultProvider.Result;
             var initialState = JsonConvert.SerializeObject(layoutServiceResult, new JsonSerializerSettings
             {
-                ContractResolver = new CamelCasePropertyNamesContractResolver()
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                NullValueHandling = NullValueHandling.Ignore
             });
 
             var initialStateDocument = stringWriter.ToString();

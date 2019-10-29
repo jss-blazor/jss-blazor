@@ -1,3 +1,4 @@
+@using Newtonsoft.Json.Serialization;
 @inherits JssComponentBase
 
 @*
@@ -18,7 +19,9 @@
     {
         return JsonConvert.SerializeObject(SitecoreContext, new JsonSerializerSettings
         {
-            Formatting = Formatting.Indented
+            Formatting = Formatting.Indented,
+            ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            NullValueHandling = NullValueHandling.Ignore
         });
     }
 }
