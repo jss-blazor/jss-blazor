@@ -1,0 +1,24 @@
+<Project>
+  <Target Name="PrepareBlazorBundleForSitecore" AfterTargets="ComputeAndCopyFilesToPublishDirectory">
+    <PropertyGroup>
+      <_PubTmp>obj\Debug\netstandard2.0\PubTmp\Out</_PubTmp>
+      <_BlazorBundlePath>$(_PubTmp)\$(MSBuildProjectName)\dist</_BlazorBundlePath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <_FilesToRemove
+        Include="$(_PubTmp)\**\*.*"
+        Exclude="$(_BlazorBundlePath)\**\*.*" />
+      <_FilesToMove Include="$(_BlazorBundlePath)\**\*.*" />
+    </ItemGroup>
+
+    <!-- Remove all files for publish except for the Blazor bundle found in $(MSBuildProjectName)\dist. -->
+    <Delete Files="@(_FilesToRemove)" />
+
+    <!-- Deploy the Blazor bundle to the web root because the path of the Blazor framework is hardcoded to the root of the webserver. -->
+    <!-- https://github.com/aspnet/AspNetCore/blob/e451597a0aaa7c0dedd9bb584851a99429d0715c/src/Components/Web.JS/src/BootCommon.ts#L4 -->
+    <Move
+      SourceFiles="@(_FilesToMove)"
+      DestinationFiles="@(_FilesToMove->'%(FullPath)'->Replace('$(MSBuildProjectName)\dist', ''))" />
+  </Target>
+</Project>
