@@ -58,6 +58,9 @@ namespace JssBlazor.RenderingHost.Extensions
             services.AddSingleton<IComponentFactory, DefaultComponentFactory>();
 
             services.AddSingleton(_ => configuration.GetSection("SitecoreConfiguration").Get<SitecoreConfiguration>());
+
+            services.AddScoped<IHeadService, ServerHeadService>();
+
             services.AddJssBlazorTracking();
         }
     }

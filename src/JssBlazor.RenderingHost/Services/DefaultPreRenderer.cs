@@ -3,6 +3,7 @@ using System.IO;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
+using JssBlazor.Components.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Html;
@@ -21,15 +22,18 @@ namespace JssBlazor.RenderingHost.Services
         private readonly IHtmlHelper _htmlHelper;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly ILayoutServiceResultProvider _layoutServiceResultProvider;
+        private readonly IHeadService _headService;
 
         public DefaultPreRenderer(
             IHtmlHelper htmlHelper,
             IWebHostEnvironment webHostEnvironment,
-            ILayoutServiceResultProvider layoutServiceResultProvider)
+            ILayoutServiceResultProvider layoutServiceResultProvider,
+            IHeadService headService)
         {
             _htmlHelper = htmlHelper ?? throw new ArgumentNullException(nameof(htmlHelper));
             _webHostEnvironment = webHostEnvironment ?? throw new ArgumentNullException(nameof(webHostEnvironment));
             _layoutServiceResultProvider = layoutServiceResultProvider ?? throw new ArgumentNullException(nameof(layoutServiceResultProvider));
+            _headService = headService ?? throw new ArgumentNullException(nameof(headService));
         }
 
         public async Task<string> RenderAppAsync<T>(
@@ -55,6 +59,7 @@ namespace JssBlazor.RenderingHost.Services
             var indexHtml = await GetIndexHtmlAsync(appType);
 
             var preRenderedApp = await InsertAppHtml(indexHtml, appHtml, domElementSelector, pageEditing);
+            preRenderedApp = await SetPageTitle(preRenderedApp);
             if (pageEditing) return preRenderedApp;
 
             var statefulPreRenderedApp = await InsertInitialState(preRenderedApp);
@@ -169,6 +174,29 @@ namespace JssBlazor.RenderingHost.Services
                 $"<script type=\"application/json\" id=\"{AppStateId}\"></script>",
                 $"<script type=\"application/json\" id=\"{AppStateId}\">{initialState}</script>");
             return initialStateDocument;
+        }
+
+        private async Task<string> SetPageTitle(
+            string indexHtml)
+        {
+            var htmlDocument = new HtmlDocument
+            {
+                OptionCheckSyntax = false
+            };
+            htmlDocument.LoadHtml(indexHtml);
+
+            var head = htmlDocument.DocumentNode.SelectSingleNode("//head");
+            var title = head.SelectSingleNode("title");
+            if (title == null)
+            {
+                title = HtmlNode.CreateNode("<title></title>");
+                head.AppendChild(title);                
+            }
+            title.InnerHtml = _headService.Title;
+
+            await using var stringWriter = new StringWriter();
+            htmlDocument.Save(stringWriter);
+            return stringWriter.ToString();
         }
     }
 }

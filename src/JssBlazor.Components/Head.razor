@@ -1,0 +1,32 @@
+@inject IHeadService HeadService
+
+@RenderJavaScriptMethod()
+
+@code {
+    private const string _renderedScriptKey = "JssBlazor.Components.Head::renderedScript";
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [CascadingParameter]
+    public RenderBag RenderBag { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await HeadService.SetTitleAsync(Title);
+    }
+
+    private RenderFragment RenderJavaScriptMethod() => builder =>
+    {
+        if (RenderBag.ContainsKey(_renderedScriptKey)) return;
+
+        var sb = new StringBuilder();
+        sb.Append("<script>");
+        sb.Append("window.jssBlazor = window.jssBlazor || {}; ");
+        sb.Append("window.jssBlazor.renderTitle = (title) => document.title = title;");
+        sb.Append("</script>");
+        builder.AddMarkupContent(0, sb.ToString());
+
+        RenderBag[_renderedScriptKey] = true;
+    };
+}

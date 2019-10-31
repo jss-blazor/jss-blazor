@@ -23,6 +23,7 @@ namespace JssBlazor.Components.Extensions
             services.AddSingleton<IComponentFactory, DefaultComponentFactory>();
             services.AddSingleton<ILayoutService, RemoteLayoutService>();
             services.AddSingleton<IInitialStateLoader, ClientInitialStateLoader>();
+            services.AddSingleton<IHeadService, ClientHeadService>();
         }
     }
 }

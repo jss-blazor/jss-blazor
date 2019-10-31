@@ -14,8 +14,12 @@
     return;
 }
 
+@* Provides access to the Layout Service data to all components *@
 <CascadingValue Value="@Route.Sitecore">
-    <Layout Route="@Route" />
+    @* Provides a simple data store to all components that is cleared on each render *@
+    <CascadingValue Value="@(new RenderBag())">
+        <Layout Route="@Route" />
+    </CascadingValue>
 </CascadingValue>
 
 @code {
