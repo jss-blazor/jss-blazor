@@ -3,6 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{36237E1B-AE34-4831-B41B-00724F07B078}"
+	ProjectSection(SolutionItems) = preProject
+		build\CleanWebRoot.Sitecore.targets = build\CleanWebRoot.Sitecore.targets
+		build\PublishSettings.RenderingHost.targets = build\PublishSettings.RenderingHost.targets
+		build\PublishSettings.Sitecore.targets = build\PublishSettings.Sitecore.targets
+	EndProjectSection
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{479E6A6D-8D0E-405D-B997-F89D2F013D3A}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\.editorconfig = ..\..\.editorconfig
@@ -11,7 +18,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{479E
 		src\Project\Common\sitecore\App_Config\Environment\JssBlazor\JssBlazor.Project.Common.Dev.config = src\Project\Common\sitecore\App_Config\Environment\JssBlazor\JssBlazor.Project.Common.Dev.config
 		src\Project\Styleguide\sitecore\App_Config\Environment\JssBlazor\JssBlazor.Project.Styleguide.Dev.config = src\Project\Styleguide\sitecore\App_Config\Environment\JssBlazor\JssBlazor.Project.Styleguide.Dev.config
 		..\..\NuGet.config = ..\..\NuGet.config
-		build\PublishSettings.Sitecore.targets = build\PublishSettings.Sitecore.targets
 		README.md = README.md
 	EndProjectSection
 EndProject
