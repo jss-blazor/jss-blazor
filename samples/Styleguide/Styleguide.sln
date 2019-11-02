@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{479E
 		src\Project\Common\sitecore\App_Config\Environment\JssBlazor\JssBlazor.Project.Common.Dev.config = src\Project\Common\sitecore\App_Config\Environment\JssBlazor\JssBlazor.Project.Common.Dev.config
 		src\Project\Styleguide\sitecore\App_Config\Environment\JssBlazor\JssBlazor.Project.Styleguide.Dev.config = src\Project\Styleguide\sitecore\App_Config\Environment\JssBlazor\JssBlazor.Project.Styleguide.Dev.config
 		..\..\NuGet.config = ..\..\NuGet.config
-		PublishSettings.Sitecore.targets = PublishSettings.Sitecore.targets
+		build\PublishSettings.Sitecore.targets = build\PublishSettings.Sitecore.targets
 		README.md = README.md
 	EndProjectSection
 EndProject

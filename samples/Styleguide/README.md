@@ -38,8 +38,8 @@ This is a sample application to show off JSS Blazor in a Helix solution.
 [2]: src/Project/Common/sitecore/App_Config/Environment/JssBlazor/JssBlazor.Project.Common.Dev.config
 [3]: src/Project/Styleguide/sitecore/App_Config/Environment/JssBlazor/JssBlazor.Project.Styleguide.Dev.config
 [4]: src/Project/Styleguide/rendering/Properties/launchSettings.json
-[5]: PublishSettings.Sitecore.targets
-[6]: ../../src/PublishSettings.Sitecore.targets
+[5]: build/PublishSettings.Sitecore.targets
+[6]: ../../src/build/PublishSettings.Sitecore.targets
 [7]: ../../src/JssBlazor.LayoutService/JssBlazor.LayoutService.csproj
 [8]: ../../src/JssBlazor.sln
 [9]: https://github.com/richardszalay/helix-publishing-pipeline

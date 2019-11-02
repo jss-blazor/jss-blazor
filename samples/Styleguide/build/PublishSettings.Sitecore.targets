@@ -4,5 +4,5 @@
     <publishUrl>C:\inetpub\wwwroot\styleguide.sitecore</publishUrl>
   </PropertyGroup>
   <Import Project="./PublishSettings.Sitecore.targets.user" Condition="exists('./PublishSettings.Sitecore.targets.user')" />
-  <Import Project="./build/targets/CleanWebRoot.Sitecore.targets" Condition="exists('./build/targets/CleanWebRoot.Sitecore.targets')" />
+  <Import Project="./CleanWebRoot.Sitecore.targets" Condition="exists('./CleanWebRoot.Sitecore.targets')" />
 </Project>

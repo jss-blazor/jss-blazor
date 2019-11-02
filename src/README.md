@@ -60,7 +60,7 @@ Styleguide for an example.
 
 [1]: https://dotnet.microsoft.com/download/dotnet-core/3.0
 [2]: https://visualstudio.microsoft.com/vs/preview/
-[3]: ../samples/Styleguide/PublishSettings.RenderingHost.targets
+[3]: ../samples/Styleguide/build/PublishSettings.RenderingHost.targets
 [4]: ../samples/Styleguide/src/Project/Styleguide/rendering/JssBlazor.Styleguide.RenderingHost.csproj
 [5]: ../samples/Styleguide/Styleguide.sln
 [6]: ../samples/Styleguide/src/Project/Styleguide/sitecore/App_Config/Environment/JssBlazor/JssBlazor.Project.Styleguide.Dev.config
