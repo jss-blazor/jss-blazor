@@ -290,7 +290,7 @@ Languages:
       Value: 20190620T030906Z
     - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
       Hint: __Workflow state
-      Value: "{FCFDBB96-946A-4D2F-BCCD-5573073FC176}"
+      Value: "{AF32C98B-C828-42AF-A649-74C1DE3303FB}"
     - ID: "d9ac88b8-0229-59ea-bb1c-dfd54a178ae7"
       Hint: pageTitle
-      Value: Styleguide | Sitecore JSS
+      Value: Styleguide | JSS Blazor
