@@ -2,7 +2,9 @@
 <Project>
   <Target Name="CleanWebRoot" BeforeTargets="Build">
     <ItemGroup>
-      <Binaries Include="$(publishUrl)\bin\JssBlazor*" />
+      <Binaries Include="$(publishUrl)\bin\JssBlazor.Foundation*" />
+      <Binaries Include="$(publishUrl)\bin\JssBlazor.Feature*" />
+      <Binaries Include="$(publishUrl)\bin\JssBlazor.Project*" />
     </ItemGroup>
     <RemoveDir Directories="$(publishUrl)\App_Config\Environment\JssBlazor" />
     <RemoveDir Directories="$(publishUrl)\App_Config\JssBlazor" />
