@@ -20,7 +20,7 @@ fields:
 # root placeholder names are defined in the package.json config section (required for Sitecore deployment)
 placeholders:
   jss-main:
-  - componentName: JssBlazor.Styleguide.Components.ContentBlock, JssBlazor.Styleguide
+  - componentName: JssBlazor.Project.Styleguide.Client.Components.ContentBlock, JssBlazor.Project.Styleguide.Client
     fields:
       heading: Welcome to Sitecore JSS en.yml
       # to author content in YAML, use _multi-line values_ (prefixed with | + endline)

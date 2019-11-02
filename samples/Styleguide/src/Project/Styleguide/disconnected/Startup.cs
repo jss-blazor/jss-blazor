@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 
-namespace JssBlazor.Styleguide.DisconnectedServer
+namespace JssBlazor.Project.Styleguide.DisconnectedServer
 {
     public class Startup
     {
@@ -43,14 +43,14 @@ namespace JssBlazor.Styleguide.DisconnectedServer
                 app.UseBlazorDebugging();
             }
 
-            app.UseClientSideBlazorFiles<Styleguide.Startup>();
+            app.UseClientSideBlazorFiles<Client.Startup>();
 
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
-                endpoints.MapFallbackToClientSideBlazor<Styleguide.Startup>("index.html");
+                endpoints.MapFallbackToClientSideBlazor<Client.Startup>("index.html");
             });
         }
     }

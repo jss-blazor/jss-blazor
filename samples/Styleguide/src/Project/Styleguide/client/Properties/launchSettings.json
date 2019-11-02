@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "JssBlazor.Styleguide": {
+    "JssBlazor.Project.Styleguide.Client": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

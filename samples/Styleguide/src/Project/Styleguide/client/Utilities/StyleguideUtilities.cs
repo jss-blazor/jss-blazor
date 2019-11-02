@@ -1,6 +1,6 @@
 using JssBlazor.Core.Models.LayoutService;
 
-namespace JssBlazor.Styleguide.Utilities
+namespace JssBlazor.Project.Styleguide.Client.Utilities
 {
     public static class StyleguideUtilities
     {

@@ -38,15 +38,15 @@ Rendering Host in IIS as follows:
    `PublishSettings.RenderingHost.targets.user` next to
    [`PublishSettings.RenderingHost.targets`][3] and set the `publishUrl`
    property to your Rendering Host's physical path.
-4. Publish the [`JssBlazor.Styleguide.RenderingHost`][4] project in
+4. Publish the [`JssBlazor.Project.Styleguide.RenderingHost`][4] project in
    [`Styleguide.sln`][5].
 5. Set up a symbolic link in the Sitecore instance webroot (e.g.,
    `C:\inetpub\wwwroot\styleguide.sitecore`) that points to the
-   `JssBlazor.Styleguide\dist\_framework` folder in the Rendering Host's
-   webroot*. This is a sample PowerShell script to do that:
+   `JssBlazor.Project.Styleguide.Client\dist\_framework` folder in the Rendering
+   Host's webroot*. This is a sample PowerShell script to do that:
    ```powershell
    cd C:\inetpub\wwwroot\styleguide.sitecore
-   New-Item -ItemType SymbolicLink -Path . -Name _framework -Value C:\inetpub\wwwroot\styleguide.renderinghost\JssBlazor.Styleguide\dist\_framework
+   New-Item -ItemType SymbolicLink -Path . -Name _framework -Value C:\inetpub\wwwroot\styleguide.renderinghost\JssBlazor.Project.Styleguide.Client\dist\_framework
    ```
 
 *The Styleguide's Blazor bundle needs to be deployed to both Sitecore and the
@@ -61,6 +61,6 @@ Styleguide for an example.
 [1]: https://dotnet.microsoft.com/download/dotnet-core/3.0
 [2]: https://visualstudio.microsoft.com/vs/preview/
 [3]: ../samples/Styleguide/build/PublishSettings.RenderingHost.targets
-[4]: ../samples/Styleguide/src/Project/Styleguide/rendering/JssBlazor.Styleguide.RenderingHost.csproj
+[4]: ../samples/Styleguide/src/Project/Styleguide/rendering/JssBlazor.Project.Styleguide.RenderingHost.csproj
 [5]: ../samples/Styleguide/Styleguide.sln
 [6]: ../samples/Styleguide/src/Project/Styleguide/sitecore/App_Config/Environment/JssBlazor/JssBlazor.Project.Styleguide.Dev.config

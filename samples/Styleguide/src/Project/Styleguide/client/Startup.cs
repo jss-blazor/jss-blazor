@@ -6,7 +6,7 @@ using JssBlazor.Tracking;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace JssBlazor.Styleguide
+namespace JssBlazor.Project.Styleguide.Client
 {
     public class Startup
     {
@@ -14,7 +14,7 @@ namespace JssBlazor.Styleguide
         {
             services.AddJssBlazor(options =>
             {
-                options.ComponentFactoryOptions.ComponentAssemblyFormat = "JssBlazor.Styleguide.Components.{0}, JssBlazor.Styleguide";
+                options.ComponentFactoryOptions.ComponentAssemblyFormat = "JssBlazor.Project.Styleguide.Client.Components.{0}, JssBlazor.Project.Styleguide.Client";
                 options.ComponentFactoryOptions.MissingComponentType = typeof(MissingComponent).AssemblyQualifiedName;
                 options.ComponentFactoryOptions.RawComponentType = typeof(RawComponent).AssemblyQualifiedName;
 
