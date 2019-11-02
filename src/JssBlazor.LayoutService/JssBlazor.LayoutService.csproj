@@ -62,7 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Modules\JssBlazor\JssBlazor.LayoutService.config" />
-    <None Include="Properties\PublishProfiles\Local.pubxml" />
+    <None Include="Properties\PublishProfiles\Sitecore.pubxml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

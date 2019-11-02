@@ -64,7 +64,7 @@
     <Content Include="App_Config\JssBlazor\Project\JssBlazor.Project.Styleguide.JssConfig.config" />
     <Content Include="App_Config\JssBlazor\Project\JssBlazor.Project.Styleguide.Serialization.config" />
     <Content Include="App_Config\Environment\JssBlazor\JssBlazor.Project.Styleguide.Dev.config" />
-    <None Include="Properties\PublishProfiles\Local.pubxml" />
+    <None Include="Properties\PublishProfiles\Sitecore.pubxml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

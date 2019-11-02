@@ -348,6 +348,6 @@ healthchecksdb
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
 
-# Local publishing profiles can be configured by creating a PublishSettings.targets.user
-# file for the appropriate project type
-![Ll]ocal.pubxml
+# Local publish profiles for publishing to different Sitecore services
+![Rr]endering[Hh]ost.pubxml
+![Ss]itecore.pubxml
