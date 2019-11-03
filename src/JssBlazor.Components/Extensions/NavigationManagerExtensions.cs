@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components;
 
-namespace JssBlazor.Core.Extensions
+namespace JssBlazor.Components.Extensions
 {
     public static class NavigationManagerExtensions
     {

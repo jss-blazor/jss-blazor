@@ -1,10 +1,12 @@
 using System;
 using System.Threading.Tasks;
+using JssBlazor.Core;
 using JssBlazor.Core.Models.LayoutService;
+using JssBlazor.Core.Services;
 using Microsoft.JSInterop;
 using Newtonsoft.Json;
 
-namespace JssBlazor.Core.Services
+namespace JssBlazor.Components.Services
 {
     public class ClientInitialStateLoader : IInitialStateLoader
     {
