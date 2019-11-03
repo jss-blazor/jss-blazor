@@ -6,11 +6,8 @@
     private RenderFragment RenderRawComponent() => builder =>
     {
         builder.OpenElement(0, Component.Name);
-        foreach (var attribute in Component.Attributes)
-        {
-            builder.AddAttribute(0, attribute.Key, attribute.Value);
-        }
-        builder.AddContent(0, Component.Contents);
+        builder.AddMultipleAttributes(1, Component.Attributes.ToDictionary(kvp => kvp.Key, kvp => (object)kvp.Value));
+        builder.AddContent(2, Component.Contents);
         builder.CloseElement();
     };
 }
