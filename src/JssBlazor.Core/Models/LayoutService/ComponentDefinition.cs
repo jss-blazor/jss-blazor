@@ -7,7 +7,7 @@ namespace JssBlazor.Core.Models.LayoutService
 {
     public class ComponentDefinition : IRendering
     {
-        public Guid Uid { get; set; }
+        public Guid? Uid { get; set; }
         public string ComponentName { get; set; }
         public Guid? DataSource { get; set; }
 

@@ -6,7 +6,7 @@ namespace JssBlazor.Core.Models.LayoutService
 {
     public interface IRendering
     {
-        Guid Uid { get; set; }
+        Guid? Uid { get; set; }
         string Name { get; set; }
         IDictionary<string, Field> Fields { get; set; }
         IDictionary<string, IEnumerable<ComponentDefinition>> Placeholders { get; set; }
