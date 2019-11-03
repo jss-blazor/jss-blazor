@@ -1,5 +1,7 @@
 using System;
 using System.Net.Http;
+using JssBlazor.Components.Models;
+using JssBlazor.Components.Services;
 using JssBlazor.Core.Models;
 using JssBlazor.Core.Services;
 using JssBlazor.RenderingHost.Models;

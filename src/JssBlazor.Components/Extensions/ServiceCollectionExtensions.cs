@@ -1,14 +1,15 @@
 using System;
-using JssBlazor.Core.Models;
+using JssBlazor.Components.Models;
+using JssBlazor.Components.Services;
 using JssBlazor.Core.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace JssBlazor.Core.Extensions
+namespace JssBlazor.Components.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static void AddJssBlazor(
+        public static void AddJssBlazorComponents(
             this IServiceCollection services,
             Action<JssBlazorOptions> setupAction)
         {

@@ -1,9 +1,10 @@
 using System;
-using JssBlazor.Core.Models;
+using JssBlazor.Components.Models;
 using JssBlazor.Core.Models.LayoutService;
+using JssBlazor.Core.Services;
 using Microsoft.AspNetCore.Components;
 
-namespace JssBlazor.Core.Services
+namespace JssBlazor.Components.Services
 {
     public class DefaultComponentFactory : IComponentFactory
     {

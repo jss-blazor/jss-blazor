@@ -4,10 +4,9 @@ using System.Threading.Tasks;
 using System.Web;
 using JssBlazor.Core.Models;
 using JssBlazor.Core.Models.LayoutService;
-using JssBlazor.Core.Services;
 using Newtonsoft.Json;
 
-namespace JssBlazor.Core
+namespace JssBlazor.Core.Services
 {
     public class RemoteLayoutService : ILayoutService
     {
