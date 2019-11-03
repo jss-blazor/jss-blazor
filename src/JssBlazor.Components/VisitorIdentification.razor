@@ -7,14 +7,18 @@
 @EmitVisitorIdentificationScript()
 
 @code {
-    private bool _emittedVi;
+    private string EmittedViKey => $"{GetType().FullName}::EmittedVi";
 
     [CascadingParameter]
     public RenderingData SitecoreContext { get; set; }
 
+    [CascadingParameter]
+    public RenderBag RenderBag { get; set; }
+
     private bool ShouldRenderVisitorIdentification()
     {
-        return !_emittedVi && SitecoreContext.Context.VisitorIdentificationTimestamp != null;
+        return !RenderBag.ContainsKey(EmittedViKey)
+               && SitecoreContext.Context.VisitorIdentificationTimestamp != null;
     }
 
     private RenderFragment EmitVisitorIdentificationScript() => builder =>
@@ -27,6 +31,6 @@
         sb.AppendLine("document.getElementsByTagName('head')[0].appendChild(script);");
         sb.AppendLine("</script>");
         builder.AddMarkupContent(0, sb.ToString());
-        _emittedVi = true;
+        RenderBag[EmittedViKey] = true;
     };
 }
