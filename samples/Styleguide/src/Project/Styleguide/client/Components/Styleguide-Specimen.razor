@@ -4,7 +4,7 @@
     Helper component that displays explanatory information and where to find the definitions
     of styleguide specimens.
 *@
-<div class="pt-3" id="@StyleguideUtilities.GetMarkupId(Component)" data-e2e-id="@E2eId">
+<div class="pt-3" id="@StyleguideUtilities.GetMarkupId(Component)" data-e2e-id="@E2EId">
     <TextField Tag="h4"
                Field="@Component.Fields["heading"]" />
     <RichText Field="@Component.Fields["description"]" />
@@ -22,7 +22,7 @@
 
 @code {
     [Parameter]
-    public string E2eId { get; set; }
+    public string E2EId { get; set; }
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
