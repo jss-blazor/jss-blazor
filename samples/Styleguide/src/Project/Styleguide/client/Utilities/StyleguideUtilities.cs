@@ -6,7 +6,7 @@ namespace JssBlazor.Project.Styleguide.Client.Utilities
     {
         public static string GetMarkupId(IRendering rendering)
         {
-            return $"i{rendering.Uid.ToString("D")}";
+            return $"i{rendering.Uid:D}";
         }
     }
 }

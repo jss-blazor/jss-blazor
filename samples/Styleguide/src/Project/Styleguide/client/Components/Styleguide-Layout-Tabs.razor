@@ -16,9 +16,9 @@
             When the page is editing, we hide the tab headings, because they are not updated when xEditor adds or removes a tab rendering.
             Instead, we show the tab header inline with the tab contents (see Styleguide-Layout-Tabs-Tab).
         *@
-        @if (!_isEditing)
+        @if (!IsEditing)
         {
-            @for (var i = 0; i < _tabs.Count(); i++)
+            @for (var i = 0; i < _tabs.Length; i++)
             {
                 @*
                     i must be copied into a separate variable, otherwise the onclick delegate will
@@ -43,23 +43,22 @@
         }
     </ul>
     <div class="p-3 border-left border-right border-bottom">
-        @for (var i = 0; i < _tabs.Count(); i++)
+        @for (var i = 0; i < _tabs.Length; i++)
         {
             var tab = _tabs[i];
 
             // allow experience editor markup components to render
-            if (tab.Fields == null && _isEditing)
+            if (tab.Fields == null && IsEditing)
             {
-                @ComponentFactory.RenderComponent(tab);
+                @ComponentFactory.RenderComponent(tab)
                 continue;
             }
 
             // we render the tab either if it's active - or we're editing,
             // in which case we stack all tabs for visual editing
-            if (_activeTabIndex == i || _isEditing)
+            if (_activeTabIndex == i || IsEditing)
             {
-                @ComponentFactory.RenderComponent(tab);
-                continue;
+                @ComponentFactory.RenderComponent(tab)
             }
         }
     </div>
@@ -72,20 +71,21 @@
     [CascadingParameter]
     public RenderingData SitecoreContext { get; set; }
 
-    private int _activeTabIndex = 0;
-    private bool _isEditing => SitecoreContext.Context.PageEditing;
+    private int _activeTabIndex;
     private ComponentDefinition[] _tabs;
+
+    private bool IsEditing => SitecoreContext.Context.PageEditing;
 
     protected override void OnParametersSet()
     {
         _tabs = Component.Placeholders["jss-tabs"].ToArray();
     }
 
-    private string GetTabKey(int tabIndex) => $"tab{tabIndex}";
+    private static string GetTabKey(int tabIndex) => $"tab{tabIndex}";
 
     private string GetTabClass(int tabIndex)
     {
-        var tabClass = "nav-link";
+        const string tabClass = "nav-link";
         return _activeTabIndex == tabIndex ? $"{tabClass} active" : tabClass;
     }
 

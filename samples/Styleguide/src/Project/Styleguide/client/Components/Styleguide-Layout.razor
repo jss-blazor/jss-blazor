@@ -35,7 +35,7 @@
 </div>
 
 @code {
-    private IEnumerable<Section> _sections { get; set; }
+    private IEnumerable<Section> _sections;
 
     protected override void OnParametersSet()
     {
@@ -68,7 +68,7 @@
         return section;
     }
 
-    private string GetSectionLink(Section section) => $"#{section.Id}";
+    private static string GetSectionLink(Section section) => $"#{section.Id}";
 
     private class Section
     {

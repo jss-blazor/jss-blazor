@@ -184,13 +184,22 @@
         };
     }
 
-    public async Task SubmitEventAsync() => await TrackingApi.TrackEventAsync(new Event { EventId = _event }, _trackingRequestOptions);
-    public async Task SubmitGoalAsync() => await TrackingApi.TrackEventAsync(new Goal { GoalId = _goal }, _trackingRequestOptions);
-    public async Task SubmitOutcomeAsync() => await TrackingApi.TrackEventAsync(new Outcome { OutcomeId = _outcomeName, CurrencyCode = "USD", MonetaryValue = _outcomeValue }, _trackingRequestOptions);
-    public async Task TriggerCampaignAsync() => await TrackingApi.TrackEventAsync(new Campaign { CampaignId = _campaign }, _trackingRequestOptions);
-    public async Task SubmitPageViewAsync() => await TrackingApi.TrackEventAsync(new PageView { PageId = _pageId, Url = _pageUrl }, _trackingRequestOptions);
+    private async Task SubmitEventAsync() =>
+        await TrackingApi.TrackEventAsync(new Event { EventId = _event }, _trackingRequestOptions);
 
-    public async Task SubmitBatchingAsync()
+    private async Task SubmitGoalAsync() =>
+        await TrackingApi.TrackEventAsync(new Goal { GoalId = _goal }, _trackingRequestOptions);
+
+    private async Task SubmitOutcomeAsync() =>
+        await TrackingApi.TrackEventAsync(new Outcome { OutcomeId = _outcomeName, CurrencyCode = "USD", MonetaryValue = _outcomeValue }, _trackingRequestOptions);
+
+    private async Task TriggerCampaignAsync() =>
+        await TrackingApi.TrackEventAsync(new Campaign { CampaignId = _campaign }, _trackingRequestOptions);
+
+    private async Task SubmitPageViewAsync() =>
+        await TrackingApi.TrackEventAsync(new PageView { PageId = _pageId, Url = _pageUrl }, _trackingRequestOptions);
+
+    private async Task SubmitBatchingAsync()
     {
         var events = new ITrackingModel[]
         {
@@ -204,7 +213,7 @@
         await TrackingApi.TrackEventsAsync(events, _trackingRequestOptions);
     }
 
-    public async Task AbandonSessionAsync()
+    private async Task AbandonSessionAsync()
     {
         var abandonOptions = new TrackingRequestOptions
         {
