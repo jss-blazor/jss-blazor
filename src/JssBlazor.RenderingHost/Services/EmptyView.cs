@@ -8,11 +8,11 @@ namespace JssBlazor.RenderingHost.Services
     {
         public static IView Default => new EmptyView();
 
+        public string Path { get; } = string.Empty;
+
         public Task RenderAsync(ViewContext context)
         {
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
-
-        public string Path { get; } = string.Empty;
     }
 }
