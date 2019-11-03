@@ -4,6 +4,7 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using JssBlazor.Components.Services;
+using JssBlazor.Core;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Html;
@@ -151,7 +152,8 @@ namespace JssBlazor.RenderingHost.Services
             stateNode.Attributes.Add("id", AppStateId);
 
             var fetcherScript = HtmlNode.CreateNode("<script></script>");
-            fetcherScript.InnerHtml = $"window.jssBlazor = window.jssBlazor || {{}}; window.jssBlazor.getInitialState = () => {{ return document.getElementById(\"{AppStateId}\").innerHTML; }}";
+            fetcherScript.InnerHtml =
+                $"window.jssBlazor = window.jssBlazor || {{}}; window.{Constants.GetInitialStateMethodName} = () => {{ return document.getElementById(\"{AppStateId}\").innerHTML; }}";
 
             var body = htmlDocument.DocumentNode.SelectSingleNode("//body");
             body.AppendChild(stateNode);

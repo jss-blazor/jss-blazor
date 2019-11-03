@@ -19,7 +19,7 @@ namespace JssBlazor.Core.Services
         {
             try
             {
-                var initialState = await _jsRuntime.InvokeAsync<string>("jssBlazor.getInitialState");
+                var initialState = await _jsRuntime.InvokeAsync<string>(Constants.GetInitialStateMethodName);
                 return JsonConvert.DeserializeObject<LayoutServiceResult>(initialState);
             }
             catch (Exception ex)
