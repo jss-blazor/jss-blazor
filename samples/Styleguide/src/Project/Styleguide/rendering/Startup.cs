@@ -1,5 +1,4 @@
 using JssBlazor.RenderingHost.Extensions;
-using JssBlazor.RenderingHost.Models;
 using JssBlazor.Project.Styleguide.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,16 +20,11 @@ namespace JssBlazor.Project.Styleguide.RenderingHost
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc()
-                .AddNewtonsoftJson();
-            services.AddHttpContextAccessor();
-
-            var appConfiguration = new BlazorAppConfiguration
+            services.AddJssBlazorRenderingHost(Configuration, options =>
             {
-                AppComponentType = typeof(App),
-                AppDomElementSelector = "app"
-            };
-            services.AddJssBlazorRenderingHost(Configuration, appConfiguration);
+                options.AppComponentType = typeof(App);
+                options.AppDomElementSelector = "app";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,14 +42,7 @@ namespace JssBlazor.Project.Styleguide.RenderingHost
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseJssBlazorRenderingHost();
         }
     }
 }

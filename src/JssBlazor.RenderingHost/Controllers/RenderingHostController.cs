@@ -12,12 +12,12 @@ namespace JssBlazor.RenderingHost.Controllers
     public class RenderingHostController : Controller
     {
         private readonly ILayoutServiceResultProvider _layoutServiceResultProvider;
-        private readonly BlazorAppConfiguration _blazorAppConfiguration;
+        private readonly JssBlazorRenderingHostOptions _blazorAppConfiguration;
         private readonly IPreRenderer _preRenderer;
 
         public RenderingHostController(
             ILayoutServiceResultProvider layoutServiceResultProvider,
-            BlazorAppConfiguration blazorAppConfiguration,
+            JssBlazorRenderingHostOptions blazorAppConfiguration,
             IPreRenderer preRenderer)
         {
             _layoutServiceResultProvider = layoutServiceResultProvider ?? throw new ArgumentNullException(nameof(layoutServiceResultProvider));
