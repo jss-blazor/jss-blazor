@@ -2,30 +2,54 @@
 
 ![JSS Blazor](assets/jss-blazor-banner.svg)
 
-JSS Blazor for [Sitecore JavaScript Services][1] allows you to build
-full-featured websites on top of Sitecore, entirely in C#, using
-[Blazor WebAssembly][2].
+JSS Blazor is a client SDK for [Sitecore JavaScript Services][1] that enables
+you to build client web apps entirely in C# with [Blazor WebAssembly][2].
 
-The aim of this project is to have feature parity with the existing Angular,
-React, and Vue.js frameworks for [Sitecore JavaScript Services][1] so you can
-build your sites without writing a bit of JavaScript! 😎
+## 🚨 Disclaimer
+
+At the moment, JSS Blazor is a **proof of concept** to demonstrate the
+capabilities of [Sitecore JavaScript Services][1] beyond JavaScript frameworks
+and to also give a preview of what .NET Core component development could look
+like with Sitecore. It is not yet ready for production use.
+
+JSS Blazor is not an official Sitecore module and is in no way, shape, form, or
+fashion supported by Sitecore.
+
+## 🚀 Getting Started
 
 This repository consists of the JSS Blazor SDK, which can be found in the `/src`
-folder, and a Styleguide sample site built using Helix principles found in the
-`/samples` folder. The Styleguide sample site is built using all of the same
-components and content found in the boilerplate projects for JSS Angular, React,
-and Vue.js.
+folder, and a Styleguide sample site found in the `/samples` folder.
 
-## SDK 🛠️
+If you want to see JSS Blazor in action or get a feel for how it works, the
+[🎨 Styleguide](#-styleguide) is the best place to start.
 
-To get started working with the JSS Blazor SDK, follow along with its
-[README][3].
+## 💼 Prerequisites
 
-## Styleguide 🎨
+You need the following installed to work with Blazor:
 
-To get started with the Styleguide, follow along with its [README][4].
+1. [Visual Studio 2019 16.4.0 Preview 3][2] or greater.
+2. The latest Blazor WebAssembly project template.
+
+To install the Blazor WebAssembly project template:
+
+```powershell
+dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.1.0-preview2.19528.8
+```
+
+## 🔧 SDK
+
+The JSS Blazor SDK allows you to build new websites with JSS Blazor. To get
+started working with the JSS Blazor SDK, follow along with its [README][4].
+
+## 🎨 Styleguide
+
+The Styleguide sample site is built using all of the same components and content
+found in the boilerplate app for new JSS Angular, React, and Vue.js projects.
+
+To get started with the Styleguide, follow along with its [README][5].
 
 [1]: https://jss.sitecore.com
-[2]: https://docs.microsoft.com/en-us/aspnet/core/blazor/hosting-models?view=aspnetcore-3.0#blazor-webassembly
-[3]: /src/README.md
-[4]: /samples/Styleguide/README.md
+[2]: https://docs.microsoft.com/en-us/aspnet/core/blazor/hosting-models?view=aspnetcore-3.1#blazor-webassembly
+[3]: https://visualstudio.microsoft.com/vs/preview/
+[4]: /src/README.md
+[5]: /samples/Styleguide/README.md
