@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using JssBlazor.Core;
 using JssBlazor.Core.Models.LayoutService;
 using JssBlazor.Core.Services;
 using Microsoft.JSInterop;
@@ -21,7 +20,7 @@ namespace JssBlazor.Components.Services
         {
             try
             {
-                var initialState = await _jsRuntime.InvokeAsync<string>(Constants.GetInitialStateMethodName);
+                var initialState = await _jsRuntime.InvokeAsync<string>(Core.Constants.GetInitialStateMethodName);
                 return JsonConvert.DeserializeObject<LayoutServiceResult>(initialState);
             }
             catch (Exception ex)

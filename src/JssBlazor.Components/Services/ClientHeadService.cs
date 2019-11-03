@@ -17,7 +17,7 @@ namespace JssBlazor.Components.Services
         public async Task SetTitleAsync(string title)
         {
             Title = title;
-            await _jsRuntime.InvokeVoidAsync("jssBlazor.renderTitle", title);
+            await _jsRuntime.InvokeVoidAsync(Constants.RenderTitleMethodName, title);
         }
     }
 }
