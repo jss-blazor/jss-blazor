@@ -13,7 +13,7 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            JToken jToken = JToken.ReadFrom(reader);
+            var jToken = JToken.Load(reader);
             var jTokenType = jToken.Type.ToString().ToLower();
 
             var fieldValue = jTokenType switch
@@ -35,7 +35,7 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             if (!(value is FieldValue fieldValue)) return;
-            if (fieldValue?.RawValue == null) return;
+            if (fieldValue.RawValue == null) return;
             serializer.Serialize(writer, fieldValue.RawValue);
         }
     }

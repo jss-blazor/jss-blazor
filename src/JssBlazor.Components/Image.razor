@@ -20,8 +20,8 @@
 
     private RenderFragment RenderImage() => builder =>
     {
-        var imageField = Field as ImageField;
-        if (imageField == null || (string.IsNullOrWhiteSpace(imageField.Editable) && imageField.Value == null))
+        if (!(Field is ImageField imageField)
+            || string.IsNullOrWhiteSpace(imageField.Editable) && imageField.Value == null)
         {
             return;
         }
@@ -47,7 +47,7 @@
 
             var imgAttr = GetImageAttributes(foundImgAttributes["src"]?.ToString(), SrcSet, foundImgAttributes, ImageParams);
             var imgHtml = BuildImgHtml(imgAttr);
-            var editableMarkup = imageField.Editable.Replace(foundImg.ImgTag, imgHtml.ToString());
+            var editableMarkup = imageField.Editable.Replace(foundImg.ImgTag, imgHtml);
             GetEditableWrapper(editableMarkup)(builder);
             return;
         }
@@ -69,7 +69,7 @@
         builder.CloseElement();
     };
 
-    private IDictionary<string, object> GetImageAttributes(
+    private static IDictionary<string, object> GetImageAttributes(
         string src,
         IEnumerable<ImageSizeParameters> srcSet,
         IDictionary<string, object> otherAttrs,
@@ -89,7 +89,7 @@
         return newAttributes;
     }
 
-    private string BuildImgHtml(IDictionary<string, object> attributes)
+    private static string BuildImgHtml(IDictionary<string, object> attributes)
     {
         var imgHtml = new StringBuilder();
         imgHtml.Append("<img ");

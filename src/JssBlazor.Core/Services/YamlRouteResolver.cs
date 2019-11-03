@@ -40,25 +40,22 @@ namespace JssBlazor.Core.Services
         private async Task<string> GetRouteYmlAsync(string routePath)
         {
             var routeYml = _fileInfoFactory(routePath);
-            using (var stream = routeYml.CreateReadStream())
-            using (var reader = new StreamReader(stream))
-            {
-                var routeString = await reader.ReadToEndAsync();
-                return routeString;
-            }
+            using var stream = routeYml.CreateReadStream();
+            using var reader = new StreamReader(stream);
+            var routeString = await reader.ReadToEndAsync();
+            return routeString;
         }
 
         private static string ConvertYmlToJson(string yml)
         {
             var deserializer = new Deserializer();
             var ymlObject = deserializer.Deserialize<object>(yml);
-            using (var stringWriter = new StringWriter())
-            {
-                var serializer = new JsonSerializer();
-                serializer.Serialize(stringWriter, ymlObject);
-                var json = stringWriter.ToString();
-                return json;
-            }
+
+            using var stringWriter = new StringWriter();
+            var serializer = new JsonSerializer();
+            serializer.Serialize(stringWriter, ymlObject);
+            var json = stringWriter.ToString();
+            return json;
         }
     }
 }

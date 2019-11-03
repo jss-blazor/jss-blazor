@@ -16,7 +16,7 @@ namespace JssBlazor.RenderingHost.Services
             _logger = logger;
         }
 
-        public bool HasAttachedJSRuntime => _jsRuntime != null;
+        public bool HasAttachedJsRuntime => _jsRuntime != null;
 
         public new void Initialize(string baseUri, string uri)
         {
@@ -24,7 +24,7 @@ namespace JssBlazor.RenderingHost.Services
             // with the base path of the URL (e.g., https://localhost/) for the client-side app, which almost
             // certainly won't have a page found at /api/renderinghost.
             base.Initialize(baseUri, baseUri);
-            NotifyLocationChanged(isInterceptedLink: false);
+            NotifyLocationChanged(false);
         }
 
         public void AttachJsRuntime(IJSRuntime jsRuntime)

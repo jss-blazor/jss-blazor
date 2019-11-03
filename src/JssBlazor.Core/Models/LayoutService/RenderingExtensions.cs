@@ -49,7 +49,7 @@ namespace JssBlazor.Core.Models.LayoutService
                 return Enumerable.Empty<ComponentDefinition>();
             }
 
-            var result = rendering.Placeholders[placeholderName];
+            var result = rendering.Placeholders?[placeholderName];
             return result ?? Enumerable.Empty<ComponentDefinition>();
         }
     }

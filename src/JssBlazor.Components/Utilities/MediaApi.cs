@@ -17,7 +17,7 @@ namespace JssBlazor.Components.Utilities
         public static EditorImageTag FindEditorImageTag(string editorMarkup)
         {
             var imageTagMatch = ImageTagRegex.Match(editorMarkup);
-            if (imageTagMatch == null || imageTagMatch.Length < 2)
+            if (imageTagMatch.Length < 2)
             {
                 return null;
             }
@@ -45,7 +45,7 @@ namespace JssBlazor.Components.Utilities
 
             var uriBuilder = parsedUrl.IsAbsoluteUri ?
                 new UriBuilder(parsedUrl) :
-                new UriBuilder("http://www.tempuri.org" + parsedUrl.ToString());
+                new UriBuilder("http://www.tempuri.org" + parsedUrl);
 
             var imageParameters = parameters?.ToString();
             if (!string.IsNullOrWhiteSpace(imageParameters))
@@ -54,7 +54,7 @@ namespace JssBlazor.Components.Utilities
             }
 
             var match = MediaUrlPrefixRegex.Match(uriBuilder.Path);
-            if (match != null && match.Length > 1)
+            if (match.Length > 1)
             {
                 // regex will provide us with /-/ or /~/ type
                 uriBuilder.Path = MediaUrlPrefixRegex.Replace(uriBuilder.Path, $"/{match.Groups[1].Value}/jssmedia/");

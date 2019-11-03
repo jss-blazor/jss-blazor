@@ -20,8 +20,8 @@
 
     private RenderFragment RenderLink() => builder =>
     {
-        var linkField = Field as LinkField;
-        if (linkField == null || (string.IsNullOrWhiteSpace(linkField.EditableFirstPart) && linkField.Value == null))
+        if (!(Field is LinkField linkField)
+            || string.IsNullOrWhiteSpace(linkField.EditableFirstPart) && linkField.Value == null)
         {
             return;
         }

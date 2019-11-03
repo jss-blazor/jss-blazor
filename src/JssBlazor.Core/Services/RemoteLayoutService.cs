@@ -35,7 +35,7 @@ namespace JssBlazor.Core.Services
         {
             var layoutServiceUrl = new UriBuilder(_sitecoreConfiguration.SitecoreApiHost)
             {
-                Path = $"/sitecore/api/layout/render/jss"
+                Path = "/sitecore/api/layout/render/jss"
             };
 
             var queryString = HttpUtility.ParseQueryString(layoutServiceUrl.Query);

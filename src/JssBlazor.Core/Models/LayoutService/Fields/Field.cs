@@ -23,15 +23,7 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
         public T GetFieldValue<T>()
         {
             var rawValue = Value?.RawValue;
-            if (rawValue == null) return default;
-            return rawValue.Value<T>();
-        }
-
-        public T GetFieldValue<T>(string key)
-        {
-            var rawValue = Value?.RawValue?[key];
-            if (rawValue == null) return default;
-            return rawValue.Value<T>();
+            return rawValue == null ? default : rawValue.Value<T>();
         }
     }
 }

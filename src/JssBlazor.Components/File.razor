@@ -10,7 +10,7 @@
     public RenderFragment ChildContent { get; set; }
 
     [Parameter(CaptureUnmatchedValues = true)]
-    public IDictionary<string, object> HtmlAttributes { get; set; }
+    public IDictionary<string, object> HtmlAttributes { get; set; } = new Dictionary<string, object>();
 
     private RenderFragment RenderFile() => builder =>
     {

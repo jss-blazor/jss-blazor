@@ -3,7 +3,7 @@
 @RenderJavaScriptMethod()
 
 @code {
-    private const string _renderedScriptKey = "JssBlazor.Components.Head::renderedScript";
+    private string RenderedScriptKey => $"{GetType().FullName}::RenderedScript";
 
     [Parameter]
     public string Title { get; set; }
@@ -18,7 +18,7 @@
 
     private RenderFragment RenderJavaScriptMethod() => builder =>
     {
-        if (RenderBag.ContainsKey(_renderedScriptKey)) return;
+        if (RenderBag.ContainsKey(RenderedScriptKey)) return;
 
         var sb = new StringBuilder();
         sb.Append("<script>");
@@ -27,6 +27,6 @@
         sb.Append("</script>");
         builder.AddMarkupContent(0, sb.ToString());
 
-        RenderBag[_renderedScriptKey] = true;
+        RenderBag[RenderedScriptKey] = true;
     };
 }

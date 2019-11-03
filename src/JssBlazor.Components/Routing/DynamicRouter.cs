@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
@@ -10,16 +9,12 @@ namespace JssBlazor.Components.Routing
 {
     public class DynamicRouter : IComponent, IHandleAfterRender, IDisposable
     {
-        static readonly char[] _queryOrHashStartChar = new[] { '?', '#' };
-
-        static readonly ReadOnlyDictionary<string, object> _emptyParametersDictionary =
+        private static readonly ReadOnlyDictionary<string, object> EmptyParametersDictionary =
             new ReadOnlyDictionary<string, object>(new Dictionary<string, object>());
 
-        RenderHandle _renderHandle;
-        string _baseUri;
-        string _locationAbsolute;
-        bool _navigationInterceptionEnabled;
-        bool _disposed = false;
+        private RenderHandle _renderHandle;
+        private bool _navigationInterceptionEnabled;
+        private bool _disposed;
 
         [Inject]
         private NavigationManager NavigationManager { get; set; }
@@ -29,13 +24,6 @@ namespace JssBlazor.Components.Routing
 
         [Parameter]
         public Type Layout { get; set; }
-
-        /// <summary>
-        /// Gets or sets a collection of additional assemblies that should be searched for components
-        /// that can match URIs.
-        /// </summary>
-        [Parameter]
-        public IEnumerable<Assembly> AdditionalAssemblies { get; set; }
 
         /// <summary>
         /// Gets or sets the content to display when no match is found for the requested route.
@@ -53,8 +41,6 @@ namespace JssBlazor.Components.Routing
         public void Attach(RenderHandle renderHandle)
         {
             _renderHandle = renderHandle;
-            _baseUri = NavigationManager.BaseUri;
-            _locationAbsolute = NavigationManager.Uri;
             NavigationManager.LocationChanged += OnLocationChanged;
         }
 
@@ -105,26 +91,14 @@ namespace JssBlazor.Components.Routing
             _disposed = true;
         }
 
-        private static string StringUntilAny(string str, char[] chars)
-        {
-            var firstIndex = str.IndexOfAny(chars);
-            return firstIndex < 0
-                ? str
-                : str.Substring(0, firstIndex);
-        }
-
         private void Refresh()
         {
-            var locationPath = NavigationManager.ToBaseRelativePath(_locationAbsolute);
-            locationPath = StringUntilAny(locationPath, _queryOrHashStartChar);
-
-            var routeData = new RouteData(Layout, _emptyParametersDictionary);
+            var routeData = new RouteData(Layout, EmptyParametersDictionary);
             _renderHandle.Render(Found(routeData));
         }
 
         private void OnLocationChanged(object sender, LocationChangedEventArgs args)
         {
-            _locationAbsolute = args.Location;
             if (_renderHandle.IsInitialized)
             {
                 Refresh();

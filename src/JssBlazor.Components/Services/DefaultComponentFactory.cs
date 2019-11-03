@@ -73,7 +73,7 @@ namespace JssBlazor.Components.Services
             return componentName;
         }
 
-        private string SanitizeComponentName(string componentName)
+        private static string SanitizeComponentName(string componentName)
         {
             return componentName.Replace('-', '_');
         }

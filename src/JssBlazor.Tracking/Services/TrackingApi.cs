@@ -37,15 +37,13 @@ namespace JssBlazor.Tracking.Services
             return $"{options.Host}{options.ServiceUrl}/{options.Action}";
         }
 
-        private async Task<string> FetchData<T>(
-            string url,
+        private async Task FetchData<T>(string url,
             T data,
             IDictionary<string, string> parameters)
         {
             var request = BuildRequest(url, data, parameters);
             var response = await _httpClient.SendAsync(request);
-            var contentStream = await response.Content.ReadAsStringAsync();
-            return contentStream;
+            await response.Content.ReadAsStringAsync();
         }
 
         private static HttpRequestMessage BuildRequest<T>(
@@ -54,7 +52,7 @@ namespace JssBlazor.Tracking.Services
             IDictionary<string, string> parameters)
         {
             var queryString = GetQueryString(parameters);
-            var fetchUrl = url.IndexOf("?") > -1 ? $"{url}&{queryString}" : $"{url}?{queryString}";
+            var fetchUrl = url.IndexOf("?", StringComparison.Ordinal) > -1 ? $"{url}&{queryString}" : $"{url}?{queryString}";
 
             var request = new HttpRequestMessage
             {

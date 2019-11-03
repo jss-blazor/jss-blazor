@@ -28,7 +28,7 @@
 
     private RenderFragment RenderPlaceholder() => builder =>
     {
-        var components = Rendering.GetPlaceholderData(Name);
+        var components = Rendering.GetPlaceholderData(Name).ToList();
         if (RenderEmpty != null && components.All(c => ComponentFactory.GetComponentType(c) == typeof(RawComponent)))
         {
             var context = GetRenderContext(components);

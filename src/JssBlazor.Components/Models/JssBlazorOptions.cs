@@ -11,36 +11,24 @@ namespace JssBlazor.Components.Models
         public string ComponentAssemblyFormat
         {
             get => ComponentFactoryOptions.ComponentAssemblyFormat;
-            set
-            {
-                ComponentFactoryOptions.ComponentAssemblyFormat = value;
-            }
+            set => ComponentFactoryOptions.ComponentAssemblyFormat = value;
         }
 
         public string DefaultLanguage
         {
             get => SitecoreConfiguration.DefaultLanguage;
-            set
-            {
-                SitecoreConfiguration.DefaultLanguage = value;
-            }
+            set => SitecoreConfiguration.DefaultLanguage = value;
         }
 
         public Guid SitecoreApiKey
         {
             get => SitecoreConfiguration.SitecoreApiKey;
-            set
-            {
-                SitecoreConfiguration.SitecoreApiKey = value;
-            }
+            set => SitecoreConfiguration.SitecoreApiKey = value;
         }
 
         public string SitecoreApiHost {
             get => SitecoreConfiguration.SitecoreApiHost;
-            set
-            {
-                SitecoreConfiguration.SitecoreApiHost = value;
-            }
+            set => SitecoreConfiguration.SitecoreApiHost = value;
         }
 
         public JssBlazorOptions()

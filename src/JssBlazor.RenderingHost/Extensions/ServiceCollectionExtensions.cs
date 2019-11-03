@@ -7,7 +7,7 @@ using JssBlazor.Core.Services;
 using JssBlazor.RenderingHost.Controllers;
 using JssBlazor.RenderingHost.Models;
 using JssBlazor.RenderingHost.Services;
-using JssBlazor.Tracking;
+using JssBlazor.Tracking.Extensions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

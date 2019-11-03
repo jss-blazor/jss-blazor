@@ -2,7 +2,7 @@ using System;
 using JssBlazor.Tracking.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace JssBlazor.Tracking
+namespace JssBlazor.Tracking.Extensions
 {
     public static class ServiceCollectionExtensions
     {

@@ -91,7 +91,7 @@ namespace JssBlazor.RenderingHost.Services
             var renderComponentAsyncMethod = typeof(HtmlHelperComponentExtensions).GetMethod(
                 nameof(HtmlHelperComponentExtensions.RenderComponentAsync),
                 new[] { typeof(IHtmlHelper), typeof(RenderMode) });
-            var renderComponentAsyncOfAppTypeMethod = renderComponentAsyncMethod.MakeGenericMethod(new[] { appType });
+            var renderComponentAsyncOfAppTypeMethod = renderComponentAsyncMethod.MakeGenericMethod(appType);
 
             var appHtmlRenderer = await (Task<IHtmlContent>)renderComponentAsyncOfAppTypeMethod.Invoke(
                 null,
@@ -127,7 +127,7 @@ namespace JssBlazor.RenderingHost.Services
             if (pageEditing)
             {
                 // Blazor breaks Experience Editor functionality, so remove the Blazor bundle in the Experience Editor.
-                var blazorScript = htmlDocument.DocumentNode.SelectSingleNode($"//script[contains(@src, 'blazor.webassembly.js')]");
+                var blazorScript = htmlDocument.DocumentNode.SelectSingleNode("//script[contains(@src, 'blazor.webassembly.js')]");
                 blazorScript.Remove();
             }
 

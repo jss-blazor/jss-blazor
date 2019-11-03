@@ -16,11 +16,11 @@
     public bool Encode { get; set; } = true;
 
     [Parameter(CaptureUnmatchedValues = true)]
-    public IDictionary<string, object> HtmlAttributes { get; set; }
+    public IDictionary<string, object> HtmlAttributes { get; set; } = new Dictionary<string, object>();
 
     private RenderFragment RenderText() => builder =>
     {
-        if (Field == null || (string.IsNullOrWhiteSpace(Field.Editable) && Field.Value == null))
+        if (Field == null || string.IsNullOrWhiteSpace(Field.Editable) && Field.Value == null)
         {
             return;
         }
@@ -30,8 +30,8 @@
             Editable = false;
         }
 
-        var output = (!string.IsNullOrWhiteSpace(Field.Editable) && Editable) ? Field.Editable : Field.Value.Rendered;
-        var renderMarkup = (!string.IsNullOrEmpty(Field.Editable) && Editable) || !Encode;
+        var output = !string.IsNullOrWhiteSpace(Field.Editable) && Editable ? Field.Editable : Field.Value.Rendered;
+        var renderMarkup = !string.IsNullOrEmpty(Field.Editable) && Editable || !Encode;
 
         if (!string.IsNullOrWhiteSpace(Tag) || renderMarkup)
         {
