@@ -14,6 +14,16 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             var jToken = JToken.Load(reader);
+            if (jToken.Type == JTokenType.Array)
+            {
+                var converter = new FieldValueJsonConverter();
+                var multilistField = new MutlilistField
+                {
+                    Value = (MultilistFieldValue)converter.ReadJson(jToken.CreateReader(), objectType, existingValue, serializer)
+                };
+                return multilistField;
+            }
+
             if (jToken.Type == JTokenType.Object)
             {
                 if (jToken.SelectToken("value.href") != null)
@@ -34,6 +44,11 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
+            if (value is MutlilistField multilistField)
+            {
+                serializer.Serialize(writer, multilistField.Value.RawValue);
+                return;
+            }
             serializer.Serialize(writer, value);
         }
     }

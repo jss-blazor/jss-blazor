@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -14,11 +16,20 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             var jToken = JToken.Load(reader);
-            var jTokenType = jToken.Type.ToString().ToLower();
-
-            var fieldValue = jTokenType switch
+            if (jToken.Type == JTokenType.Array)
             {
-                "string" => new FieldValue
+                var field = new MultilistFieldValue
+                {
+                    Items = jToken.ToObject<IEnumerable<MultilistItem>>(),
+                    Rendered = jToken.ToString(),
+                    RawValue = jToken
+                };
+                return field;
+            }
+
+            var fieldValue = jToken.Type switch
+            {
+                JTokenType.String => new FieldValue
                 {
                     Rendered = jToken.Value<string>()
                 },
@@ -28,7 +39,6 @@ namespace JssBlazor.Core.Models.LayoutService.Fields
                 },
             };
             fieldValue.RawValue = jToken;
-
             return fieldValue;
         }
 

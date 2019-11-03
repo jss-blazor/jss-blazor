@@ -34,8 +34,8 @@
 </Styleguide_Specimen>
 
 @code {
-    private IEnumerable<Field> _localContentList;
-    private IEnumerable<Field> _sharedContentList;
+    private IEnumerable<MultilistItem> _localContentList;
+    private IEnumerable<MultilistItem> _sharedContentList;
 
     protected override void OnParametersSet()
     {
@@ -43,10 +43,13 @@
         _sharedContentList = GetContentList("sharedContentList");
     }
 
-    private IEnumerable<Field> GetContentList(string fieldName)
+    private IEnumerable<MultilistItem> GetContentList(string fieldName)
     {
-        var contentList = Component.Fields[fieldName];
-        var listItems = contentList.Value.RawValue.ToObject<IEnumerable<Field>>();
-        return listItems;
+        if (!(Component.Fields[fieldName] is MutlilistField contentList))
+        {
+            return Enumerable.Empty<MultilistItem>();
+        }
+
+        return contentList.Value?.Items ?? Enumerable.Empty<MultilistItem>();
     }
 }
