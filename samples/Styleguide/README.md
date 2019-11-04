@@ -1,5 +1,7 @@
 # 🎨 JSS Blazor Styleguide
 
+![JSS Blazor](../../assets/jss-blazor-banner.svg)
+
 This is a sample application to showcase JSS Blazor in a [Helix solution][1].
 
 ## 🚀 Getting Started

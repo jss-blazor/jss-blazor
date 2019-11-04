@@ -1,5 +1,7 @@
 # 🔧 JSS Blazor SDK
 
+![JSS Blazor](../assets/jss-blazor-banner.svg)
+
 The JSS Blazor SDK contains everything you need to build a new website with JSS
 Blazor. It consists of four packages:
 
