@@ -14,6 +14,7 @@
         {
             <nav @key="@section.Heading" class="nav flex-column pt-2">
                 @* Anchor navigation doesn't work with Blazor Assembly unless event.stopPropagation() is added to onclick *@
+                @* @onclick:stopPropagation breaks the link functionality entirely *@
                 <a href="@GetSectionLink(section)" class="nav-item font-weight-bold" onclick="event.stopPropagation();">
                     @section.Heading
                 </a>
@@ -23,6 +24,7 @@
                         @foreach (var child in section.Children)
                         {
                             @* Anchor navigation doesn't work with Blazor Assembly unless event.stopPropagation() is added to onclick *@
+                            @* @onclick:stopPropagation breaks the link functionality entirely *@
                             <a @key="child.Id" href="@GetSectionLink(child)" onclick="event.stopPropagation();">
                                 @child.Heading
                             </a>

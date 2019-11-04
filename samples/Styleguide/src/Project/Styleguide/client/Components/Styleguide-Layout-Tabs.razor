@@ -27,15 +27,9 @@
                 *@
                 var tabIndex = i;
                 <li class="nav-item" @key="@GetTabKey(i)">
-                    @*
-                        Note that as of .NET Core 3.1 Preview 1 there is no native mechanism to stop
-                        event propagation on events (e.g., onclick). In the React Styleguide, the
-                        href attribute in this sample is set to "#t" and event propagation is
-                        (presumably) suppressed natively; here we must use "javascript: void(0);".
-                    *@
                     <a class="@GetTabClass(tabIndex)"
                        @onclick="@(() => SetActiveTab(tabIndex))"
-                       href="javascript: void(0);">
+                       @onclick:preventDefault>
                         <TextField Field="@_tabs[tabIndex].Fields["title"]" />
                     </a>
                 </li>
