@@ -49,6 +49,8 @@ rendering. The Rendering Host is required for Experience Editor support.
    - [`JssBlazor.Project.Common.Dev.config`][9]
      - Change `sourceFolder` to the root path of `Styleguide` solution.
    - [`JssBlazor.Project.Styleguide.Dev.config`][10]
+     - Change the `hostName` to the URL of your Sitecore instance if different
+       from `styleguide.sitecore`.
      - Change the `serverSideRenderingEngineEndpointUrl` to the URL of your
        Rendering Host service if different than the default.
 3. Build [`Styleguide.sln`][6].
