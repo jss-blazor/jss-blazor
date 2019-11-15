@@ -1,6 +1,5 @@
 using System;
 using JssBlazor.Components.Extensions;
-using JssBlazor.Tracking;
 using JssBlazor.Tracking.Extensions;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +23,7 @@ namespace JssBlazor.Project.Styleguide.Client
         public void Configure(IComponentsApplicationBuilder app)
         {
             app.UseJssBlazorComponents<App>("app");
+            app.UseJssBlazorTracking();
         }
     }
 }

@@ -27,13 +27,13 @@ If you want to see JSS Blazor in action or get a feel for how it works, the
 
 You need the following installed to work with Blazor:
 
-1. [Visual Studio 2019 16.4.0 Preview 3][2] or greater.
+1. [Visual Studio 2019 16.4.0 Preview 5][3] or greater.
 2. The latest Blazor WebAssembly project template.
 
 To install the Blazor WebAssembly project template:
 
 ```powershell
-dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.1.0-preview2.19528.8
+dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.1.0-preview3.19555.2
 ```
 
 ## 🔧 SDK

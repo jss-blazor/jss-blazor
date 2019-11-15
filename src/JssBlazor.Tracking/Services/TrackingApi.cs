@@ -60,14 +60,6 @@ namespace JssBlazor.Tracking.Services
                 RequestUri = new Uri(fetchUrl),
                 Content = new StringContent(JsonConvert.SerializeObject(data))
             };
-
-            // include browser cookies when making request
-            request.Properties[WebAssemblyHttpMessageHandler.FetchArgs] = new
-            {
-                // the FetchCredentialsOption.Include enum value throws an exception in the browser
-                credentials = "include"
-            };
-
             return request;
         }
 
