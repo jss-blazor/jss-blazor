@@ -1,3 +1,5 @@
+This is a fork of the original at https://github.com/jss-blazor/jss-blazor updated to .NET Standard 2.1 and .NET Core 3.1
+
 # 🔧 JSS Blazor SDK
 
 ![JSS Blazor](../assets/jss-blazor-banner.svg)

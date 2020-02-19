@@ -10,18 +10,18 @@
         <Placeholder Name="jss-styleguide-layout" Rendering="@Component" />
     </div>
     <div class="col-sm-4 col-lg-2 order-sm-first pt-2">
-        @foreach (var section in _sections)
+        @foreach (var s in _sections)
         {
-            <nav @key="@section.Heading" class="nav flex-column pt-2">
+            <nav @key="@s.Heading" class="nav flex-column pt-2">
                 @* Anchor navigation doesn't work with Blazor Assembly unless event.stopPropagation() is added to onclick *@
                 @* @onclick:stopPropagation breaks the link functionality entirely *@
-                <a href="@GetSectionLink(section)" class="nav-item font-weight-bold" onclick="event.stopPropagation();">
-                    @section.Heading
+                <a href="@GetSectionLink(s)" class="nav-item font-weight-bold" onclick="event.stopPropagation();">
+                    @s.Heading
                 </a>
-                @if (section.ShowChildren)
+                @if (s.ShowChildren)
                 {
                     <nav class="nav flex-column">
-                        @foreach (var child in section.Children)
+                        @foreach (var child in s.Children)
                         {
                             @* Anchor navigation doesn't work with Blazor Assembly unless event.stopPropagation() is added to onclick *@
                             @* @onclick:stopPropagation breaks the link functionality entirely *@
