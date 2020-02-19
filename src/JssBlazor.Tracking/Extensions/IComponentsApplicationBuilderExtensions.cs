@@ -1,13 +1,14 @@
+using Microsoft.AspNetCore.Blazor.Hosting;
 using Microsoft.AspNetCore.Blazor.Http;
-using Microsoft.AspNetCore.Components.Builder;
 
 namespace JssBlazor.Tracking.Extensions
 {
     public static class ComponentsApplicationBuilderExtensions
     {
-        public static void UseJssBlazorTracking(this IComponentsApplicationBuilder app)
+        public static WebAssemblyHost UseJssBlazorTracking(this WebAssemblyHost host)
         {
             WebAssemblyHttpMessageHandlerOptions.DefaultCredentials = FetchCredentialsOption.Include;
+            return host;
         }
     }
 }
