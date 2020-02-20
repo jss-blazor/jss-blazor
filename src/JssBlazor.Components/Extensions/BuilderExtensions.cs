@@ -1,22 +1,27 @@
+using Microsoft.AspNetCore.Blazor.Hosting;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Builder;
 using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 namespace JssBlazor.Components.Extensions
 {
-    public static class ComponentsApplicationBuilderExtensions
+    public static class BuilderExtensions
     {
         public static void UseJssBlazorComponents<TComponent>(
-            this IComponentsApplicationBuilder app,
+            this WebAssemblyHostBuilder builder,
             string domElementSelector)
             where TComponent : IComponent
         {
-            app.AddComponent<TComponent>(domElementSelector);
+            builder.RootComponents.Add<TComponent>(domElementSelector);
+        }
 
+        public static WebAssemblyHost UseJssBlazorComponents(this WebAssemblyHost host)
+        {
             // Blazor WebAssembly doesn't currently include any time zones so conversion to
             // local DateTimes from UTC does not work. This extension method fixes that.
             // https://github.com/jsakamoto/Toolbelt.Blazor.TimeZoneKit/
-            app.UseLocalTimeZone();
+            host.UseLocalTimeZone();
+
+            return host;
         }
     }
 }

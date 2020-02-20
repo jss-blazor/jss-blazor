@@ -1,16 +1,21 @@
+using JssBlazor.Components.Extensions;
+using JssBlazor.Tracking.Extensions;
 using Microsoft.AspNetCore.Blazor.Hosting;
+using System.Threading.Tasks;
 
 namespace JssBlazor.Project.Styleguide.Client
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
-        }
+            var builder = WebAssemblyHostBuilder.CreateDefault(args);
+            builder.UseJssBlazorComponents<App>("app");
 
-        public static IWebAssemblyHostBuilder CreateHostBuilder(string[] args) =>
-            BlazorWebAssemblyHost.CreateDefaultBuilder()
-                .UseBlazorStartup<Startup>();
+            await builder.Build()
+                .UseJssBlazorComponents()
+                .UseJssBlazorTracking()
+                .RunAsync();
+        }
     }
 }
