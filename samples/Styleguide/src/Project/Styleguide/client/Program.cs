@@ -10,7 +10,7 @@ namespace JssBlazor.Project.Styleguide.Client
         public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
-            builder.RootComponents.Add<App>("app");
+            builder.UseJssBlazorComponents<App>("app");
 
             await builder.Build()
                 .UseJssBlazorComponents()

@@ -1,10 +1,19 @@
 using Microsoft.AspNetCore.Blazor.Hosting;
+using Microsoft.AspNetCore.Components;
 using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 namespace JssBlazor.Components.Extensions
 {
-    public static class ComponentsApplicationBuilderExtensions
+    public static class BuilderExtensions
     {
+        public static void UseJssBlazorComponents<TComponent>(
+            this WebAssemblyHostBuilder builder,
+            string domElementSelector)
+            where TComponent : IComponent
+        {
+            builder.RootComponents.Add<TComponent>(domElementSelector);
+        }
+
         public static WebAssemblyHost UseJssBlazorComponents(this WebAssemblyHost host)
         {
             // Blazor WebAssembly doesn't currently include any time zones so conversion to
